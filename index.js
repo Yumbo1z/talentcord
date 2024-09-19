@@ -1,8 +1,6 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const session = require("express-session");
-const axios = require("axios");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path");
