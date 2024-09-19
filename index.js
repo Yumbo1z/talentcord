@@ -33,7 +33,7 @@ app.listen(process.env.PORT || 80, () => {
 
 console.log(__dirname);
 
-mongoose.set("strictQuery", true);
+/*mongoose.set("strictQuery", true);
 (async () => {
   await mongoose
     .connect(process.env.mongo, {
@@ -41,7 +41,7 @@ mongoose.set("strictQuery", true);
       useUnifiedTopology: true,
     })
     .then(() => console.log("Connected to mongodb"));
-})();
+})();*/
 
 process.on("unhandledRejection", (reason, p) => {
   console.log(" [antiCrash] :: Unhandled Rejection/Catch");
