@@ -9,7 +9,6 @@ const dir = (text) => `${__dirname}/html/${text}.html`;
 const link = (input) => `https://gildnovel.com/${input}`;
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
-app.use(cookieParser());
 app.use(
   express.urlencoded({
     extended: true,
