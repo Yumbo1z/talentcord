@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="icon" href="https://i.imgur.com/g0L3cwG.png" />
-    <title>TalentCord</title>
-    <meta property="og:site_name" content="TalentCord" />
+    <title>Talentcord</title>
+    <meta property="og:site_name" content="Talentcord" />
     <meta property="og:description" content="" />
     <meta property="og:image" content="https://i.imgur.com/g0L3cwG.png">
     <meta property="og:image:type" content="image/png">
@@ -63,12 +63,70 @@
         .navbar .plus-icon:hover {
             color: #ffbb33;
         }
+
+        /* Listing Styles */
+        .listings {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .listing-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            padding: 20px;
+            text-align: center;
+            transition: box-shadow 0.3s;
+        }
+
+        .listing-card:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .listing-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .listing-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .listing-card p {
+            font-size: 1rem;
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        .tags {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background-color: #8c4ec4;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 
 <body>
     <nav class="navbar">
-        <div class="logo">Website Name</div>
+        <div class="logo">Talentcord</div>
 
         <div class="search-bar">
             <input type="text" placeholder="Search...">
@@ -78,6 +136,47 @@
             <i class="fas fa-plus"></i>
         </div>
     </nav>
+
+    <!-- Listings -->
+    <section class="listings">
+        <!-- Example Listing 1 -->
+        <div class="listing-card">
+            <img src="https://via.placeholder.com/80" alt="User Avatar">
+            <h3>John Doe</h3>
+            <p>John is a graphic designer specializing in digital art.</p>
+            <div class="tags">
+                <span class="tag">#design</span>
+                <span class="tag">#art</span>
+                <span class="tag">#digital</span>
+            </div>
+        </div>
+
+        <!-- Example Listing 2 -->
+        <div class="listing-card">
+            <img src="https://via.placeholder.com/80" alt="User Avatar">
+            <h3>Jane Smith</h3>
+            <p>Jane is a full-stack developer with 5 years of experience.</p>
+            <div class="tags">
+                <span class="tag">#developer</span>
+                <span class="tag">#fullstack</span>
+                <span class="tag">#javascript</span>
+            </div>
+        </div>
+
+        <!-- Example Listing 3 -->
+        <div class="listing-card">
+            <img src="https://via.placeholder.com/80" alt="User Avatar">
+            <h3>Alice Brown</h3>
+            <p>Alice is a content writer and blogger who loves sharing stories.</p>
+            <div class="tags">
+                <span class="tag">#writing</span>
+                <span class="tag">#blogger</span>
+                <span class="tag">#storytelling</span>
+            </div>
+        </div>
+
+        <!-- Add more listings as needed -->
+    </section>
 </body>
 
 </html>
