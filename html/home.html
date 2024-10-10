@@ -4,15 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="icon" href="https://i.imgur.com/g0L3cwG.png" />
+    <link rel="icon" type="icon"
+        href="https://static.wikia.nocookie.net/azumanga-daioh-real-facts/images/5/5d/Oh_saka.jpg/revision/latest?cb=20240811214642" />
     <title>Talentcord</title>
     <meta property="og:site_name" content="Talentcord" />
-    <meta property="og:description" content="" />
-    <meta property="og:image" content="https://i.imgur.com/g0L3cwG.png">
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="250">
-    <meta property="og:image:height" content="250">
-    <meta name="theme-color" content="#4fd0ff" />
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet" />
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css" />
 
@@ -24,15 +19,17 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #2c2f33;
+            color: #ccc;
         }
 
+        /* Navbar Styles */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #333;
+            background-color: #23272a;
             padding: 10px 20px;
             color: white;
         }
@@ -53,6 +50,8 @@
             font-size: 1rem;
             border-radius: 5px;
             border: none;
+            background-color: #40444b;
+            color: white;
         }
 
         .navbar .plus-icon {
@@ -61,77 +60,81 @@
         }
 
         .navbar .plus-icon:hover {
-            color: #ffbb33;
+            color: #7289da;
         }
 
-        /* Listing Styles */
+        /* Listings Container */
         .listings {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             padding: 20px;
             gap: 20px;
         }
 
+        /* Listing Card Styles */
         .listing-card {
-            background-color: white;
+            background-color: #36393f;
             border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            padding: 20px;
-            text-align: center;
-            transition: box-shadow 0.3s;
+            width: 95%;
+            max-width: 600px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.3s;
+            cursor: pointer;
         }
 
         .listing-card:hover {
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            background-color: #40444b;
         }
 
-        .listing-card img {
-            width: 80px;
-            height: 80px;
+        .avatar {
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             object-fit: cover;
-            margin-bottom: 15px;
+            margin-right: 15px;
         }
 
-        .listing-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 10px;
-            color: #333;
+        .listing-info {
+            flex: 1;
         }
 
-        .listing-card p {
-            font-size: 1rem;
-            color: #777;
-            margin-bottom: 15px;
+        .listing-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        .listing-info p {
+            font-size: 0.9rem;
+            color: #b9bbbe;
         }
 
         .tags {
             display: flex;
-            justify-content: center;
             gap: 10px;
-            flex-wrap: wrap;
+            margin-top: 10px;
         }
 
         .tag {
-            background-color: #8c4ec4;
+            background-color: #5865f2;
             color: white;
             padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.9rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
         }
     </style>
 </head>
 
 <body>
+    <!-- Navbar -->
     <nav class="navbar">
         <div class="logo">Talentcord</div>
-
         <div class="search-bar">
             <input type="text" placeholder="Search...">
         </div>
-
         <div class="plus-icon">
             <i class="fas fa-plus"></i>
         </div>
@@ -141,41 +144,48 @@
     <section class="listings">
         <!-- Example Listing 1 -->
         <div class="listing-card">
-            <img src="https://via.placeholder.com/80" alt="User Avatar">
-            <h3>John Doe</h3>
-            <p>John is a graphic designer specializing in digital art.</p>
-            <div class="tags">
-                <span class="tag">#design</span>
-                <span class="tag">#art</span>
-                <span class="tag">#digital</span>
+            <img src="https://via.placeholder.com/60" alt="User Avatar" class="avatar">
+            <div class="listing-info">
+                <h3>John Doe</h3>
+                <p>John is a graphic designer specializing in digital art.</p>
+                <div class="tags">
+                    <span class="tag">#design</span>
+                    <span class="tag">#art</span>
+                    <span class="tag">#digital</span>
+                </div>
             </div>
         </div>
 
         <!-- Example Listing 2 -->
         <div class="listing-card">
-            <img src="https://via.placeholder.com/80" alt="User Avatar">
-            <h3>Jane Smith</h3>
-            <p>Jane is a full-stack developer with 5 years of experience.</p>
-            <div class="tags">
-                <span class="tag">#developer</span>
-                <span class="tag">#fullstack</span>
-                <span class="tag">#javascript</span>
+            <img src="https://via.placeholder.com/60" alt="User Avatar" class="avatar">
+            <div class="listing-info">
+                <h3>Jane Smith</h3>
+                <p>Jane is a full-stack developer with 5 years of experience.</p>
+                <div class="tags">
+                    <span class="tag">#developer</span>
+                    <span class="tag">#fullstack</span>
+                    <span class="tag">#javascript</span>
+                </div>
             </div>
         </div>
 
         <!-- Example Listing 3 -->
         <div class="listing-card">
-            <img src="https://via.placeholder.com/80" alt="User Avatar">
-            <h3>Alice Brown</h3>
-            <p>Alice is a content writer and blogger who loves sharing stories.</p>
-            <div class="tags">
-                <span class="tag">#writing</span>
-                <span class="tag">#blogger</span>
-                <span class="tag">#storytelling</span>
+            <img src="https://via.placeholder.com/60" alt="User Avatar" class="avatar">
+            <div class="listing-info">
+                <h3>Alice Brown</h3>
+                <p>Alice is a content writer and blogger who loves sharing stories.</p>
+                <div class="tags">
+                    <span class="tag">#writing</span>
+                    <span class="tag">#blogger</span>
+                    <span class="tag">#storytelling</span>
+                </div>
             </div>
         </div>
 
         <!-- Add more listings as needed -->
+    </section>
     </section>
 </body>
 
