@@ -5,11 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="icon" href="https://i.imgur.com/g0L3cwG.png" />
-    <title>Cypher</title>
-    <meta property="og:title" content="Cypher Home" />
-    <meta property="og:site_name" content="Cypher" />
-    <meta property="og:description"
-        content="Cypher is more than just your average moderation bot, it's a comprehensive toolset designed to empower server owners with it's handy features and utilities." />
+    <title>TalentCord</title>
+    <meta property="og:site_name" content="TalentCord" />
+    <meta property="og:description" content="" />
     <meta property="og:image" content="https://i.imgur.com/g0L3cwG.png">
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="250">
@@ -20,113 +18,66 @@
 
     <style>
         * {
-            box-sizing: border-box;
-            padding: 0;
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: "Fira Sans";
-            background-color: #282c35;
-            color: #ddd;
-            line-height: 1.6;
-            font-size: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
         }
 
-        section {
-            max-width: 800px;
-            margin: 2em auto;
-            padding: 2em;
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             background-color: #333;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 10px 20px;
+            color: white;
         }
 
-        h1,
-        h2,
-        h3 {
-            color: #4fd0ff;
+        .navbar .logo {
+            font-size: 1.5rem;
             font-weight: bold;
         }
 
-        p {
-            color: #bbb;
-            /* Dark mode paragraph text color */
+        .navbar .search-bar {
+            flex: 1;
+            margin: 0 20px;
         }
 
-        i {
-            color: #4fd0ff;
+        .navbar .search-bar input {
+            width: 100%;
+            padding: 8px;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: none;
         }
 
-        .button {
-            align-items: center;
-            background-clip: padding-box;
-            background-color: #4fd0ff;
-            border: 1px solid transparent;
-            border-radius: .25rem;
-            box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-            box-sizing: border-box;
-            color: #fff;
+        .navbar .plus-icon {
+            font-size: 1.5rem;
             cursor: pointer;
-            display: inline-flex;
-            font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
-            font-size: 16px;
-            font-weight: 600;
-            justify-content: center;
-            line-height: 1.25;
-            margin: 0;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            min-height: 3rem;
-            padding: calc(.875rem - 1px) calc(1.5rem - 1px);
-            position: relative;
-            text-decoration: none;
-            transition: all 250ms;
-            user-select: none;
-            -webkit-user-select: none;
-            touch-action: manipulation;
-            vertical-align: baseline;
-            width: auto;
         }
 
-        .button:hover,
-        .button:focus {
-            background-color: #00bbff;
-            box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-        }
-
-        .button:hover {
-            transform: translateY(-1px);
-        }
-
-        .button:active {
-            background-color: #00bbff;
-            box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
-            transform: translateY(0);
+        .navbar .plus-icon:hover {
+            color: #ffbb33;
         }
     </style>
 </head>
 
 <body>
-    <section>
-        <h1>Cypher, currently in $$servers$$ servers and watching over $$members$$ members</h1>
-        <p>Cypher is more than just your average moderation bot, it's a comprehensive toolset designed to empower server owners with it's handy features and utilities.</p>
+    <nav class="navbar">
+        <div class="logo">Website Name</div>
 
-        <button
-            onclick="location.href = 'https://discord.com/oauth2/authorize?client_id=1111048332614311997&permissions=1099780451510&scope=applications.commands+bot';"
-            class="button">Invite Now</button>
-        <button onclick="location.href = 'https://discord.gg/cawdyvkTyj';" class="button">Support Server</button>
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+        </div>
 
-        <h2>What do we have to offer?</h2>
-        <p><i class="fa-solid fa-ban"></i> Mods, explore our auto-moderation features!</p>
-        <p><i class="fa-solid fa-list-check"></i> Server owners, we have server management features!</p>
-        <p><i class="fa-solid fa-magnifying-glass-chart"></i> We have server logs!</p>
-        <p><i class="fa-solid fa-icons"></i> Tons of utility commands!</p>
-
-        <h2>Other Links</h2>
-        <button onclick="location.href = '/tos';" class="button">Terms Of Service</button>
-
-    </section>
+        <div class="plus-icon">
+            <i class="fas fa-plus"></i>
+        </div>
+    </nav>
 </body>
 
 </html>
