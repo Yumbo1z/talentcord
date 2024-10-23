@@ -185,8 +185,8 @@
             cursor: pointer;
         }
 
-        select {
-            background-color: #40444b;
+        .tag-button {
+            background-color: #5865f2;
             /* Background color */
             color: white;
             /* Text color */
@@ -194,22 +194,25 @@
             /* Remove border */
             border-radius: 5px;
             /* Rounded corners */
-            padding: 10px;
+            padding: 8px 12px;
             /* Padding for comfort */
-            font-size: 1rem;
+            font-size: 0.9rem;
             /* Font size */
             cursor: pointer;
             /* Change cursor on hover */
+            transition: background-color 0.3s;
+            /* Smooth transition */
         }
 
-        /* Add styles for focus and hover effects */
-        select:focus {
-            outline: none;
-            /* Remove default outline */
-            box-shadow: 0 0 5px rgba(114, 137, 218, 1);
-            /* Shadow effect */
+        .tag-button:hover {
+            background-color: #4752c4;
+            /* Darker shade on hover */
         }
 
+        .tag-button.selected {
+            background-color: #7289da;
+            /* Selected state background */
+        }
 
         a {
             color: gray;
@@ -317,16 +320,15 @@
                 <textarea id="create-bio"></textarea>
 
                 <label for="tags">Select Tags:</label><br>
-                <select id="tags" name="tags" multiple
-                    style="width: 100%; padding: 8px; border-radius: 5px; border: none; background-color: #40444b; color: white;">
-                    <option value="#developer">Developer</option>
-                    <option value="#artist">Artist</option>
-                    <option value="#javascript">Javascript</option>
-                    <option value="#designer">Designer</option>
-                    <option value="#graphic">Graphic Designer</option>
-                    <option value="#writer">Writer</option>
-                    <option value="#copywriter">Copywriter</option>
-                </select>
+                <div id="tags-container" style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <button type="button" class="tag-button" data-value="#developer">#developer</button>
+                    <button type="button" class="tag-button" data-value="#designer">#designer</button>
+                    <button type="button" class="tag-button" data-value="#writer">#writer</button>
+                    <button type="button" class="tag-button" data-value="#graphic">#graphic</button>
+                    <button type="button" class="tag-button" data-value="#copywriter">#copywriter</button>
+                    <button type="button" class="tag-button" data-value="#devops">#devops</button>
+                </div>
+
 
                 <button type="submit">Create Account</button>
             </form>
@@ -410,6 +412,26 @@
         }
 
         // Function to handle Create Account form submission
+
+        const tagsContainer = document.getElementById('tags-container');
+        const selectedTags = [];
+
+        tagsContainer.addEventListener('click', (event) => {
+            if (event.target.classList.contains('tag-button')) {
+                const button = event.target;
+                const tagValue = button.getAttribute('data-value');
+
+                // Toggle selection
+                if (selectedTags.includes(tagValue)) {
+                    selectedTags.splice(selectedTags.indexOf(tagValue), 1);
+                    button.classList.remove('selected');
+                } else {
+                    selectedTags.push(tagValue);
+                    button.classList.add('selected');
+                }
+            }
+        });
+
         async function postCreateAccount(event) {
             event.preventDefault(); // Prevent the form from submitting normally
 
@@ -420,7 +442,7 @@
             const bio = document.getElementById('create-bio').value;
 
             // Collect checked tags
-            const tags = Array.from(document.getElementById('tags').selectedOptions).map(option => option.value);
+            const tags = selectedTags
 
             try {
                 const response = await fetch('/create-account', {
