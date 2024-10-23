@@ -253,8 +253,42 @@
         <!-- Add more listings as needed -->
     </section>
 
-    <!-- Sign In Modal -->
-    <div class="modal" id="signin-modal">
+    <!-- Sign In Form -->
+    <form id="signin-form" onsubmit="postSignIn(event)">
+        <label for="signin-email">Email:</label>
+        <input type="email" id="signin-email" required>
+
+        <label for="signin-password">Password:</label>
+        <input type="password" id="signin-password" required>
+
+        <button type="submit">Sign In</button>
+    </form>
+
+    <!-- Create Account Form -->
+    <form id="create-account-form" onsubmit="postCreateAccount(event)" style="display:none">
+        <label for="create-username">Username:</label>
+        <input type="text" id="create-username" required>
+
+        <label for="create-email">Email:</label>
+        <input type="email" id="create-email" required>
+
+        <label for="create-password">Password:</label>
+        <input type="password" id="create-password" required>
+
+        <label for="create-bio">Bio:</label>
+        <textarea id="create-bio"></textarea>
+
+        <!-- Example of tags (checkboxes) -->
+        <label for="tags">Select Tags:</label><br>
+        <input type="checkbox" name="tags" value="#developer"> Developer
+        <input type="checkbox" name="tags" value="#designer"> Designer
+        <input type="checkbox" name="tags" value="#writer"> Writer
+
+        <button type="submit">Create Account</button>
+    </form>
+
+
+    <!-- <div class="modal" id="signin-modal">
         <div class="modal-header">
             <h2>Sign In</h2>
             <span class="close-btn">&times;</span>
@@ -270,7 +304,6 @@
         </div>
     </div>
 
-    <!-- Sign Up Modal -->
     <div class="modal" id="signup-modal">
         <div class="modal-header">
             <h2>Sign Up</h2>
@@ -281,14 +314,13 @@
             <input type="email" placeholder="Email" />
             <input type="password" placeholder="Password" />
             <input type="text" placeholder="Bio" />
-            <!-- Example tags for selection -->
             <input type="text" placeholder="Tags (e.g., #design, #art)" />
         </div>
         <div class="modal-footer">
             <button>Create Account</button>
             <p>Already have an account? <span class="switch-modal" id="switch-to-signin">Sign In</span></p>
         </div>
-    </div>
+    </div>-->
 
     <script>
         // Get elements
@@ -324,6 +356,89 @@
             signinModal.classList.add('active');
         });
     </script>
+
+    <script>
+        // Function to handle form submissions for Sign In
+        function postSignIn(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+
+            // Get the form values
+            const email = document.getElementById('signin-email').value;
+            const password = document.getElementById('signin-password').value;
+
+            // Create the request payload
+            const payload = {
+                email: email,
+                password: password
+            };
+
+            // Send the POST request to the sign-in API endpoint
+            fetch('/api/signin', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert("Sign in successful!");
+                        // Redirect to a new page or refresh the current one
+                        window.location.href = '/dashboard';
+                    } else {
+                        alert("Sign in failed: " + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        // Function to handle form submissions for Account Creation
+        function postCreateAccount(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+
+            // Get the form values
+            const username = document.getElementById('create-username').value;
+            const email = document.getElementById('create-email').value;
+            const password = document.getElementById('create-password').value;
+            const bio = document.getElementById('create-bio').value;
+            const tags = Array.from(document.querySelectorAll('input[name="tags"]:checked')).map(el => el.value);
+
+            // Create the request payload
+            const payload = {
+                username: username,
+                email: email,
+                password: password,
+                bio: bio,
+                tags: tags
+            };
+
+            // Send the POST request to the create-account API endpoint
+            fetch('/api/createAccount', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert("Account created successfully!");
+                        // Redirect to a new page or refresh the current one
+                        window.location.href = '/dashboard';
+                    } else {
+                        alert("Account creation failed: " + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
+
 </body>
 
 </html>
