@@ -225,7 +225,6 @@
             /* Selected state background */
         }
 
-
         a {
             color: gray;
         }
@@ -250,7 +249,7 @@
     </nav>
 
     <!-- Listings -->
-    <section class="listings">
+    <section class="listings" id="listings">
         <!-- Example Listing 1 -->
         <div class="listing-card">
             <img src="https://via.placeholder.com/60" alt="User Avatar" class="avatar">
@@ -293,6 +292,27 @@
             </div>
         </div>
     </section>
+
+    <script>
+        let response = await fetch("/users");
+        let json = await response.json();
+        const listings = document.getElementById("listings");
+        for (let index = 0; index < json.length; index++) {
+            const user = json[index];
+
+            let tags = user.tags.map(tag => {
+                return `<span class="tag">${tag}</span>`
+            });
+
+            listings.innerHTML += `<div class="listing-card">
+            <img src="https://via.placeholder.com/60" alt="User Avatar" class="avatar">
+            <div class="listing-info">
+                <h3>${user.username}</h3>
+                <p>${user.bio}</p>
+                <div class="tags">${tags}</div>
+            </div></div>`;
+        }
+    </script>
 
     <!-- Sign In Modal -->
     <div id="signInModal" class="modal">
