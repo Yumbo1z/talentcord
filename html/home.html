@@ -267,7 +267,8 @@
 
                 <button type="submit">Sign In</button>
             </form>
-            <p>Don't have an account? <a href="#" onclick="toggleToCreateAccount()">Create one here.</a></p>
+            <p style="margin-top: 5px;">Don't have an account? <a href="#" onclick="toggleToCreateAccount()">Create one
+                    here.</a></p>
         </div>
     </div>
 
@@ -296,7 +297,8 @@
 
                 <button type="submit">Create Account</button>
             </form>
-            <p>Already have an account? <a href="#" onclick="toggleToSignIn()">Sign in here.</a></p>
+            <p style="margin-top: 5px;">Already have an account? <a href="#" onclick="toggleToSignIn()">Sign in
+                    here.</a></p>
         </div>
     </div>
 
@@ -335,6 +337,89 @@
             // Handle account creation logic here
             closeModal('createAccountModal');
         }
+    </script>
+
+    <script>
+        // Function to handle Sign In form submission
+        async function postSignIn(event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+
+            // Get values from the form
+            const email = document.getElementById('signin-email').value;
+            const password = document.getElementById('signin-password').value;
+
+            try {
+                const response = await fetch('/signin', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        password: password,
+                    }),
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    // Handle success, for example, redirect to a dashboard
+                    alert('Sign in successful!');
+                    closeModal('signInModal'); // Close the modal after sign in
+                } else {
+                    // Handle error, for example, display an error message
+                    alert('Sign in failed: ' + result.message);
+                }
+            } catch (error) {
+                console.error('Error during sign in:', error);
+                alert('An error occurred during sign in. Please try again later.');
+            }
+        }
+
+        // Function to handle Create Account form submission
+        async function postCreateAccount(event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+
+            // Get values from the form
+            const username = document.getElementById('create-username').value;
+            const email = document.getElementById('create-email').value;
+            const password = document.getElementById('create-password').value;
+            const bio = document.getElementById('create-bio').value;
+
+            // Collect checked tags
+            const tags = Array.from(document.querySelectorAll('input[name="tags"]:checked')).map(tag => tag.value);
+
+            try {
+                const response = await fetch('/create-account', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        username: username,
+                        email: email,
+                        password: password,
+                        bio: bio,
+                        tags: tags,
+                    }),
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    // Handle success, for example, show a welcome message or redirect
+                    alert('Account created successfully!');
+                    closeModal('createAccountModal'); // Close the modal after account creation
+                } else {
+                    // Handle error, for example, display an error message
+                    alert('Account creation failed: ' + result.message);
+                }
+            } catch (error) {
+                console.error('Error during account creation:', error);
+                alert('An error occurred during account creation. Please try again later.');
+            }
+        }
+
     </script>
 </body>
 
