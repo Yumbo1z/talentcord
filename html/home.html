@@ -296,8 +296,9 @@
             <img src="https://via.placeholder.com/60" alt="User Avatar" class="avatar">
             <div class="listing-info">
                 <h3>ffrgrg</h3>
-                <p>big boi big boi big boi big boi big boi big boi big boi big boi big boi big boi big boi big boi big
-                </p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce malesuada, arcu eget aliquet
+                    dignissim, erat orci vehicula velit, non cursus sem risus at metus. Curabitur ac massa a purus
+                    elementum lobortis. Integer pharetra nisl sit amet erat vestibulum volutpat.</p>
                 <div class="tags">
                     <span class="tag">#writing</span>
                     <span class="tag">#blogger</span>
@@ -324,7 +325,7 @@
             <img src="https://via.placeholder.com/60" alt="User Avatar" class="avatar">
             <div class="listing-info">
                 <h3>${user.username}</h3>
-                <p>${user.bio.substring(0, 250)}</p>
+                <p>${user.bio.length > 250 ? user.bio.substring(0, 250) + '...' : user.bio}</p>
                 <div class="tags">${tags.slice(0, 4).join(" ")}</div>
             </div></div>`;
             }
