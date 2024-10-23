@@ -253,39 +253,53 @@
         <!-- Add more listings as needed -->
     </section>
 
-    <!-- Sign In Form -->
-    <form id="signin-form" onsubmit="postSignIn(event)">
-        <label for="signin-email">Email:</label>
-        <input type="email" id="signin-email" required>
+    <!-- Sign In Modal -->
+    <div id="signInModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('signInModal')">&times;</span>
+            <form id="signin-form" onsubmit="postSignIn(event)">
+                <h2>Sign In</h2>
+                <label for="signin-email">Email:</label>
+                <input type="email" id="signin-email" required>
 
-        <label for="signin-password">Password:</label>
-        <input type="password" id="signin-password" required>
+                <label for="signin-password">Password:</label>
+                <input type="password" id="signin-password" required>
 
-        <button type="submit">Sign In</button>
-    </form>
+                <button type="submit">Sign In</button>
+            </form>
+            <p>Don't have an account? <a href="#" onclick="toggleToCreateAccount()">Create one here.</a></p>
+        </div>
+    </div>
 
-    <!-- Create Account Form -->
-    <form id="create-account-form" onsubmit="postCreateAccount(event)" style="display:none">
-        <label for="create-username">Username:</label>
-        <input type="text" id="create-username" required>
+    <!-- Create Account Modal -->
+    <div id="createAccountModal" class="modal" style="display:none">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('createAccountModal')">&times;</span>
+            <form id="create-account-form" onsubmit="postCreateAccount(event)">
+                <h2>Create Account</h2>
+                <label for="create-username">Username:</label>
+                <input type="text" id="create-username" required>
 
-        <label for="create-email">Email:</label>
-        <input type="email" id="create-email" required>
+                <label for="create-email">Email:</label>
+                <input type="email" id="create-email" required>
 
-        <label for="create-password">Password:</label>
-        <input type="password" id="create-password" required>
+                <label for="create-password">Password:</label>
+                <input type="password" id="create-password" required>
 
-        <label for="create-bio">Bio:</label>
-        <textarea id="create-bio"></textarea>
+                <label for="create-bio">Bio:</label>
+                <textarea id="create-bio"></textarea>
 
-        <!-- Example of tags (checkboxes) -->
-        <label for="tags">Select Tags:</label><br>
-        <input type="checkbox" name="tags" value="#developer"> Developer
-        <input type="checkbox" name="tags" value="#designer"> Designer
-        <input type="checkbox" name="tags" value="#writer"> Writer
+                <label for="tags">Select Tags:</label><br>
+                <input type="checkbox" name="tags" value="#developer"> Developer
+                <input type="checkbox" name="tags" value="#designer"> Designer
+                <input type="checkbox" name="tags" value="#writer"> Writer
 
-        <button type="submit">Create Account</button>
-    </form>
+                <button type="submit">Create Account</button>
+            </form>
+            <p>Already have an account? <a href="#" onclick="toggleToSignIn()">Sign in here.</a></p>
+        </div>
+    </div>
+
 
 
     <!-- <div class="modal" id="signin-modal">
