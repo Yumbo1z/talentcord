@@ -127,7 +127,7 @@
         /* Modal Styling */
         .modal {
             display: none;
-            position: fixed;
+            position: absolute;
             z-index: 1;
             left: 0;
             top: 0;
@@ -185,6 +185,14 @@
             cursor: pointer;
         }
 
+        #tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            /* Allow buttons to wrap to the next line */
+            gap: 10px;
+            /* Space between buttons */
+        }
+
         .tag-button {
             background-color: #5865f2;
             /* Background color */
@@ -202,6 +210,12 @@
             /* Change cursor on hover */
             transition: background-color 0.3s;
             /* Smooth transition */
+            max-width: 100px;
+            /* Set a maximum width for each button */
+            flex: 1 1 20%;
+            /* Allow buttons to grow and shrink */
+            text-align: center;
+            /* Center text inside button */
         }
 
         .tag-button:hover {
@@ -213,6 +227,7 @@
             background-color: #7289da;
             /* Selected state background */
         }
+
 
         a {
             color: gray;
@@ -320,7 +335,7 @@
                 <textarea id="create-bio"></textarea>
 
                 <label for="tags">Select Tags:</label><br>
-                <div id="tags-container" style="display: flex; flex-wrap: wrap; gap: 10px;">
+                <div id="tags-container" style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 25px;">
                     <button type="button" class="tag-button" data-value="#developer">#developer</button>
                     <button type="button" class="tag-button" data-value="#designer">#designer</button>
                     <button type="button" class="tag-button" data-value="#writer">#writer</button>
@@ -328,7 +343,6 @@
                     <button type="button" class="tag-button" data-value="#copywriter">#copywriter</button>
                     <button type="button" class="tag-button" data-value="#devops">#devops</button>
                 </div>
-
 
                 <button type="submit">Create Account</button>
             </form>
