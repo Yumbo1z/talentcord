@@ -185,6 +185,32 @@
             cursor: pointer;
         }
 
+        select {
+            background-color: #40444b;
+            /* Background color */
+            color: white;
+            /* Text color */
+            border: none;
+            /* Remove border */
+            border-radius: 5px;
+            /* Rounded corners */
+            padding: 10px;
+            /* Padding for comfort */
+            font-size: 1rem;
+            /* Font size */
+            cursor: pointer;
+            /* Change cursor on hover */
+        }
+
+        /* Add styles for focus and hover effects */
+        select:focus {
+            outline: none;
+            /* Remove default outline */
+            box-shadow: 0 0 5px rgba(114, 137, 218, 1);
+            /* Shadow effect */
+        }
+
+
         a {
             color: gray;
         }
@@ -291,9 +317,21 @@
                 <textarea id="create-bio"></textarea>
 
                 <label for="tags">Select Tags:</label><br>
-                <input type="checkbox" name="tags" value="#developer"> Developer
-                <input type="checkbox" name="tags" value="#designer"> Designer
-                <input type="checkbox" name="tags" value="#writer"> Writer
+                <select id="tags" name="tags" multiple
+                    style="width: 100%; padding: 8px; border-radius: 5px; border: none; background-color: #40444b; color: white;">
+                    <optgroup label="Development">
+                        <option value="#developer">Developer</option>
+                        <option value="#devops">DevOps</option>
+                    </optgroup>
+                    <optgroup label="Design">
+                        <option value="#designer">Designer</option>
+                        <option value="#graphic">Graphic Designer</option>
+                    </optgroup>
+                    <optgroup label="Writing">
+                        <option value="#writer">Writer</option>
+                        <option value="#copywriter">Copywriter</option>
+                    </optgroup>
+                </select>
 
                 <button type="submit">Create Account</button>
             </form>
@@ -387,7 +425,7 @@
             const bio = document.getElementById('create-bio').value;
 
             // Collect checked tags
-            const tags = Array.from(document.querySelectorAll('input[name="tags"]:checked')).map(tag => tag.value);
+            const tags = Array.from(document.getElementById('tags').selectedOptions).map(option => option.value);
 
             try {
                 const response = await fetch('/create-account', {
