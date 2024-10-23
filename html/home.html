@@ -63,19 +63,16 @@
 
         /* Listings Container */
         .listings {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
+            padding: 20px;
         }
 
         /* Listing Card Styles */
         .listing-card {
             background-color: #36393f;
             border-radius: 10px;
-            width: 95%;
-            max-width: 600px;
             padding: 15px;
             display: flex;
             align-items: center;
