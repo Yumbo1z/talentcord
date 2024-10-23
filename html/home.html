@@ -353,7 +353,7 @@
             <img src="https://via.placeholder.com/60" alt="User Avatar" class="avatar">
             <div class="listing-info">
                 <h3>${user.username}</h3>
-                <p>${user.bio}</p>
+                <p>${user.bio.substring(0, 250)}</p>
                 <div class="tags">${tags.slice(0, 4).join(" ")}</div>
             </div></div>`;
             }
