@@ -23,9 +23,6 @@ app.get("/", (_, res) => res.redirect(link("home")));
 
 app.get("/home", async (_, res) => res.sendFile(dir("home")));
 
-app.get("/error", (req, res) => res.send("error logging in"));
-
-app.use((_, res) => res.status(404).redirect("/alert"));
 
 app.listen(process.env.PORT || 80, () => {
   console.log("Server Started");
