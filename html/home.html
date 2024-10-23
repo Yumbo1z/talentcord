@@ -296,14 +296,10 @@
             <img src="https://via.placeholder.com/60" alt="User Avatar" class="avatar">
             <div class="listing-info">
                 <h3>ffrgrg</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce malesuada, arcu eget aliquet
-                    dignissim, erat orci vehicula velit, non cursus sem risus at metus. Curabitur ac massa a purus
-                    elementum lobortis. Integer pharetra nisl sit amet erat vestibulum volutpat.</p>
+                <p>Quisque vehicula urna ac justo fringilla, sed dictum risus faucibus. Vivamus id erat eget nisi.</p>
                 <div class="tags">
                     <span class="tag">#writing</span>
                     <span class="tag">#blogger</span>
-                    <span class="tag">#storytelling</span>
-                    <span class="tag">#storytelling</span>
                 </div>
             </div>
         </div>
@@ -325,7 +321,7 @@
             <img src="https://via.placeholder.com/60" alt="User Avatar" class="avatar">
             <div class="listing-info">
                 <h3>${user.username}</h3>
-                <p>${user.bio.length > 250 ? user.bio.substring(0, 250) + '...' : user.bio}</p>
+                <p>${user.bio.length > 100 ? user.bio.substring(0, 100) + '...' : user.bio}</p>
                 <div class="tags">${tags.slice(0, 2).join(" ")}</div>
             </div></div>`;
             }
