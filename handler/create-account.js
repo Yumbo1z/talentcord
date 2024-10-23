@@ -6,8 +6,8 @@ module.exports = {
     let reqData = req.body;
     console.log(reqData)
 
-    let findUser = await userSchema.findOne({ username: reqData.username });
-    if (findUser) return res.status(400).json({ message: "This username is already taken." });
+    let findUser = await userSchema.findOne({ username: reqData.username || reqData.email });
+    if (findUser) return res.status(400).json({ message: "This username or email is already taken." });
 
 
     await userSchema.create(reqData);
