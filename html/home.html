@@ -332,12 +332,6 @@
                     <span class="tag">#blogger</span>
                     <span class="tag">#storytelling</span>
                     <span class="tag">#storytelling</span>
-                    <span class="tag">#storytelling</span>
-                    <span class="tag">#storytelling</span>
-                    <span class="tag">#storytelling</span>
-                    <span class="tag">#storytelling</span>
-                    <span class="tag">#storytelling</span>
-
                 </div>
             </div>
         </div>
@@ -360,7 +354,7 @@
             <div class="listing-info">
                 <h3>${user.username}</h3>
                 <p>${user.bio}</p>
-                <div class="tags">${tags.join(" ")}</div>
+                <div class="tags">${tags.slice(0, 4).join(" ")}</div>
             </div></div>`;
             }
         });
