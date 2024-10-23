@@ -23,7 +23,6 @@ app.get("/", (_, res) => res.redirect(link("home")));
 
 app.get("/home", async (_, res) => res.sendFile(dir("home")));
 
-
 app.listen(process.env.PORT || 80, () => {
   console.log("Server Started");
 });
