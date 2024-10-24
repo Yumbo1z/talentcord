@@ -516,10 +516,7 @@
             }),
           });
 
-          if (response.ok) {
-            alert("Sign in successful!");
-            closeModal("signInModal"); // Close the modal after sign in
-          } else {
+          if (!response.ok) {
             const result = await response.json();
             alert("Sign in failed: " + result.message);
           }
