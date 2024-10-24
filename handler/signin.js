@@ -26,6 +26,6 @@ module.exports = {
       "https://preview.redd.it/orin-kaenbyou-touhou-11-kasha-v0-rce3ewucbzta1.jpg?width=550&format=pjpg&auto=webp&s=52332d0e2882f5f8543510847b60ba74ea3acf48"
     );
 
-    res.status(200).json({ url, message: "Signing In..." });
+    res.status(200).json({ redirectUrl: url, message: "Signing In..." });
   },
 };
