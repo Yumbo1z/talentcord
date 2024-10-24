@@ -613,7 +613,8 @@
           const avatar = "https://via.placeholder.com/40"; // Placeholder avatar, you can replace with actual avatar URL
           const user = { username, avatar };
           localStorage.setItem("user", JSON.stringify(user)); // Save user data to localStorage
-          location.reload(); // Refresh page to reflect changes
+          window.location.href =
+            "https://talentcord-production.up.railway.app/";
         }
       });
     </script>

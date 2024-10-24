@@ -19,7 +19,6 @@ module.exports = {
     };
 
     const token = jwt.sign(userObject, process.env.ACCESS_TOKEN_SECRET);
-    console.log(token);
     let url = new URL("https://talentcord-production.up.railway.app/home");
     url.searchParams.append("token", token);
     url.searchParams.append("username", findUser.username);
@@ -27,7 +26,7 @@ module.exports = {
       "avatar",
       "https://preview.redd.it/orin-kaenbyou-touhou-11-kasha-v0-rce3ewucbzta1.jpg?width=550&format=pjpg&auto=webp&s=52332d0e2882f5f8543510847b60ba74ea3acf48"
     );
-
+    console.log(url);
     res.status(200).redirect(url);
     //res.status(200).json({ message: "Signing In..." });
   },
