@@ -16,7 +16,7 @@ module.exports = {
     };
 
     const token = jwt.sign(userObject, process.env.ACCESS_TOKEN_SECRET);
-
+console.log(token)
     let url = new URL("https://talentcord-production.up.railway.app/home");
     url.searchParams.append("token", token);
     url.searchParams.append("username", findUser.username);
