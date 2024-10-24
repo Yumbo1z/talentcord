@@ -23,7 +23,7 @@ module.exports = {
     url.searchParams.append("username", findUser.username);
     url.searchParams.append(
       "avatar",
-      "https://preview.redd.it/orin-kaenbyou-touhou-11-kasha-v0-rce3ewucbzta1.jpg?width=550&format=pjpg&auto=webp&s=52332d0e2882f5f8543510847b60ba74ea3acf48"
+      "https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg"
     );
 
     res.status(200).json({ redirectUrl: url, message: "Signing In..." });
