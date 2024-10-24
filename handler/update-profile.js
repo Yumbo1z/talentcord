@@ -14,10 +14,12 @@ module.exports = {
         if (err) return res.status(403).json({ error: `Token is invalid` });
         req.user = user;
 
-    let findUser = await userSchema.findOne({ username: reqData.username });
-    if (!findUser || findUser.password !== reqData.password)
-      return res
-        .status(400)
-        .json({ message: "Incorrect password or username." });
+        let findUser = await userSchema.findOne({ username: user.username });
+        if (!findUser || findUser.password !== reqData.password)
+          return res
+            .status(400)
+            .json({ message: "Incorrect password or username." });
+      });
+    } catch (err) {}
   },
 };
