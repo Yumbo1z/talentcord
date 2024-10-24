@@ -469,6 +469,7 @@
     </script>
 
     <script>
+      // Handle the form submission for bio and tags update
       async function postEditProfile(event) {
         event.preventDefault();
         const bio = document.getElementById("edit-bio").value;
@@ -498,6 +499,7 @@
           console.error("Error updating profile:", error);
         }
       }
+
       // Function to handle Sign In form submission
       async function postSignIn(event) {
         event.preventDefault(); // Prevent the form from submitting normally
@@ -527,7 +529,7 @@
             alert("Sign in failed: " + result.message);
           }
         } catch (error) {
-          console.log(error)
+          console.log(error);
           console.error("Error during sign in:", error);
           alert("An error occurred during sign in. Please try again later.");
         }
