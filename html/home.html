@@ -521,14 +521,13 @@
           const result = await response.json();
 
           if (response.ok) {
-            // Handle success, for example, redirect to a dashboard
             alert("Sign in successful!");
             closeModal("signInModal"); // Close the modal after sign in
           } else {
-            // Handle error, for example, display an error message
             alert("Sign in failed: " + result.message);
           }
         } catch (error) {
+          console.log(error)
           console.error("Error during sign in:", error);
           alert("An error occurred during sign in. Please try again later.");
         }
