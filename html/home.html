@@ -460,6 +460,7 @@
         const navbar = document.querySelector(".navbar");
         const plusIcon = navbar.querySelector(".plus-icon");
         // Replace the icon with the avatar
+        console.log( plusIcon.innerHTML)
         plusIcon.innerHTML = `<img src="${avatarUrl}" alt="Avatar" class="avatar" style="width: 40px; height: 40px; border-radius: 50%;" onclick="openModal('editProfileModal')" />`;
       }
     </script>
