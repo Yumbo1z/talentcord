@@ -602,7 +602,7 @@
         // Check if user data exists in localStorage
         const userData = JSON.parse(localStorage.getItem("user"));
         if (userData) {
-          replaceCrossWithAvatar(userData.avatarUrl); // Replace the cross icon with an avatar
+          replaceCrossWithAvatar(userData.avatar); // Replace the cross icon with an avatar
         }
 
         // Refresh page if user is signed in
