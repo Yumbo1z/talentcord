@@ -467,6 +467,7 @@
       }
 
       function signout() {
+        event.preventDefault();
         localStorage.removeItem("user");
         alert("Successfully signed out!");
         setTimeout(() => {
