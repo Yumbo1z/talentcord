@@ -16,250 +16,253 @@
 
     <style>
       * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
       }
 
       body {
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-          background-color: #2c2f33;
-          color: #ccc;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #2c2f33;
+        color: #ccc;
       }
 
       /* Navbar Styles */
       .navbar {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          background-color: #23272a;
-          padding: 10px 20px;
-          color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #23272a;
+        padding: 10px 20px;
+        color: white;
       }
 
       .navbar .logo {
-          font-size: 1.5rem;
-          font-weight: bold;
+        font-size: 1.5rem;
+        font-weight: bold;
       }
 
       .navbar .search-bar {
-          flex: 1;
-          margin: 0 20px;
+        flex: 1;
+        margin: 0 20px;
       }
 
       .navbar .search-bar input {
-          width: 100%;
-          padding: 8px;
-          font-size: 1rem;
-          border-radius: 5px;
-          border: none;
-          background-color: #40444b;
-          color: white;
+        width: 100%;
+        padding: 8px;
+        font-size: 1rem;
+        border-radius: 5px;
+        border: none;
+        background-color: #40444b;
+        color: white;
       }
 
       .navbar .plus-icon {
-          font-size: 1.5rem;
-          cursor: pointer;
+        font-size: 1.5rem;
+        cursor: pointer;
       }
 
       .navbar .plus-icon:hover {
-          color: #7289da;
+        color: #7289da;
       }
 
       /* Listings Container */
       .listings {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-          gap: 20px;
-          padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        padding: 20px;
       }
 
       /* Listing Card Styles */
       .listing-card {
-          background-color: #36393f;
-          border-radius: 10px;
-          padding: 15px;
-          display: flex;
-          align-items: center;
-          transition: background-color 0.3s;
-          cursor: pointer;
+        background-color: #36393f;
+        border-radius: 10px;
+        padding: 15px;
+        display: flex;
+        align-items: center;
+        transition: background-color 0.3s;
+        cursor: pointer;
+        position: relative;
       }
 
       .listing-card:hover {
-          background-color: #40444b;
+        background-color: #40444b;
       }
 
       .avatar {
-          width: 60px;
-          height: 60px;
-          border-radius: 50%;
-          object-fit: cover;
-          margin-right: 15px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 15px;
       }
 
       .listing-info {
-          flex: 1;
+        flex: 1;
       }
 
       .listing-info h3 {
-          font-size: 1.2rem;
-          margin-bottom: 5px;
-          color: #fff;
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+        color: #fff;
       }
 
       .listing-info p {
-          font-size: 0.9rem;
-          color: #b9bbbe;
+        font-size: 0.9rem;
+        color: #b9bbbe;
       }
 
       .tags {
-          display: flex;
-          gap: 10px;
-          margin-top: 10px;
-          flex-wrap: wrap;
-          max-width: 100%;
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+        flex-wrap: wrap;
+        max-width: 100%;
       }
 
       .tag {
-          background-color: #5865f2;
-          color: white;
-          padding: 5px 10px;
-          border-radius: 12px;
-          font-size: 0.8rem;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
+        background-color: #5865f2;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 12px;
+        font-size: 0.8rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       /* Modal Styling */
       .modal {
-          display: none;
-          position: absolute;
-          z-index: 1;
-          left: 0;
-          top: 0;
-          width: 100%;
-          height: 100%;
+        display: none;
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
       }
 
       .modal-content {
-          background-color: #2c2f33;
-          padding: 20px;
-          border-radius: 8px;
-          max-width: 500px;
-          margin: 10% auto;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-          border: 1px solid #5865f2;
+        background-color: #2c2f33;
+        padding: 20px;
+        border-radius: 8px;
+        max-width: 500px;
+        margin: 10% auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border: 1px solid #5865f2;
       }
 
       .modal-content input,
       .modal-content textarea {
-          width: 100%;
-          padding: 8px;
-          margin: 8px 0;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-          background-color: #40444b;
-          color: #fff;
+        width: 100%;
+        padding: 8px;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #40444b;
+        color: #fff;
       }
 
       .modal-content button {
-          width: 100%;
-          padding: 10px;
-          background-color: #5865f2;
-          color: white;
-          border: none;
-          border-radius: 4px;
-          cursor: pointer;
+        width: 100%;
+        padding: 10px;
+        background-color: #5865f2;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
       }
 
       .modal-content button:hover {
-          background-color: #4751c7;
+        background-color: #4751c7;
       }
 
       .close {
-          color: #aaa;
-          float: right;
-          font-size: 28px;
-          font-weight: bold;
-          cursor: pointer;
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
       }
 
       .close:hover,
       .close:focus {
-          color: #fff;
-          text-decoration: none;
-          cursor: pointer;
+        color: #fff;
+        text-decoration: none;
+        cursor: pointer;
       }
 
       #tags-container {
-          display: flex;
-          flex-wrap: wrap;
-          /* Allow buttons to wrap to the next line */
-          gap: 10px;
-          /* Space between buttons */
+        display: flex;
+        flex-wrap: wrap;
+        /* Allow buttons to wrap to the next line */
+        gap: 10px;
+        /* Space between buttons */
       }
 
       .tag-button {
-          background-color: #5865f2;
-          /* Background color */
-          color: white;
-          /* Text color */
-          border: none;
-          /* Remove border */
-          border-radius: 5px;
-          /* Rounded corners */
-          padding: 8px 12px;
-          /* Padding for comfort */
-          font-size: 0.9rem;
-          /* Font size */
-          cursor: pointer;
-          /* Change cursor on hover */
-          transition: background-color 0.3s;
-          /* Smooth transition */
-          max-width: 100px;
-          /* Set a maximum width for each button */
-          flex: 1 1 20%;
-          /* Allow buttons to grow and shrink */
-          text-align: center;
-          /* Center text inside button */
+        background-color: #5865f2;
+        /* Background color */
+        color: white;
+        /* Text color */
+        border: none;
+        /* Remove border */
+        border-radius: 5px;
+        /* Rounded corners */
+        padding: 8px 12px;
+        /* Padding for comfort */
+        font-size: 0.9rem;
+        /* Font size */
+        cursor: pointer;
+        /* Change cursor on hover */
+        transition: background-color 0.3s;
+        /* Smooth transition */
+        max-width: 100px;
+        /* Set a maximum width for each button */
+        flex: 1 1 20%;
+        /* Allow buttons to grow and shrink */
+        text-align: center;
+        /* Center text inside button */
       }
 
       .tag-button:hover {
-          background-color: #4752c4;
-          /* Darker shade on hover */
+        background-color: #4752c4;
+        /* Darker shade on hover */
       }
 
       .tag-button.selected {
-          background-color: rgb(0, 55, 255);
-          /* Selected state background */
+        background-color: rgb(0, 55, 255);
+        /* Selected state background */
       }
 
       a {
-          color: gray;
+        color: gray;
       }
 
       a:hover,
       a:focus {
-          color: white;
+        color: white;
       }
 
-       /* Hidden profile info that appears on hover */
-       .full-profile {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: #2c2f33;
-            color: #fff;
-            padding: 10px;
-            width: 100%;
-            border-radius: 8px;
-            display: none;
-        }
+      /* Hidden profile info that appears on hover */
+      .full-profile {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #2c2f33;
+        color: #fff;
+        padding: 10px;
+        width: 100%;
+        border-radius: 8px;
+        display: none;
+        z-index: 100;
+      }
 
-        .listing-card:hover .full-profile {
-            display: block;
-        }
+
+      .listing-card:hover .full-profile {
+        display: block;
+      }
     </style>
   </head>
 
