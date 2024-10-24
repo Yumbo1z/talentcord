@@ -21,6 +21,12 @@ module.exports = {
           return res
             .status(400)
             .json({ message: "Incorrect password or username." });
+
+        if(reqData.tags) findUser.tags = reqData.tags;
+        if(reqData.bio) findUser.bio = reqData.bio;
+
+        await findUser.save()
+        res.status(200).json({ success: "Successfully updated!" });
       });
     } catch (err) {
       console.log(err);
