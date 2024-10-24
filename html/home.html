@@ -416,7 +416,7 @@
           </div>
 
           <button type="submit">Update Profile</button>
-          <button id="sign-out">Sign Out</button>
+          <button onclick="signout()">Sign Out</button>
         </form>
       </div>
     </div>
@@ -462,6 +462,14 @@
         const plusIcon = navbar.querySelector(".plus-icon");
         // Replace the icon with the avatar
         plusIcon.outerHTML = `<div class="plus-icon" onclick="openModal('editProfileModal')"><img src="${avatarUrl}" alt="Avatar" class="avatar" style="width: 40px; height: 40px; border-radius: 50%;"/></div>`;
+      }
+
+      function signout() {
+        localStorage.removeItem("user");
+        alert("Successfully signed out!");
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000);
       }
     </script>
 
@@ -622,6 +630,9 @@
           localStorage.setItem("user", JSON.stringify(user)); // Save user data to localStorage
           window.location.href =
             "https://talentcord-production.up.railway.app/";
+          setTimeout(() => {
+            alert("Successfully signed in!");
+          }, 3000);
         }
       });
     </script>
