@@ -283,6 +283,7 @@
         let response = await fetch("/users");
         let json = await response.json();
         const listings = document.getElementById("listings");
+
         for (let index = 0; index < json.length; index++) {
           const user = json[index];
 
@@ -290,17 +291,25 @@
             return `<span class="tag">${tag}</span>`;
           });
 
-          listings.innerHTML += `<div class="listing-card">
-            <img src="https://via.placeholder.com/60" alt="User Avatar" class="avatar">
-            <div class="listing-info">
-                <h3>${user.username}</h3>
-                <p>${
-                  user.bio.length > 50
-                    ? user.bio.substring(0, 50) + "..."
-                    : user.bio
-                }</p>
-                <div class="tags">${tags.slice(0, 2).join(" ")}</div>
-            </div></div>`;
+          listings.innerHTML += `
+                  <div class="listing-card">
+                      <img src="https://via.placeholder.com/60" alt="User Avatar" class="avatar">
+                      <div class="listing-info">
+                          <h3>${user.username}</h3>
+                          <p>${
+                            user.bio.length > 50
+                              ? user.bio.substring(0, 50) + "..."
+                              : user.bio
+                          }</p>
+                          <div class="tags">${tags.slice(0, 2).join(" ")}</div>
+                      </div>
+                      <div class="full-profile">
+                          <p><strong>Full Bio:</strong> ${user.bio}</p>
+                          <div class="tags"><strong>All Tags:</strong> ${tags.join(
+                            " "
+                          )}</div>
+                      </div>
+                  </div>`;
         }
       });
     </script>
@@ -469,42 +478,6 @@
         </form>
       </div>
     </div>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", async () => {
-        let response = await fetch("/users");
-        let json = await response.json();
-        const listings = document.getElementById("listings");
-
-        for (let index = 0; index < json.length; index++) {
-          const user = json[index];
-
-          let tags = user.tags.map((tag) => {
-            return `<span class="tag">${tag}</span>`;
-          });
-
-          listings.innerHTML += `
-                  <div class="listing-card">
-                      <img src="https://via.placeholder.com/60" alt="User Avatar" class="avatar">
-                      <div class="listing-info">
-                          <h3>${user.username}</h3>
-                          <p>${
-                            user.bio.length > 50
-                              ? user.bio.substring(0, 50) + "..."
-                              : user.bio
-                          }</p>
-                          <div class="tags">${tags.slice(0, 2).join(" ")}</div>
-                      </div>
-                      <div class="full-profile">
-                          <p><strong>Full Bio:</strong> ${user.bio}</p>
-                          <div class="tags"><strong>All Tags:</strong> ${tags.join(
-                            " "
-                          )}</div>
-                      </div>
-                  </div>`;
-        }
-      });
-    </script>
 
     <script>
       // Open modal
