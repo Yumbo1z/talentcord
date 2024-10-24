@@ -610,7 +610,13 @@
           const username = new URLSearchParams(window.location.search).get(
             "username"
           );
-          const avatar = "https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg"; // Placeholder avatar, you can replace with actual avatar URL
+          const token = new URLSearchParams(window.location.search).get(
+            "token"
+          );
+          const avatar = new URLSearchParams(window.location.search).get(
+            "avatar"
+          );
+
           const user = { username, avatar, token };
           localStorage.setItem("user", JSON.stringify(user)); // Save user data to localStorage
           window.location.href =
