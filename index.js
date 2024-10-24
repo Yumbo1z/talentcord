@@ -6,7 +6,7 @@ const cors = require("cors");
 const path = require("path");
 
 const dir = (text) => `${__dirname}/html/${text}.html`;
-const link = (input) => `talentcord-production.up.railway.app/${input}`;
+const link = (input) => `https://talentcord-production.up.railway.app/${input}`;
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
 app.use(
