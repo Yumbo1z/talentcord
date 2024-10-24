@@ -513,7 +513,7 @@
         const bio = document.getElementById("edit-bio").value;
         const tags = selectedTags; // Get the updated tags
 
-        // Assuming you have an API endpoint to update user profile
+        const userData = JSON.parse(localStorage.getItem("user"));
         try {
           const response = await fetch("/update-profile", {
             method: "POST",
@@ -523,6 +523,7 @@
             body: JSON.stringify({
               bio: bio,
               tags: tags,
+              token: userData.token,
             }),
           });
 
