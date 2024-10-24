@@ -399,7 +399,7 @@
 
           <label for="edit-tags">Select Tags:</label><br />
           <div
-            id="tags-container"
+            id="tags-container-ep"
             style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; margin-top: 20px;"
           >
             <button type="button" class="tag-button" data-value="#developer">
@@ -507,11 +507,29 @@
     </script>
 
     <script>
+      const tagsContainerep = document.getElementById("tags-container-ep");
+      const selectedTagsEP = [];
+
+      tagsContainerep.addEventListener("click", (event) => {
+        if (event.target.classList.contains("tag-button")) {
+          const button = event.target;
+          const tagValue = button.getAttribute("data-value");
+
+          // Toggle selection
+          if (selectedTagsEP.includes(tagValue)) {
+            selectedTagsEP.splice(selectedTagsEP.indexOf(tagValue), 1);
+            button.classList.remove("selected");
+          } else {
+            selectedTagsEP.push(tagValue);
+            button.classList.add("selected");
+          }
+        }
+      });
       // Handle the form submission for bio and tags update
       async function postEditProfile(event) {
         event.preventDefault();
         const bio = document.getElementById("edit-bio").value;
-        const tags = selectedTags; // Get the updated tags
+        const tags = selectedTagsEP; // Get the updated tags
 
         const userData = JSON.parse(localStorage.getItem("user"));
         try {
