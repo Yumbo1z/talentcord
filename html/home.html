@@ -516,11 +516,11 @@
             }),
           });
 
+          const result = await response.json();
+
           if (response.ok) {
-            const result = await response.json();
             window.location.href = result.redirectUrl; // Redirect to the URL returned from the server
           } else {
-            const result = await response.json();
             alert("Sign in failed: " + result.message);
           }
         } catch (error) {
