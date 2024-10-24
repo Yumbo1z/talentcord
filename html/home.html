@@ -416,7 +416,9 @@
           </div>
 
           <button type="submit">Update Profile</button>
-          <button onclick="signout()">Sign Out</button>
+          <button onclick="signout()" style="margin-top: 10px;">
+            Sign Out
+          </button>
         </form>
       </div>
     </div>
@@ -630,9 +632,6 @@
           localStorage.setItem("user", JSON.stringify(user)); // Save user data to localStorage
           window.location.href =
             "https://talentcord-production.up.railway.app/";
-          setTimeout(() => {
-            alert("Successfully signed in!");
-          }, 3000);
         }
       });
     </script>
