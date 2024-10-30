@@ -376,7 +376,7 @@
                       </div>
                         <div class="full-profile">
         <div class="profile-header">
-            <span>User's Profile</span>
+            <span>${user.username}</span>
             <div class="mod-actions">
                 <span class="dots">...</span>
                 <div class="mod-dropdown">
@@ -435,6 +435,9 @@
 
           <label for="create-password">Password:</label>
           <input type="password" id="create-password" required />
+
+          <label for="create-portfolio">Portfolio URL</label>
+          <input type="text" id="create-portfolio" required />
 
           <label for="create-bio">Bio:</label>
           <textarea id="create-bio"></textarea>
@@ -730,6 +733,7 @@
         const email = document.getElementById("create-email").value;
         const password = document.getElementById("create-password").value;
         const bio = document.getElementById("create-bio").value;
+        const portofolio = document.getElementById("create-portfolio").value;
 
         // Collect checked tags
         const tags = selectedTags;
@@ -745,6 +749,7 @@
               email: email,
               password: password,
               bio: bio,
+              portfolio: portofolio,
               tags: tags,
             }),
           });
