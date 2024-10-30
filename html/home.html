@@ -366,7 +366,7 @@
                   <div class="listing-card">
                       <img src="https://avatarfiles.alphacoders.com/306/thumb-350-306819.webp" alt="User Avatar" class="avatar">
                       <div class="listing-info">
-                          <h3>${user.username}</h3>
+                          <h3><a href="${user.portfolio}">${user.username}</a></h3>
                           <p>${
                             user.bio.length > 50
                               ? user.bio.substring(0, 50) + "..."
@@ -739,7 +739,7 @@
         const email = document.getElementById("create-email").value;
         const password = document.getElementById("create-password").value;
         const bio = document.getElementById("create-bio").value;
-        const portofolio = document.getElementById("create-portfolio").value;
+        const portfolio = document.getElementById("create-portfolio").value;
 
         // Collect checked tags
         const tags = selectedTags;
@@ -755,7 +755,7 @@
               email: email,
               password: password,
               bio: bio,
-              portfolio: portofolio,
+              portfolio: portfolio,
               tags: tags,
             }),
           });
