@@ -645,6 +645,8 @@
       async function postEditProfile(event) {
         event.preventDefault();
         const bio = document.getElementById("edit-bio").value;
+        const portfolio = document.getElementById("edit-portfolio").value;
+
         const tags = selectedTagsEP; // Get the updated tags
 
         const userData = JSON.parse(localStorage.getItem("user"));
@@ -657,6 +659,7 @@
             body: JSON.stringify({
               bio: bio,
               tags: tags,
+              portfolio: portfolio,
               token: userData.token,
             }),
           });
