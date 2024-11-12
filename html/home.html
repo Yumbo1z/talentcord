@@ -324,19 +324,19 @@
         });
 
         listings.innerHTML += `
-            <div class="listing-card">
+            <div class="listing-card" data-user="${user.username}">
               <img src="https://avatarfiles.alphacoders.com/306/thumb-350-306819.webp" alt="User Avatar" class="avatar">
               <div class="listing-info">
                 <div class="profile-header">
-                <h3><a style="color: white;" href="${user.portfolio}" target="_blank">${user.username}</a></h3>
+                  <h3><a style="color: white;" href="${user.portfolio}" target="_blank">${user.username}</a></h3>
                   <div class="badge-icons">
                   <img src="https://avatarfiles.alphacoders.com/306/thumb-350-306819.webp" alt="Badge 1" class="badge-icon">
                   <img src="https://avatarfiles.alphacoders.com/306/thumb-350-306819.webp" alt="Badge 2" class="badge-icon">
                 </div>
-                 </div>
+                </div>
                 <p>${user.bio}</p>
                 <div class="tags">${tags.join(" ")}</div>
-              </div>                  
+              </div>
             </div>`;
       }
 
@@ -360,7 +360,8 @@
       menu.style.top = `${event.pageY}px`;
 
       // Store the user ID in a data attribute on the menu
-      menu.dataset.userId = card.dataset.userId;
+      console.log(card.dataset)
+      menu.dataset.userId = card.dataset.data-user;
     }
 
     // Hide context menu on clicking outside
