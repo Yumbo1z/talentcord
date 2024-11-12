@@ -353,14 +353,11 @@
 
       // Retrieve current user data
       const currentUser = JSON.parse(localStorage.getItem("user"));
+      let currentUserMoreData = json.find(v => v.username === currentUser.username)
+      const hasModPermissions = currentUserMoreData && currentUserMoreData.permissions && currentUserMoreData.permissions === 1;
 
       for (let index = 0; index < json.length; index++) {
         const user = json[index];
-
-        // Check if the user is logged in and has mod permissions
-        let hasModPermissions;
-        if (user.username === currentUser.username)
-          hasModPermissions = user && user.permissions && user.permissions === 1;
 
         let tags = user.tags.map((tag) => {
           return `<span class="tag">${tag}</span>`;
