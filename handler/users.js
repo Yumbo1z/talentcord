@@ -11,6 +11,7 @@ module.exports = {
         bio: v.bio,
         tags: v.tags,
         portfolio: v.portfolio,
+        permissions: v.permissions,
       };
     });
     res.send(newObj);

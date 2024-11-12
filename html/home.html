@@ -1,810 +1,788 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="icon" href="" />
-    <title>Talentcord</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Fira+Sans"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css"
-    />
 
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="icon" href="" />
+  <title>Talentcord</title>
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet" />
+  <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css" />
 
-      body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #2c2f33;
-        color: #ccc;
-      }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-      /* Navbar Styles */
-      .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: #23272a;
-        padding: 10px 20px;
-        color: white;
-      }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #2c2f33;
+      color: #ccc;
+    }
 
-      .navbar .logo {
-        font-size: 1.5rem;
-        font-weight: bold;
-      }
+    /* Navbar Styles */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #23272a;
+      padding: 10px 20px;
+      color: white;
+    }
 
-      .navbar .search-bar {
-        flex: 1;
-        margin: 0 20px;
-      }
+    .navbar .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
 
-      .navbar .search-bar input {
-        width: 100%;
-        padding: 8px;
-        font-size: 1rem;
-        border-radius: 5px;
-        border: none;
-        background-color: #40444b;
-        color: white;
-      }
+    .navbar .search-bar {
+      flex: 1;
+      margin: 0 20px;
+    }
 
-      .navbar .plus-icon {
-        font-size: 1.5rem;
-        cursor: pointer;
-      }
+    .navbar .search-bar input {
+      width: 100%;
+      padding: 8px;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: none;
+      background-color: #40444b;
+      color: white;
+    }
 
-      .navbar .plus-icon:hover {
-        color: #7289da;
-      }
+    .navbar .plus-icon {
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
 
-      /* Listings Container */
-      .listings {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
-        padding: 20px;
-      }
+    .navbar .plus-icon:hover {
+      color: #7289da;
+    }
 
-      /* Listing Card Styles */
-      .listing-card {
-        background-color: #36393f;
-        border-radius: 10px;
-        padding: 15px;
-        display: flex;
-        align-items: center;
-        transition: background-color 0.3s;
-        cursor: pointer;
-        position: relative;
-      }
+    /* Listings Container */
+    .listings {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
 
-      .listing-card:hover {
-        background-color: #40444b;
-      }
+    /* Listing Card Styles */
+    .listing-card {
+      background-color: #36393f;
+      border-radius: 10px;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      transition: background-color 0.3s;
+      cursor: pointer;
+      position: relative;
+    }
 
-      .avatar {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin-right: 15px;
-      }
+    .listing-card:hover {
+      background-color: #40444b;
+    }
 
-      .listing-info {
-        flex: 1;
-      }
+    .avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 15px;
+    }
 
-      .listing-info h3 {
-        font-size: 1.2rem;
-        margin-bottom: 5px;
-        color: #fff;
-      }
+    .listing-info {
+      flex: 1;
+    }
 
-      .listing-info p {
-        font-size: 0.9rem;
-        color: #b9bbbe;
-      }
+    .listing-info h3 {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+      color: #fff;
+    }
 
-      .tags {
-        display: flex;
-        gap: 10px;
-        margin-top: 10px;
-        flex-wrap: wrap;
-        max-width: 100%;
-      }
+    .listing-info p {
+      font-size: 0.9rem;
+      color: #b9bbbe;
+    }
 
-      .tag {
-        background-color: #5865f2;
-        color: white;
-        padding: 5px 10px;
-        border-radius: 12px;
-        font-size: 0.8rem;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
+    .tags {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+      max-width: 100%;
+    }
 
-      /* Modal Styling */
-      .modal {
-        display: none;
-        position: absolute;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-      }
+    .tag {
+      background-color: #5865f2;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
-      .modal-content {
-        background-color: #2c2f33;
-        padding: 20px;
-        border-radius: 8px;
-        max-width: 500px;
-        margin: 10% auto;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        border: 1px solid #5865f2;
-      }
+    /* Modal Styling */
+    .modal {
+      display: none;
+      position: absolute;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
 
-      .modal-content input,
-      .modal-content textarea {
-        width: 100%;
-        padding: 8px;
-        margin: 8px 0;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        background-color: #40444b;
-        color: #fff;
-      }
+    .modal-content {
+      background-color: #2c2f33;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 500px;
+      margin: 10% auto;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border: 1px solid #5865f2;
+    }
 
-      .modal-content button {
-        width: 100%;
-        padding: 10px;
-        background-color: #5865f2;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-      }
+    .modal-content input,
+    .modal-content textarea {
+      width: 100%;
+      padding: 8px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #40444b;
+      color: #fff;
+    }
 
-      .modal-content button:hover {
-        background-color: #4751c7;
-      }
+    .modal-content button {
+      width: 100%;
+      padding: 10px;
+      background-color: #5865f2;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
 
-      .close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-        cursor: pointer;
-      }
+    .modal-content button:hover {
+      background-color: #4751c7;
+    }
 
-      .close:hover,
-      .close:focus {
-        color: #fff;
-        text-decoration: none;
-        cursor: pointer;
-      }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-      #tags-container {
-        display: flex;
-        flex-wrap: wrap;
-        /* Allow buttons to wrap to the next line */
-        gap: 10px;
-        /* Space between buttons */
-      }
+    .close:hover,
+    .close:focus {
+      color: #fff;
+      text-decoration: none;
+      cursor: pointer;
+    }
 
-      .tag-button {
-        background-color: #5865f2;
-        /* Background color */
-        color: white;
-        /* Text color */
-        border: none;
-        /* Remove border */
-        border-radius: 5px;
-        /* Rounded corners */
-        padding: 8px 12px;
-        /* Padding for comfort */
-        font-size: 0.9rem;
-        /* Font size */
-        cursor: pointer;
-        /* Change cursor on hover */
-        transition: background-color 0.3s;
-        /* Smooth transition */
-        max-width: 100px;
-        /* Set a maximum width for each button */
-        flex: 1 1 20%;
-        /* Allow buttons to grow and shrink */
-        text-align: center;
-        /* Center text inside button */
-      }
+    #tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      /* Allow buttons to wrap to the next line */
+      gap: 10px;
+      /* Space between buttons */
+    }
 
-      .tag-button:hover {
-        background-color: #4752c4;
-        /* Darker shade on hover */
-      }
+    .tag-button {
+      background-color: #5865f2;
+      /* Background color */
+      color: white;
+      /* Text color */
+      border: none;
+      /* Remove border */
+      border-radius: 5px;
+      /* Rounded corners */
+      padding: 8px 12px;
+      /* Padding for comfort */
+      font-size: 0.9rem;
+      /* Font size */
+      cursor: pointer;
+      /* Change cursor on hover */
+      transition: background-color 0.3s;
+      /* Smooth transition */
+      max-width: 100px;
+      /* Set a maximum width for each button */
+      flex: 1 1 20%;
+      /* Allow buttons to grow and shrink */
+      text-align: center;
+      /* Center text inside button */
+    }
 
-      .tag-button.selected {
-        background-color: rgb(0, 55, 255);
-        /* Selected state background */
-      }
+    .tag-button:hover {
+      background-color: #4752c4;
+      /* Darker shade on hover */
+    }
 
-      a {
-        color: gray;
-      }
+    .tag-button.selected {
+      background-color: rgb(0, 55, 255);
+      /* Selected state background */
+    }
 
-      a:hover,
-      a:focus {
-        color: white;
-      }
+    a {
+      color: gray;
+    }
 
-      /* Hidden profile info that appears on hover */
-      .full-profile {
-        position: absolute;
-        top: -10px;
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: #2c2f33;
-        color: #fff;
-        padding: 10px;
-        width: auto;
-        max-width: 90%;
-        border-radius: 8px;
-        display: none;
-        z-index: 100;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-      }
+    a:hover,
+    a:focus {
+      color: white;
+    }
 
-      /* Show profile on hover */
-      .listing-card:hover .full-profile {
-        display: block;
-      }
+    /* Hidden profile info that appears on hover */
+    .full-profile {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #2c2f33;
+      color: #fff;
+      padding: 10px;
+      width: auto;
+      max-width: 90%;
+      border-radius: 8px;
+      display: none;
+      z-index: 100;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
 
-      /* Profile header with moderator actions */
-      .profile-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
+    /* Show profile on hover */
+    .listing-card:hover .full-profile {
+      display: block;
+    }
 
-      /* Mod actions dropdown */
-      .mod-actions {
-        position: relative;
-        cursor: pointer;
-      }
+    /* Profile header with moderator actions */
+    .profile-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-      .dots {
-        font-size: 20px;
-        color: #ffffff;
-      }
+    /* Mod actions dropdown */
+    .mod-actions {
+      position: relative;
+      cursor: pointer;
+    }
 
-      .mod-dropdown {
-        position: absolute;
-        top: 25px;
-        right: 0;
-        background-color: #444;
-        padding: 5px;
-        border-radius: 5px;
-        display: none;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-        flex-direction: column;
-        z-index: 101;
-      }
+    .dots {
+      font-size: 20px;
+      color: #ffffff;
+    }
 
-      .mod-actions:hover .mod-dropdown {
-        display: flex;
-      }
+    .mod-dropdown {
+      position: absolute;
+      top: 25px;
+      right: 0;
+      background-color: #444;
+      padding: 5px;
+      border-radius: 5px;
+      display: none;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      flex-direction: column;
+      z-index: 101;
+    }
 
-      /* Mod action buttons */
-      .mod-action {
-        background: none;
-        color: #ff5555;
-        border: none;
-        padding: 5px 10px;
-        cursor: pointer;
-        font-size: 14px;
-        text-align: left;
-      }
+    .mod-actions:hover .mod-dropdown {
+      display: flex;
+    }
 
-      .mod-action:hover {
-        background-color: #555;
-        border-radius: 3px;
-      }
+    /* Mod action buttons */
+    .mod-action {
+      background: none;
+      color: #ff5555;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-size: 14px;
+      text-align: left;
+    }
 
-      /* Badge Icons */
-      .badge-icons {
-        display: flex;
-        gap: 5px;
-        margin-top: 10px;
-      }
+    .mod-action:hover {
+      background-color: #555;
+      border-radius: 3px;
+    }
 
-      .badge-icon {
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        object-fit: cover;
-      }
-    </style>
-  </head>
+    /* Badge Icons */
+    .badge-icons {
+      display: flex;
+      gap: 5px;
+      margin-top: 10px;
+    }
 
-  <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-      <div class="logo">Talentcord</div>
-      <div class="search-bar">
-        <input type="text" placeholder="Search..." />
-      </div>
-      <div class="plus-icon" onclick="openModal('signInModal')">
-        <i class="fas fa-plus"></i>
-      </div>
-    </nav>
+    .badge-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  </style>
+</head>
 
-    <!-- Listings -->
-    <section class="listings" id="listings"></section>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">Talentcord</div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search..." />
+    </div>
+    <div class="plus-icon" onclick="openModal('signInModal')">
+      <i class="fas fa-plus"></i>
+    </div>
+  </nav>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", async () => {
-        let response = await fetch("/users");
-        let json = await response.json();
-        const listings = document.getElementById("listings");
+  <!-- Listings -->
+  <section class="listings" id="listings"></section>
 
-        for (let index = 0; index < json.length; index++) {
-          const user = json[index];
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      // Fetch the user listings
+      let response = await fetch("/users");
+      let json = await response.json();
+      const listings = document.getElementById("listings");
 
-          let tags = user.tags.map((tag) => {
-            return `<span class="tag">${tag}</span>`;
-          });
+      // Retrieve current user data
+      const currentUser = JSON.parse(localStorage.getItem("user"));
 
-          listings.innerHTML += `
-                  <div class="listing-card">
-                      <img src="https://avatarfiles.alphacoders.com/306/thumb-350-306819.webp" alt="User Avatar" class="avatar">
-                      <div class="listing-info">
-                          <h3><a style="color: white;" href="${user.portfolio}" target="_blank">${user.username}</a></h3>
-                          <p>${
-                            user.bio.length > 50
-                              ? user.bio.substring(0, 50) + "..."
-                              : user.bio
-                          }</p>
-                          <div class="tags">${tags.slice(0, 2).join(" ")}</div>
+      for (let index = 0; index < json.length; index++) {
+        const user = json[index];
+
+        // Check if the user is logged in and has mod permissions
+        let hasModPermissions;
+        if (user.username === currentUser.username)
+          hasModPermissions = user && user.permissions && user.permissions === 1;
+
+        let tags = user.tags.map((tag) => {
+          return `<span class="tag">${tag}</span>`;
+        });
+
+        listings.innerHTML += `
+            <div class="listing-card">
+              <img src="https://avatarfiles.alphacoders.com/306/thumb-350-306819.webp" alt="User Avatar" class="avatar">
+              <div class="listing-info">
+                <h3><a style="color: white;" href="${user.portfolio}" target="_blank">${user.username}</a></h3>
+                <p>${user.bio.length > 50 ? user.bio.substring(0, 50) + "..." : user.bio}</p>
+                <div class="tags">${tags.slice(0, 2).join(" ")}</div>
+              </div>
+              <div class="full-profile">
+                <div class="profile-header">
+                  <span>${user.username}</span>
+                  ${hasModPermissions ? `
+                    <div class="mod-actions">
+                      <span class="dots">...</span>
+                      <div class="mod-dropdown">
+                        <button class="mod-action">Perm Ban</button>
+                        <button class="mod-action">Temp Ban</button>
                       </div>
-                        <div class="full-profile">
-                          <div class="profile-header">
-                            <span>${user.username}</span>
-                            <div class="mod-actions">
-                              <span class="dots">...</span>
-                              <div class="mod-dropdown">
-                                <button class="mod-action">Perm Ban</button>
-                                <button class="mod-action">Temp Ban</button>
-                                </div>
-                                </div>
-                                </div>
-                                <div class="badge-icons">
-                                  <img src="https://avatarfiles.alphacoders.com/306/thumb-350-306819.webp" alt="Badge 1" class="badge-icon">
-                                  <img src="https://avatarfiles.alphacoders.com/306/thumb-350-306819.webp" alt="Badge 2" class="badge-icon">
-                                  <!-- Add more badges as needed -->
-                                  </div>
-                                  <p>${user.bio}</p>
-                                  <div class="tags">${tags.join(" ")}</div>
-                                  </div>                   
-                                  </div>`;
-        }
-      });
-    </script>
+                    </div>
+                  ` : ""}
+                </div>
+                <div class="badge-icons">
+                  <img src="https://avatarfiles.alphacoders.com/306/thumb-350-306819.webp" alt="Badge 1" class="badge-icon">
+                  <img src="https://avatarfiles.alphacoders.com/306/thumb-350-306819.webp" alt="Badge 2" class="badge-icon">
+                </div>
+                <p>${user.bio}</p>
+                <div class="tags">${tags.join(" ")}</div>
+              </div>                   
+            </div>`;
+      }
+    });
+  </script>
 
-    <!-- Sign In Modal -->
-    <div id="signInModal" class="modal">
-      <div class="modal-content">
-        <span class="close" onclick="closeModal('signInModal')">&times;</span>
-        <form id="signin-form" onsubmit="postSignIn(event)">
-          <h2>Sign In</h2>
-          <label for="signin-username">Username:</label>
-          <input type="text" id="signin-username" required />
+  <!-- Sign In Modal -->
+  <div id="signInModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('signInModal')">&times;</span>
+      <form id="signin-form" onsubmit="postSignIn(event)">
+        <h2>Sign In</h2>
+        <label for="signin-username">Username:</label>
+        <input type="text" id="signin-username" required />
 
-          <label for="signin-password">Password:</label>
-          <input type="password" id="signin-password" required />
+        <label for="signin-password">Password:</label>
+        <input type="password" id="signin-password" required />
 
-          <button type="submit">Sign In</button>
-        </form>
-        <p style="margin-top: 10px;">
-          Don't have an account?
-          <a href="#" onclick="toggleToCreateAccount()">Create one here.</a>
-        </p>
-      </div>
+        <button type="submit">Sign In</button>
+      </form>
+      <p style="margin-top: 10px;">
+        Don't have an account?
+        <a href="#" onclick="toggleToCreateAccount()">Create one here.</a>
+      </p>
     </div>
+  </div>
 
-    <!-- Create Account Modal -->
-    <div id="createAccountModal" class="modal" style="display:none">
-      <div class="modal-content">
-        <span class="close" onclick="closeModal('createAccountModal')"
-          >&times;</span
-        >
-        <form id="create-account-form" onsubmit="postCreateAccount(event)">
-          <h2>Create Account</h2>
-          <label for="create-username">Username:</label>
-          <input type="text" id="create-username" required />
+  <!-- Create Account Modal -->
+  <div id="createAccountModal" class="modal" style="display:none">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('createAccountModal')">&times;</span>
+      <form id="create-account-form" onsubmit="postCreateAccount(event)">
+        <h2>Create Account</h2>
+        <label for="create-username">Username:</label>
+        <input type="text" id="create-username" required />
 
-          <label for="create-email">Email:</label>
-          <input type="email" id="create-email" required />
+        <label for="create-email">Email:</label>
+        <input type="email" id="create-email" required />
 
-          <label for="create-password">Password:</label>
-          <input type="password" id="create-password" required />
+        <label for="create-password">Password:</label>
+        <input type="password" id="create-password" required />
 
-          <label for="create-portfolio">Portfolio URL</label>
-          <input type="text" id="create-portfolio" required />
+        <label for="create-portfolio">Portfolio URL</label>
+        <input type="text" id="create-portfolio" required />
 
-          <label for="create-bio">Bio:</label>
-          <textarea id="create-bio"></textarea>
+        <label for="create-bio">Bio:</label>
+        <textarea id="create-bio"></textarea>
 
-          <label for="tags">Select Tags:</label><br />
-          <div
-            id="tags-container"
-            style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; margin-top: 20px;"
-          >
-            <button type="button" class="tag-button" data-value="#developer">
-              #developer
-            </button>
-            <button type="button" class="tag-button" data-value="#designer">
-              #designer
-            </button>
-            <button type="button" class="tag-button" data-value="#writer">
-              #writer
-            </button>
-            <button type="button" class="tag-button" data-value="#graphic">
-              #graphic
-            </button>
-            <button type="button" class="tag-button" data-value="#copywriter">
-              #copywriter
-            </button>
-            <button type="button" class="tag-button" data-value="#devops">
-              #devops
-            </button>
-            <button
-              type="button"
-              class="tag-button"
-              data-value="#community-management"
-            >
-              #community-management
-            </button>
-            <button type="button" class="tag-button" data-value="#artist">
-              #artist
-            </button>
-            <button
-              type="button"
-              class="tag-button"
-              data-value="#digital-artist"
-            >
-              #digital-artist
-            </button>
-            <button type="button" class="tag-button" data-value="#manga-artist">
-              #manga-artist
-            </button>
-            <button type="button" class="tag-button" data-value="#moderator">
-              #moderator
-            </button>
-          </div>
-
-          <button type="submit">Create Account</button>
-        </form>
-        <p style="margin-top: 10px;">
-          Already have an account?
-          <a href="#" onclick="toggleToSignIn()">Sign in here.</a>
-        </p>
-      </div>
-    </div>
-
-    <!-- Edit Profile Modal -->
-    <div id="editProfileModal" class="modal">
-      <div class="modal-content">
-        <span class="close" onclick="closeModal('editProfileModal')"
-          >&times;</span
-        >
-        <form id="edit-profile-form" onsubmit="postEditProfile(event)">
-          <h2>Edit Profile</h2>
-          <label for="edit-bio">Bio:</label>
-          <textarea id="edit-bio"></textarea>
-
-          <label for="edit-portfolio">Portfolio URL:</label>
-          <input type="text" id="edit-portfolio" required />
-
-          <label for="edit-tags">Select Tags:</label><br />
-          <div
-            id="tags-container-ep"
-            style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; margin-top: 20px;"
-          >
-            <button type="button" class="tag-button" data-value="#developer">
-              #developer
-            </button>
-            <button type="button" class="tag-button" data-value="#designer">
-              #designer
-            </button>
-            <button type="button" class="tag-button" data-value="#writer">
-              #writer
-            </button>
-            <button type="button" class="tag-button" data-value="#graphic">
-              #graphic
-            </button>
-            <button type="button" class="tag-button" data-value="#copywriter">
-              #copywriter
-            </button>
-            <button type="button" class="tag-button" data-value="#devops">
-              #devops
-            </button>
-            <button
-              type="button"
-              class="tag-button"
-              data-value="#community-management"
-            >
-              #community-management
-            </button>
-            <button type="button" class="tag-button" data-value="#artist">
-              #artist
-            </button>
-            <button
-              type="button"
-              class="tag-button"
-              data-value="#digital-artist"
-            >
-              #digital-artist
-            </button>
-            <button type="button" class="tag-button" data-value="#manga-artist">
-              #manga-artist
-            </button>
-            <button type="button" class="tag-button" data-value="#moderator">
-              #moderator
-            </button>
-          </div>
-
-          <button type="submit">Update Profile</button>
-          <button onclick="signout()" style="margin-top: 10px;">
-            Sign Out
+        <label for="tags">Select Tags:</label><br />
+        <div id="tags-container"
+          style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; margin-top: 20px;">
+          <button type="button" class="tag-button" data-value="#developer">
+            #developer
           </button>
-        </form>
-      </div>
+          <button type="button" class="tag-button" data-value="#designer">
+            #designer
+          </button>
+          <button type="button" class="tag-button" data-value="#writer">
+            #writer
+          </button>
+          <button type="button" class="tag-button" data-value="#graphic">
+            #graphic
+          </button>
+          <button type="button" class="tag-button" data-value="#copywriter">
+            #copywriter
+          </button>
+          <button type="button" class="tag-button" data-value="#devops">
+            #devops
+          </button>
+          <button type="button" class="tag-button" data-value="#community-management">
+            #community-management
+          </button>
+          <button type="button" class="tag-button" data-value="#artist">
+            #artist
+          </button>
+          <button type="button" class="tag-button" data-value="#digital-artist">
+            #digital-artist
+          </button>
+          <button type="button" class="tag-button" data-value="#manga-artist">
+            #manga-artist
+          </button>
+          <button type="button" class="tag-button" data-value="#moderator">
+            #moderator
+          </button>
+        </div>
+
+        <button type="submit">Create Account</button>
+      </form>
+      <p style="margin-top: 10px;">
+        Already have an account?
+        <a href="#" onclick="toggleToSignIn()">Sign in here.</a>
+      </p>
     </div>
+  </div>
 
-    <script>
-      // Open modal
-      function openModal(modalId) {
-        document.getElementById(modalId).style.display = "block";
-      }
+  <!-- Edit Profile Modal -->
+  <div id="editProfileModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('editProfileModal')">&times;</span>
+      <form id="edit-profile-form" onsubmit="postEditProfile(event)">
+        <h2>Edit Profile</h2>
+        <label for="edit-bio">Bio:</label>
+        <textarea id="edit-bio"></textarea>
 
-      // Close modal
-      function closeModal(modalId) {
-        document.getElementById(modalId).style.display = "none";
-      }
+        <label for="edit-portfolio">Portfolio URL:</label>
+        <input type="text" id="edit-portfolio" required />
 
-      // Toggle to Create Account modal
-      function toggleToCreateAccount() {
-        closeModal("signInModal");
-        openModal("createAccountModal");
-      }
+        <label for="edit-tags">Select Tags:</label><br />
+        <div id="tags-container-ep"
+          style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; margin-top: 20px;">
+          <button type="button" class="tag-button" data-value="#developer">
+            #developer
+          </button>
+          <button type="button" class="tag-button" data-value="#designer">
+            #designer
+          </button>
+          <button type="button" class="tag-button" data-value="#writer">
+            #writer
+          </button>
+          <button type="button" class="tag-button" data-value="#graphic">
+            #graphic
+          </button>
+          <button type="button" class="tag-button" data-value="#copywriter">
+            #copywriter
+          </button>
+          <button type="button" class="tag-button" data-value="#devops">
+            #devops
+          </button>
+          <button type="button" class="tag-button" data-value="#community-management">
+            #community-management
+          </button>
+          <button type="button" class="tag-button" data-value="#artist">
+            #artist
+          </button>
+          <button type="button" class="tag-button" data-value="#digital-artist">
+            #digital-artist
+          </button>
+          <button type="button" class="tag-button" data-value="#manga-artist">
+            #manga-artist
+          </button>
+          <button type="button" class="tag-button" data-value="#moderator">
+            #moderator
+          </button>
+        </div>
 
-      // Toggle to Sign In modal
-      function toggleToSignIn() {
-        closeModal("createAccountModal");
-        openModal("signInModal");
-      }
+        <button type="submit">Update Profile</button>
+        <button onclick="signout()" style="margin-top: 10px;">
+          Sign Out
+        </button>
+      </form>
+    </div>
+  </div>
 
-      // Form submission functions
-      function postSignIn(event) {
-        event.preventDefault();
-        // Handle sign-in logic here
-        closeModal("signInModal");
-      }
+  <script>
+    // Open modal
+    function openModal(modalId) {
+      document.getElementById(modalId).style.display = "block";
+    }
 
-      function postCreateAccount(event) {
-        event.preventDefault();
-        // Handle account creation logic here
-        closeModal("createAccountModal");
-      }
+    // Close modal
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = "none";
+    }
 
-      function replaceCrossWithAvatar(avatarUrl) {
-        const navbar = document.querySelector(".navbar");
-        const plusIcon = navbar.querySelector(".plus-icon");
-        // Replace the icon with the avatar
-        plusIcon.outerHTML = `<div class="plus-icon" onclick="openModal('editProfileModal')"><img src="${avatarUrl}" alt="Avatar" class="avatar" style="width: 40px; height: 40px; border-radius: 50%;"/></div>`;
-      }
+    // Toggle to Create Account modal
+    function toggleToCreateAccount() {
+      closeModal("signInModal");
+      openModal("createAccountModal");
+    }
 
-      function signout() {
-        event.preventDefault();
-        localStorage.removeItem("user");
-        alert("Successfully signed out!");
-        setTimeout(() => {
-          window.location.reload();
-        }, 3000);
-      }
-    </script>
+    // Toggle to Sign In modal
+    function toggleToSignIn() {
+      closeModal("createAccountModal");
+      openModal("signInModal");
+    }
 
-    <script>
-      const tagsContainerep = document.getElementById("tags-container-ep");
-      const selectedTagsEP = [];
+    // Form submission functions
+    function postSignIn(event) {
+      event.preventDefault();
+      // Handle sign-in logic here
+      closeModal("signInModal");
+    }
 
-      tagsContainerep.addEventListener("click", (event) => {
-        if (event.target.classList.contains("tag-button")) {
-          const button = event.target;
-          const tagValue = button.getAttribute("data-value");
+    function postCreateAccount(event) {
+      event.preventDefault();
+      // Handle account creation logic here
+      closeModal("createAccountModal");
+    }
 
-          // Toggle selection
-          if (selectedTagsEP.includes(tagValue)) {
-            selectedTagsEP.splice(selectedTagsEP.indexOf(tagValue), 1);
-            button.classList.remove("selected");
-          } else {
-            selectedTagsEP.push(tagValue);
-            button.classList.add("selected");
-          }
-        }
-      });
-      // Handle the form submission for bio and tags update
-      async function postEditProfile(event) {
-        event.preventDefault();
-        const bio = document.getElementById("edit-bio").value;
-        const portfolio = document.getElementById("edit-portfolio").value;
+    function replaceCrossWithAvatar(avatarUrl) {
+      const navbar = document.querySelector(".navbar");
+      const plusIcon = navbar.querySelector(".plus-icon");
+      // Replace the icon with the avatar
+      plusIcon.outerHTML = `<div class="plus-icon" onclick="openModal('editProfileModal')"><img src="${avatarUrl}" alt="Avatar" class="avatar" style="width: 40px; height: 40px; border-radius: 50%;"/></div>`;
+    }
 
-        const tags = selectedTagsEP; // Get the updated tags
+    function signout() {
+      event.preventDefault();
+      localStorage.removeItem("user");
+      alert("Successfully signed out!");
+      setTimeout(() => {
+        window.location.reload();
+      }, 3000);
+    }
+  </script>
 
-        const userData = JSON.parse(localStorage.getItem("user"));
-        try {
-          const response = await fetch("/update-profile", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              bio: bio,
-              tags: tags,
-              portfolio: portfolio,
-              token: userData.token,
-            }),
-          });
+  <script>
+    const tagsContainerep = document.getElementById("tags-container-ep");
+    const selectedTagsEP = [];
 
-          if (response.ok) {
-            alert("Profile updated successfully");
-            closeModal("editProfileModal");
-            location.reload(); // Reload the page to reflect updated profile
-          } else {
-            alert("Failed to update profile");
-          }
-        } catch (error) {
-          console.error("Error updating profile:", error);
-        }
-      }
+    tagsContainerep.addEventListener("click", (event) => {
+      if (event.target.classList.contains("tag-button")) {
+        const button = event.target;
+        const tagValue = button.getAttribute("data-value");
 
-      // Function to handle Sign In form submission
-      async function postSignIn(event) {
-        event.preventDefault(); // Prevent the form from submitting normally
-
-        // Get values from the form
-        const username = document.getElementById("signin-username").value;
-        const password = document.getElementById("signin-password").value;
-
-        try {
-          const response = await fetch("/signin", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              username: username,
-              password: password,
-            }),
-          });
-
-          const result = await response.json();
-
-          if (response.ok) {
-            window.location.href = result.redirectUrl; // Redirect to the URL returned from the server
-          } else {
-            alert("Sign in failed: " + result.message);
-          }
-        } catch (error) {
-          console.log(error);
-          console.error("Error during sign in:", error);
-          alert("An error occurred during sign in. Please try again later.");
+        // Toggle selection
+        if (selectedTagsEP.includes(tagValue)) {
+          selectedTagsEP.splice(selectedTagsEP.indexOf(tagValue), 1);
+          button.classList.remove("selected");
+        } else {
+          selectedTagsEP.push(tagValue);
+          button.classList.add("selected");
         }
       }
+    });
+    // Handle the form submission for bio and tags update
+    async function postEditProfile(event) {
+      event.preventDefault();
+      const bio = document.getElementById("edit-bio").value;
+      const portfolio = document.getElementById("edit-portfolio").value;
 
-      // Function to handle Create Account form submission
+      const tags = selectedTagsEP; // Get the updated tags
 
-      const tagsContainer = document.getElementById("tags-container");
-      const selectedTags = [];
+      const userData = JSON.parse(localStorage.getItem("user"));
+      try {
+        const response = await fetch("/update-profile", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            bio: bio,
+            tags: tags,
+            portfolio: portfolio,
+            token: userData.token,
+          }),
+        });
 
-      tagsContainer.addEventListener("click", (event) => {
-        if (event.target.classList.contains("tag-button")) {
-          const button = event.target;
-          const tagValue = button.getAttribute("data-value");
-
-          // Toggle selection
-          if (selectedTags.includes(tagValue)) {
-            selectedTags.splice(selectedTags.indexOf(tagValue), 1);
-            button.classList.remove("selected");
-          } else {
-            selectedTags.push(tagValue);
-            button.classList.add("selected");
-          }
+        if (response.ok) {
+          alert("Profile updated successfully");
+          closeModal("editProfileModal");
+          location.reload(); // Reload the page to reflect updated profile
+        } else {
+          alert("Failed to update profile");
         }
-      });
+      } catch (error) {
+        console.error("Error updating profile:", error);
+      }
+    }
 
-      async function postCreateAccount(event) {
-        event.preventDefault(); // Prevent the form from submitting normally
+    // Function to handle Sign In form submission
+    async function postSignIn(event) {
+      event.preventDefault(); // Prevent the form from submitting normally
 
-        // Get values from the form
-        const username = document.getElementById("create-username").value;
-        const email = document.getElementById("create-email").value;
-        const password = document.getElementById("create-password").value;
-        const bio = document.getElementById("create-bio").value;
-        const portfolio = document.getElementById("create-portfolio").value;
+      // Get values from the form
+      const username = document.getElementById("signin-username").value;
+      const password = document.getElementById("signin-password").value;
 
-        // Collect checked tags
-        const tags = selectedTags;
+      try {
+        const response = await fetch("/signin", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: username,
+            password: password,
+          }),
+        });
 
-        try {
-          const response = await fetch("/create-account", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              username: username,
-              email: email,
-              password: password,
-              bio: bio,
-              portfolio: portfolio,
-              tags: tags,
-            }),
-          });
+        const result = await response.json();
 
-          const result = await response.json();
+        if (response.ok) {
+          window.location.href = result.redirectUrl; // Redirect to the URL returned from the server
+        } else {
+          alert("Sign in failed: " + result.message);
+        }
+      } catch (error) {
+        console.log(error);
+        console.error("Error during sign in:", error);
+        alert("An error occurred during sign in. Please try again later.");
+      }
+    }
 
-          if (response.ok) {
-            // Handle success, for example, show a welcome message or redirect
-            alert("Account created successfully!");
-            closeModal("createAccountModal"); // Close the modal after account creation
-          } else {
-            // Handle error, for example, display an error message
-            alert("Account creation failed: " + result.message);
-          }
-        } catch (error) {
-          console.error("Error during account creation:", error);
-          alert(
-            "An error occurred during account creation. Please try again later."
-          );
+    // Function to handle Create Account form submission
+
+    const tagsContainer = document.getElementById("tags-container");
+    const selectedTags = [];
+
+    tagsContainer.addEventListener("click", (event) => {
+      if (event.target.classList.contains("tag-button")) {
+        const button = event.target;
+        const tagValue = button.getAttribute("data-value");
+
+        // Toggle selection
+        if (selectedTags.includes(tagValue)) {
+          selectedTags.splice(selectedTags.indexOf(tagValue), 1);
+          button.classList.remove("selected");
+        } else {
+          selectedTags.push(tagValue);
+          button.classList.add("selected");
         }
       }
-    </script>
+    });
 
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        // Check if user data exists in localStorage
-        const userData = JSON.parse(localStorage.getItem("user"));
-        if (userData) {
-          replaceCrossWithAvatar(userData.avatar); // Replace the cross icon with an avatar
+    async function postCreateAccount(event) {
+      event.preventDefault(); // Prevent the form from submitting normally
+
+      // Get values from the form
+      const username = document.getElementById("create-username").value;
+      const email = document.getElementById("create-email").value;
+      const password = document.getElementById("create-password").value;
+      const bio = document.getElementById("create-bio").value;
+      const portfolio = document.getElementById("create-portfolio").value;
+
+      // Collect checked tags
+      const tags = selectedTags;
+
+      try {
+        const response = await fetch("/create-account", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: username,
+            email: email,
+            password: password,
+            bio: bio,
+            portfolio: portfolio,
+            tags: tags,
+          }),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          // Handle success, for example, show a welcome message or redirect
+          alert("Account created successfully!");
+          closeModal("createAccountModal"); // Close the modal after account creation
+        } else {
+          // Handle error, for example, display an error message
+          alert("Account creation failed: " + result.message);
         }
+      } catch (error) {
+        console.error("Error during account creation:", error);
+        alert(
+          "An error occurred during account creation. Please try again later."
+        );
+      }
+    }
+  </script>
 
-        // Refresh page if user is signed in
-        if (window.location.search.includes("token")) {
-          const username = new URLSearchParams(window.location.search).get(
-            "username"
-          );
-          const token = new URLSearchParams(window.location.search).get(
-            "token"
-          );
-          const avatar = new URLSearchParams(window.location.search).get(
-            "avatar"
-          );
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Check if user data exists in localStorage
+      const userData = JSON.parse(localStorage.getItem("user"));
+      if (userData) {
+        replaceCrossWithAvatar(userData.avatar); // Replace the cross icon with an avatar
+      }
 
-          const user = { username, avatar, token };
-          localStorage.setItem("user", JSON.stringify(user)); // Save user data to localStorage
-          window.location.href =
-            "https://talentcord-production.up.railway.app/";
-        }
-      });
-    </script>
-  </body>
+      // Refresh page if user is signed in
+      if (window.location.search.includes("token")) {
+        const username = new URLSearchParams(window.location.search).get(
+          "username"
+        );
+        const token = new URLSearchParams(window.location.search).get(
+          "token"
+        );
+        const avatar = new URLSearchParams(window.location.search).get(
+          "avatar"
+        );
+
+        const user = { username, avatar, token };
+        localStorage.setItem("user", JSON.stringify(user)); // Save user data to localStorage
+        window.location.href =
+          "https://talentcord-production.up.railway.app/";
+      }
+    });
+  </script>
+</body>
+
 </html>

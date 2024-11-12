@@ -8,6 +8,7 @@ const userSchema = mongoose.Schema({
   bio: String,
   portfolio: String,
   tags: Array,
+  permissions: Number,
 });
 
 module.exports = mongoose.model("user", userSchema);
