@@ -269,55 +269,11 @@
       align-items: center;
     }
 
-    /* Mod actions dropdown */
-    .mod-actions {
-      position: relative;
-      cursor: pointer;
-    }
-
-    .dots {
-      font-size: 20px;
-      color: #ffffff;
-    }
-
-    .mod-dropdown {
-      position: absolute;
-      top: 25px;
-      right: 0;
-      background-color: #444;
-      padding: 5px;
-      border-radius: 5px;
-      display: none;
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-      flex-direction: column;
-      z-index: 101;
-    }
-
-    .mod-actions:hover .mod-dropdown {
-      display: flex;
-    }
-
-    /* Mod action buttons */
-    .mod-action {
-      background: none;
-      color: #ff5555;
-      border: none;
-      padding: 5px 10px;
-      cursor: pointer;
-      font-size: 14px;
-      text-align: left;
-    }
-
-    .mod-action:hover {
-      background-color: #555;
-      border-radius: 3px;
-    }
-
     /* Badge Icons */
     .badge-icons {
       display: flex;
       gap: 5px;
-      margin-top: 10px;
+      /*margin-top: 10px;*/
     }
 
     .badge-icon {
@@ -377,19 +333,10 @@
               <div class="full-profile">
                 <div class="profile-header">
                   <span>${user.username}</span>
-                  ${hasModPermissions ? `
-                    <div class="mod-actions">
-                      <span class="dots">...</span>
-                      <div class="mod-dropdown">
-                        <button class="mod-action">Perm Ban</button>
-                        <button class="mod-action">Temp Ban</button>
-                      </div>
-                    </div>
-                  ` : ""}
-                </div>
-                <div class="badge-icons">
+                  <div class="badge-icons">
                   <img src="https://avatarfiles.alphacoders.com/306/thumb-350-306819.webp" alt="Badge 1" class="badge-icon">
                   <img src="https://avatarfiles.alphacoders.com/306/thumb-350-306819.webp" alt="Badge 2" class="badge-icon">
+                </div>
                 </div>
                 <p>${user.bio}</p>
                 <div class="tags">${tags.join(" ")}</div>
