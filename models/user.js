@@ -9,6 +9,7 @@ const userSchema = mongoose.Schema({
   portfolio: String,
   tags: Array,
   permissions: Number,
+  banned: Boolean,
 });
 
 module.exports = mongoose.model("user", userSchema);
