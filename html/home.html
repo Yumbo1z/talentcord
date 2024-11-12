@@ -352,19 +352,14 @@
       });
     });
 
-    // Show custom context menu
     function showContextMenu(event, card) {
       const menu = document.getElementById("customContextMenu");
       menu.style.display = "block";
       menu.style.left = `${event.pageX}px`;
       menu.style.top = `${event.pageY}px`;
-
-      // Store the user ID in a data attribute on the menu
-      console.log(card.dataset)
-      menu.dataset.userId = card.dataset.data-user;
+      menu.dataset.usernme = card.dataset.user;
     }
 
-    // Hide context menu on clicking outside
     document.addEventListener("click", () => {
       const menu = document.getElementById("customContextMenu");
       menu.style.display = "none";
@@ -372,14 +367,14 @@
 
     // Ban and Timeout functions
     function banUser() {
-      const userId = document.getElementById("customContextMenu").dataset.userId;
-      alert(`Banning user with ID: ${userId}`);
+      const usernme = document.getElementById("customContextMenu").dataset.usernme;
+      alert(`Banning user with ID: ${usernme}`);
       // Logic for banning the user goes here
     }
 
     function timeoutUser() {
-      const userId = document.getElementById("customContextMenu").dataset.userId;
-      alert(`Timing out user with ID: ${userId}`);
+      const usernme = document.getElementById("customContextMenu").dataset.usernme;
+      alert(`Timing out user with ID: ${usernme}`);
       // Logic for timing out the user goes here
     }
   </script>
