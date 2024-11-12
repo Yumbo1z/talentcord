@@ -357,7 +357,7 @@
       menu.style.display = "block";
       menu.style.left = `${event.pageX}px`;
       menu.style.top = `${event.pageY}px`;
-      menu.dataset.usernme = card.dataset.user;
+      menu.dataset.username = card.dataset.user;
     }
 
     document.addEventListener("click", () => {
@@ -366,16 +366,66 @@
     });
 
     // Ban and Timeout functions
-    function banUser() {
-      const usernme = document.getElementById("customContextMenu").dataset.usernme;
-      alert(`Banning user with ID: ${usernme}`);
-      // Logic for banning the user goes here
+    async function banUser() {
+      const username = document.getElementById("customContextMenu").dataset.username;
+      const userData = JSON.parse(localStorage.getItem("user"));
+
+      try {
+        const response = await fetch("/ban", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            token: userData.token,
+            username,
+          }),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          alert("Successfully banned user!");
+        } else {
+          alert("Failed to banned user: " + result.message);
+        }
+      } catch (error) {
+        console.error("Error during ban:", error);
+        alert(
+          "An error occurred. Please try again later."
+        );
+      }
     }
 
-    function timeoutUser() {
-      const usernme = document.getElementById("customContextMenu").dataset.usernme;
-      alert(`Timing out user with ID: ${usernme}`);
-      // Logic for timing out the user goes here
+    async function timeoutUser() {
+      const username = document.getElementById("customContextMenu").dataset.username;
+      const userData = JSON.parse(localStorage.getItem("user"));
+
+      try {
+        const response = await fetch("/timeout", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            token: userData.token,
+            username,
+          }),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          alert("Successfully timeouted user!");
+        } else {
+          alert("Failed to timeout user: " + result.message);
+        }
+      } catch (error) {
+        console.error("Error during timeout:", error);
+        alert(
+          "An error occurred. Please try again later."
+        );
+      }
     }
   </script>
 
