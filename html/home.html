@@ -353,10 +353,10 @@
 
       // Retrieve current user data
       const currentUser = JSON.parse(localStorage.getItem("user"));
-      let currentUserMoreData
+      let hasModPermissions;
       if (currentUser) {
-        currentUserMoreData = json.find(v => v.username === currentUser.username)
-        const hasModPermissions = currentUserMoreData && currentUserMoreData.permissions && currentUserMoreData.permissions === 1;
+        let currentUserMoreData = json.find(v => v.username === currentUser.username)
+        hasModPermissions = currentUserMoreData && currentUserMoreData.permissions && currentUserMoreData.permissions === 1;
       }
 
       for (let index = 0; index < json.length; index++) {
