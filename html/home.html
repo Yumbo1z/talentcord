@@ -282,6 +282,32 @@
       border-radius: 50%;
       object-fit: cover;
     }
+
+    /* Basic styles for the custom context menu */
+    .context-menu {
+      position: absolute;
+      background-color: #444;
+      border-radius: 5px;
+      padding: 8px;
+      display: none;
+      z-index: 1000;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .context-menu button {
+      background: none;
+      color: #ff5555;
+      border: none;
+      padding: 5px 10px;
+      font-size: 14px;
+      cursor: pointer;
+      text-align: left;
+      width: 100%;
+    }
+
+    .context-menu button:hover {
+      background-color: #555;
+    }
   </style>
 </head>
 
@@ -299,6 +325,11 @@
 
   <!-- Listings -->
   <section class="listings" id="listings"></section>
+
+  <div class="context-menu" id="customContextMenu">
+    <button onclick="banUser()">Ban</button>
+    <button onclick="timeoutUser()">Timeout</button>
+  </div>
 
   <script>
     document.addEventListener("DOMContentLoaded", async () => {
@@ -343,7 +374,44 @@
               </div>                   
             </div>`;
       }
+
+      document.querySelectorAll(".listing-card").forEach((card) => {
+        card.addEventListener("contextmenu", (event) => {
+          event.preventDefault();
+          showContextMenu(event, card);
+        });
+      });
     });
+
+    // Show custom context menu
+    function showContextMenu(event, card) {
+      const menu = document.getElementById("customContextMenu");
+      menu.style.display = "block";
+      menu.style.left = `${event.pageX}px`;
+      menu.style.top = `${event.pageY}px`;
+
+      // Store the user ID in a data attribute on the menu
+      menu.dataset.userId = card.dataset.userId;
+    }
+
+    // Hide context menu on clicking outside
+    document.addEventListener("click", () => {
+      const menu = document.getElementById("customContextMenu");
+      menu.style.display = "none";
+    });
+
+    // Ban and Timeout functions
+    function banUser() {
+      const userId = document.getElementById("customContextMenu").dataset.userId;
+      alert(`Banning user with ID: ${userId}`);
+      // Logic for banning the user goes here
+    }
+
+    function timeoutUser() {
+      const userId = document.getElementById("customContextMenu").dataset.userId;
+      alert(`Timing out user with ID: ${userId}`);
+      // Logic for timing out the user goes here
+    }
   </script>
 
   <!-- Sign In Modal -->
