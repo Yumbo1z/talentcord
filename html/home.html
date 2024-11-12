@@ -223,12 +223,10 @@
 
     .tag-button:hover {
       background-color: #4752c4;
-      /* Darker shade on hover */
     }
 
     .tag-button.selected {
       background-color: rgb(0, 55, 255);
-      /* Selected state background */
     }
 
     a {
@@ -240,30 +238,6 @@
       color: white;
     }
 
-    /* Hidden profile info that appears on hover */
-    .full-profile {
-      position: absolute;
-      top: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #2c2f33;
-      border-color: #384250;
-      color: #fff;
-      padding: 10px;
-      width: auto;
-      max-width: 90%;
-      border-radius: 8px;
-      display: none;
-      z-index: 100;
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Show profile on hover */
-    .listing-card:hover .full-profile {
-      display: block;
-    }
-
-    /* Profile header with moderator actions */
     .profile-header {
       display: flex;
       justify-content: space-between;
@@ -358,21 +332,16 @@
             <div class="listing-card">
               <img src="https://avatarfiles.alphacoders.com/306/thumb-350-306819.webp" alt="User Avatar" class="avatar">
               <div class="listing-info">
-                <h3><a style="color: white;" href="${user.portfolio}" target="_blank">${user.username}</a></h3>
-                <p>${user.bio.length > 50 ? user.bio.substring(0, 50) + "..." : user.bio}</p>
-                <div class="tags">${tags.slice(0, 2).join(" ")}</div>
-              </div>
-              <div class="full-profile">
                 <div class="profile-header">
-                  <span>${user.username}</span>
+                <h3><a style="color: white;" href="${user.portfolio}" target="_blank">${user.username}</a></h3>
                   <div class="badge-icons">
                   <img src="https://avatarfiles.alphacoders.com/306/thumb-350-306819.webp" alt="Badge 1" class="badge-icon">
                   <img src="https://avatarfiles.alphacoders.com/306/thumb-350-306819.webp" alt="Badge 2" class="badge-icon">
                 </div>
-                </div>
+                 </div>
                 <p>${user.bio}</p>
                 <div class="tags">${tags.join(" ")}</div>
-              </div>                   
+              </div>                  
             </div>`;
       }
 
