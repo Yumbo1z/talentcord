@@ -24,7 +24,7 @@ module.exports = {
         if (findUser.username === reqData.targetUsername || req.targetPerms > 0)
           return res
             .status(400)
-            .json({ message: "This user cannot be banned." });
+            .json({ message: "This user cannot be timeouted." });
 
         /*let target = await userSchema.findOne({
           username: reqData.targetUsername,
