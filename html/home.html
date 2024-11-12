@@ -315,11 +315,6 @@
 
       // Retrieve current user data
       const currentUser = JSON.parse(localStorage.getItem("user"));
-      let hasModPermissions;
-      if (currentUser) {
-        let currentUserMoreData = json.find(v => v.username === currentUser.username)
-        hasModPermissions = currentUserMoreData && currentUserMoreData.permissions && currentUserMoreData.permissions === 1;
-      }
 
       for (let index = 0; index < json.length; index++) {
         const user = json[index];
@@ -348,7 +343,11 @@
       document.querySelectorAll(".listing-card").forEach((card) => {
         card.addEventListener("contextmenu", (event) => {
           event.preventDefault();
-          showContextMenu(event, card);
+          if (currentUser) {
+            let currentUserMoreData = json.find(v => v.username === currentUser.username)
+            if (currentUserMoreData.permissions === 1)
+              showContextMenu(event, card);
+          }
         });
       });
     });
