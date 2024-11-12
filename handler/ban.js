@@ -21,7 +21,10 @@ module.exports = {
         if (!findUser || findUser.permissions !== 1)
           return res.status(400).json({ message: "Not enough permissions." });
 
-        if (findUser.username === reqData.targetUsername || req.targetPerms > 0)
+        if (
+          findUser.username === reqData.targetUsername ||
+          reqData.targetPerms > 0
+        )
           return res
             .status(400)
             .json({ message: "This user cannot be banned." });
