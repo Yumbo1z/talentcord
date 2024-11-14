@@ -323,6 +323,12 @@
           return `<span class="tag">${tag}</span>`;
         });
 
+        let badges = user.badges.map((badge) => {
+          return `<img src="${badge.image}" class="badge-icon">`;
+        });
+
+
+
         listings.innerHTML += `
             <div class="listing-card" data-user="${user.username}" data-perms="${user.permissions}">
               <img src="https://avatarfiles.alphacoders.com/306/thumb-350-306819.webp" alt="User Avatar" class="avatar">
@@ -330,8 +336,7 @@
                 <div class="profile-header">
                   <h3><a style="color: white;" href="${user.portfolio}" target="_blank">${user.username}</a></h3>
                   <div class="badge-icons">
-                  <img src="https://avatarfiles.alphacoders.com/306/thumb-350-306819.webp" alt="Badge 1" class="badge-icon">
-                  <img src="https://avatarfiles.alphacoders.com/306/thumb-350-306819.webp" alt="Badge 2" class="badge-icon">
+                  ${badges.join(" ")}
                 </div>
                 </div>
                 <p>${user.bio}</p>

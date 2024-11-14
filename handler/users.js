@@ -12,6 +12,7 @@ module.exports = {
         tags: v.tags,
         portfolio: v.portfolio,
         permissions: v.permissions,
+        badges: v.badges,
       };
     });
     res.send(newObj);
