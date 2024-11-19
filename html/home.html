@@ -440,6 +440,39 @@
         );
       }
     }
+
+    async function givedev() {
+      const username = document.getElementById("customContextMenu").dataset.username;
+      const targetPerms = document.getElementById("customContextMenu").dataset.perms;
+      const userData = JSON.parse(localStorage.getItem("user"));
+
+      try {
+        const response = await fetch("/givedev", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            token: userData.token,
+            targetUsername: username,
+            targetPerms,
+          }),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          alert("Success");
+        } else {
+          alert("Failed to award user: " + result.message);
+        }
+      } catch (error) {
+        console.error("Error during awarding:", error);
+        alert(
+          "An error occurred. Please try again later."
+        );
+      }
+    }
   </script>
 
   <!-- Sign In Modal -->
