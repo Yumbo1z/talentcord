@@ -21,18 +21,20 @@ module.exports = {
         if (!findUser || findUser.permissions !== 1)
           return res.status(400).json({ message: "Not enough permissions." });
 
-        if (findUser.username === reqData.targetUsername || reqData.targetPerms > 0)
+        if (
+          findUser.username === reqData.targetUsername ||
+          reqData.targetPerms > 0
+        )
           return res
             .status(400)
             .json({ message: "This user cannot be timeouted." });
 
-        /*let target = await userSchema.findOne({
+        let target = await userSchema.findOne({
           username: reqData.targetUsername,
         });
-        
+
         target.banned = true;
-        await target.save()
-        */
+        await target.save();
 
         res.status(200).json({ success: "Successfully timeouted!" });
       });

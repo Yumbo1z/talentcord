@@ -29,9 +29,9 @@ module.exports = {
             .status(400)
             .json({ message: "This user cannot be banned." });
 
-        /*await userSchema.findOneAndDelete({
+        await userSchema.findOneAndDelete({
           username: reqData.targetUsername,
-        });*/
+        });
 
         res.status(200).json({ success: "Successfully banned!" });
       });
