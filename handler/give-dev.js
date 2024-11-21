@@ -34,7 +34,7 @@ module.exports = {
           return res.status(404).json({ error: "User not found." });
 
         const devBadge = badges.find((b) => b.name === "Developer");
-        return console.log(devBadge);
+
         // Check if the badge already exists
         const badgeIndex = targetUser.badges.findIndex(
           (badge) => badge.name === "Developer"
