@@ -33,7 +33,7 @@ module.exports = {
         if (!targetUser)
           return res.status(404).json({ error: "User not found." });
 
-        const devBadge = badges.find((b) => b.name === "Developer");
+        const dataBadge = badges.find((b) => b.name === "Developer");
 
         // Check if the badge already exists
         const badgeIndex = targetUser.badges.findIndex(
@@ -42,10 +42,10 @@ module.exports = {
 
         if (badgeIndex === -1) {
           // Add the badge if it doesn't exist
-          targetUser.badges.push(devBadge);
+          targetUser.badges.push(dataBadge);
         } else {
           // Update the badge if it exists
-          targetUser.badges[badgeIndex] = devBadge;
+          targetUser.badges[badgeIndex] = dataBadge;
         }
 
         // Save the updated user data
