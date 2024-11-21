@@ -22,6 +22,7 @@ module.exports = {
           return res.status(400).json({ message: "Not enough permissions." });
 
         //givebadge
+        
 
         res.status(200).json({ success: "Successfully awarded!" });
       });
