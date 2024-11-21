@@ -259,8 +259,9 @@
     }
 
     /* Basic styles for the custom context menu */
+
     .context-menu {
-      position: absolute;
+      position: relative;
       background-color: #444;
       border-radius: 5px;
       padding: 8px;
@@ -286,48 +287,29 @@
 
     .dropdown {
       position: relative;
-      display: inline-block;
-    }
-
-    .dropdown-button {
-      background-color: #5865f2;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: background-color 0.3s;
-    }
-
-    .dropdown-button:hover {
-      background-color: #4752c4;
     }
 
     .dropdown-content {
       display: none;
       position: absolute;
-      top: 0;
-      left: 110%;
-      background-color: #36393f;
-      border-radius: 5px;
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-      z-index: 1000;
+      background-color: white;
+      border: 1px solid #ccc;
+      z-index: 1;
+      min-width: 150px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     .dropdown-content button {
-      background-color: transparent;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      text-align: left;
       width: 100%;
+      padding: 10px;
+      text-align: left;
+      background: none;
+      border: none;
       cursor: pointer;
-      transition: background-color 0.3s;
     }
 
     .dropdown-content button:hover {
-      background-color: #40444b;
+      background-color: #f0f0f0;
     }
 
     .dropdown:hover .dropdown-content {
@@ -416,7 +398,7 @@
 
     function showContextMenu(event, card) {
       const menu = document.getElementById("customContextMenu");
-      menu.style.display = "block";
+      menu.style.display = "inline-block";
       menu.style.left = `${event.pageX}px`;
       menu.style.top = `${event.pageY}px`;
       menu.dataset.username = card.dataset.user;
