@@ -8,6 +8,7 @@ module.exports = {
     let newObj = data.map((v) => {
       return {
         username: v.username,
+        icon: v.avatarURL || "https://avatarfiles.alphacoders.com/306/thumb-350-306819.webp",
         bio: v.bio,
         tags: v.tags,
         portfolio: v.portfolio,
