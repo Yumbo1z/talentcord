@@ -25,6 +25,7 @@ module.exports = {
         if (reqData.tags) findUser.tags = reqData.tags;
         if (reqData.bio) findUser.bio = reqData.bio;
         if (reqData.portfolio) findUser.portfolio = reqData.portfolio;
+        if (reqData.avatar) findUser.avatarURL = reqData.avatar;
 
         await findUser.save();
         res.status(200).json({ success: "Successfully updated!" });
