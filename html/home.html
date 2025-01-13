@@ -252,11 +252,14 @@
     }
 
     .badge-icon {
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      object-fit: cover;
+      font-size: 1.5rem;
+      /* Adjust size */
+      color: #5865f2;
+      /* Default color */
+      margin-right: 5px;
+      /* Spacing between icons */
     }
+
 
     /* Basic styles for the custom context menu */
     .context-menu {
@@ -345,50 +348,44 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", async () => {
-      // Fetch the user listings
       let response = await fetch("/users");
       let json = await response.json();
       const listings = document.getElementById("listings");
 
-      // Retrieve current user data
       const currentUser = JSON.parse(localStorage.getItem("user"));
 
-      for (let index = 0; index < json.length; index++) {
-        const user = json[index];
+      for (let user of json) {
+        let tags = user.tags.map(tag => `<span class="tag">${tag}</span>`).join(" ");
 
-        let tags = user.tags.map((tag) => {
-          return `<span class="tag">${tag}</span>`;
-        });
-
-        let badges = user.badges.map((badge) => {
-          return `<img src="${badge.image}" class="badge-icon">`;
-        });
-
-
+        // Map badges to Font Awesome icons
+        let badges = user.badges.map(badge => {
+          return `<i class="${badge.faClass} badge-icon"></i>`;
+        }).join(" ");
 
         listings.innerHTML += `
-            <div class="listing-card" data-user="${user.username}" data-perms="${user.permissions}">
-              <img src="https://avatarfiles.alphacoders.com/306/thumb-350-306819.webp" alt="User Avatar" class="avatar">
-              <div class="listing-info">
-                <div class="profile-header">
-                  <h3><a style="color: white;" href="${user.portfolio}" target="_blank">${user.username}</a></h3>
-                  <div class="badge-icons">
-                  ${badges.join(" ")}
-                </div>
-                </div>
-                <p>${user.bio}</p>
-                <div class="tags">${tags.join(" ")}</div>
+        <div class="listing-card" data-user="${user.username}" data-perms="${user.permissions}">
+          <img src="https://avatarfiles.alphacoders.com/306/thumb-350-306819.webp" alt="User Avatar" class="avatar">
+          <div class="listing-info">
+            <div class="profile-header">
+              <h3>
+                <a style="color: white;" href="${user.portfolio}" target="_blank">${user.username}</a>
+              </h3>
+              <div class="badge-icons">
+                ${badges}
               </div>
-            </div>`;
+            </div>
+            <p>${user.bio}</p>
+            <div class="tags">${tags}</div>
+          </div>
+        </div>`;
       }
 
-      document.querySelectorAll(".listing-card").forEach((card) => {
-        card.addEventListener("contextmenu", (event) => {
+      document.querySelectorAll(".listing-card").forEach(card => {
+        card.addEventListener("contextmenu", event => {
           event.preventDefault();
           if (currentUser) {
-            let currentUserMoreData = json.find(v => v.username === currentUser.username)
-            if (currentUserMoreData.permissions === 1)
-              showContextMenu(event, card);
+            let currentUserMoreData = json.find(v => v.username === currentUser.username);
+            if (currentUserMoreData.permissions === 1) showContextMenu(event, card);
           }
         });
       });

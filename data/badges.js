@@ -1,14 +1,14 @@
 module.exports = [
   {
     name: "Translator",
-    image: "https://i.imgur.com/rGsP6oh.gif",
+    faClass: "fas fa-language",
   },
   {
     name: "Developer",
-    image: "https://i.imgur.com/rGsP6oh.gif",
+    faClass: "fas fa-code",
   },
   {
     name: "Moderator",
-    image: "https://i.imgur.com/rGsP6oh.gif",
+    faClass: "fas fa-shield-alt",
   },
 ];
