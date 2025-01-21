@@ -62,25 +62,23 @@
     }
 
     /* Listings Container */
-    .listings {
+    #listings {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
+      /* 4 cards per row */
       gap: 20px;
-      padding: 20px;
+      /* Adjust the spacing between cards */
     }
 
-    /* Listing Card Styles */
     .listing-card {
       background-color: #36393f;
-      border-radius: 10px;
+      border-radius: 8px;
       padding: 15px;
       display: flex;
-      flex-direction: column;
-      transition: background-color 0.3s;
-      cursor: pointer;
-      position: relative;
+      align-items: flex-start;
+      gap: 15px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
-
 
     .listing-card:hover {
       background-color: #40444b;
