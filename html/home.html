@@ -64,7 +64,7 @@
     /* Listings Container */
     .listings {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
       padding: 20px;
     }
@@ -300,10 +300,6 @@
       width: 100%;
     }
 
-    .cmn {
-      color: white;
-    }
-
     .context-menu button:hover {
       background-color: #555;
     }
@@ -324,6 +320,7 @@
     .dropdown-content button {
       width: 100%;
       padding: 10px;
+      color: white;
       text-align: left;
       background: none;
       border: none;
@@ -359,10 +356,10 @@
     <button onclick="banUser()">Ban</button>
     <button onclick="timeoutUser()">Timeout</button>
     <div class="dropdown">
-      <button class="dropdown-button cmn">Give Badge</button>
+      <button class="dropdown-button">Give Badge</button>
       <div class="dropdown-content">
-        <button class="cmn" onclick="givemod()">Give Mod Badge</button>
-        <button class="cmn" onclick="givedev()">Give Dev Badge</button>
+        <button onclick="givemod()">Give Mod Badge</button>
+        <button onclick="givedev()">Give Dev Badge</button>
       </div>
     </div>
   </div>
