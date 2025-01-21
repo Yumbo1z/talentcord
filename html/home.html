@@ -300,6 +300,10 @@
       width: 100%;
     }
 
+    .cmn {
+      color: white;
+    }
+
     .context-menu button:hover {
       background-color: #555;
     }
@@ -355,10 +359,10 @@
     <button onclick="banUser()">Ban</button>
     <button onclick="timeoutUser()">Timeout</button>
     <div class="dropdown">
-      <button class="dropdown-button">Give Badge</button>
+      <button class="dropdown-button cmn">Give Badge</button>
       <div class="dropdown-content">
-        <button onclick="givemod()">Give Mod Badge</button>
-        <button onclick="givedev()">Give Dev Badge</button>
+        <button class="cmn" onclick="givemod()">Give Mod Badge</button>
+        <button class="cmn" onclick="givedev()">Give Dev Badge</button>
       </div>
     </div>
   </div>
