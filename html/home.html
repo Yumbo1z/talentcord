@@ -75,11 +75,12 @@
       border-radius: 10px;
       padding: 15px;
       display: flex;
-      align-items: center;
+      flex-direction: column;
       transition: background-color 0.3s;
       cursor: pointer;
       position: relative;
     }
+
 
     .listing-card:hover {
       background-color: #40444b;
@@ -106,14 +107,29 @@
     .listing-info p {
       font-size: 0.9rem;
       color: #b9bbbe;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .tags {
       display: flex;
-      gap: 10px;
-      margin-top: 10px;
+      gap: 8px;
       flex-wrap: wrap;
-      max-width: 100%;
+      max-height: 100px;
+      /* Limit height for tags overflow */
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #5865f2 #36393f;
+    }
+
+    .tags::-webkit-scrollbar-thumb {
+      background-color: #5865f2;
+      border-radius: 4px;
+    }
+
+    .tags::-webkit-scrollbar-track {
+      background-color: #36393f;
     }
 
     .tag {
