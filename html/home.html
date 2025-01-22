@@ -786,6 +786,7 @@
       event.preventDefault();
       const bio = document.getElementById("edit-bio").value;
       const portfolio = document.getElementById("edit-portfolio").value;
+      const avatar = document.getElementById("edit-avatar").value;
 
       const tags = selectedTagsEP; // Get the updated tags
 
@@ -797,6 +798,7 @@
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
+            avatar: avatar, 
             bio: bio,
             tags: tags,
             portfolio: portfolio,
