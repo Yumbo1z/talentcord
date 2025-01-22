@@ -23,7 +23,7 @@ module.exports = {
             .status(400)
             .json({ message: "Incorrect password or username." });
 
-        if (reqData.tags) findUser.tags = reqData.tags;
+        if (reqData.tags.length > 0) findUser.tags = reqData.tags;
         if (reqData.bio) findUser.bio = reqData.bio;
         if (reqData.portfolio) findUser.portfolio = reqData.portfolio;
         if (reqData.avatar) findUser.avatarURL = reqData.avatar;
