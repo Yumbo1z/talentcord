@@ -23,7 +23,7 @@ module.exports = {
     url.searchParams.append("username", findUser.username);
     url.searchParams.append(
       "avatar",
-      "https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg"
+      "https://i.imgur.com/fBh0Mdm.png"
     );
 
     res.status(200).json({ redirectUrl: url, message: "Signing In..." });

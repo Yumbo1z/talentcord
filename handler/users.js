@@ -10,7 +10,7 @@ module.exports = {
         username: v.username,
         icon: v.avatarURL
           ? v.avatarURL
-          : "https://avatarfiles.alphacoders.com/306/thumb-350-306819.webp"
+          : "https://i.imgur.com/fBh0Mdm.png"
         ,
         bio: v.bio,
         tags: v.tags,
