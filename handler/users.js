@@ -6,6 +6,7 @@ module.exports = {
   run: async (req, res) => {
     let data = await userSchema.find().sort({ username: 1 });
     let newObj = data.map((v) => {
+      console.log(v.avatarURL)
       return {
         username: v.username,
         icon: v.avatarURL
