@@ -5,7 +5,6 @@ module.exports = {
   name: "update-profile",
   run: async (req, res) => {
     let reqData = req.body;
-    console.log(reqData)
 
     const token = reqData.token;
     if (!token) return res.status(400).json({ error: `Provide a token.` });
