@@ -1,387 +1,409 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="icon" href="https://i.imgur.com/Bxj4aaT.png" />
+    <title>Talentcord</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Fira+Sans"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css"
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="icon" href="https://i.imgur.com/Bxj4aaT.png" />
-  <title>Talentcord</title>
-  <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet" />
-  <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #2c2f33;
+        color: #ccc;
+      }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #2c2f33;
-      color: #ccc;
-    }
+      /* Navbar Styles */
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #23272a;
+        padding: 10px 20px;
+        color: white;
+      }
 
-    /* Navbar Styles */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #23272a;
-      padding: 10px 20px;
-      color: white;
-    }
+      .navbar .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
 
-    .navbar .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
+      .navbar .search-bar {
+        flex: 1;
+        margin: 0 20px;
+      }
 
-    .navbar .search-bar {
-      flex: 1;
-      margin: 0 20px;
-    }
+      .navbar .search-bar input {
+        width: 100%;
+        padding: 8px;
+        font-size: 1rem;
+        border-radius: 5px;
+        border: none;
+        background-color: #40444b;
+        color: white;
+      }
 
-    .navbar .search-bar input {
-      width: 100%;
-      padding: 8px;
-      font-size: 1rem;
-      border-radius: 5px;
-      border: none;
-      background-color: #40444b;
-      color: white;
-    }
+      .navbar .plus-icon {
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
 
-    .navbar .plus-icon {
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
+      .navbar .plus-icon:hover {
+        color: #7289da;
+      }
 
-    .navbar .plus-icon:hover {
-      color: #7289da;
-    }
+      /* Listings Container */
+      .listings {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        padding: 20px;
+      }
 
-    /* Listings Container */
-    .listings {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
+      /* Listing Card Styles */
+      .listing-card {
+        background-color: #36393f;
+        border-radius: 10px;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        transition: background-color 0.3s;
+        cursor: pointer;
+        position: relative;
+      }
 
-    /* Listing Card Styles */
-    .listing-card {
-      background-color: #36393f;
-      border-radius: 10px;
-      padding: 15px;
-      display: flex;
-      flex-direction: column;
-      transition: background-color 0.3s;
-      cursor: pointer;
-      position: relative;
-    }
+      .listing-card:hover {
+        background-color: #40444b;
+      }
 
-    .listing-card:hover {
-      background-color: #40444b;
-    }
+      .avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 15px;
+      }
 
-    .avatar {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-right: 15px;
-    }
+      .listing-info {
+        flex: 1;
+      }
 
-    .listing-info {
-      flex: 1;
-    }
+      .listing-info h3 {
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+        color: #fff;
+      }
 
-    .listing-info h3 {
-      font-size: 1.2rem;
-      margin-bottom: 5px;
-      color: #fff;
-    }
+      .listing-info p {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        /* Limit to 3 lines */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        position: relative;
+      }
 
-    .listing-info p {
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      /* Limit to 3 lines */
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      position: relative;
-    }
+      .tags {
+        margin-top: 25px;
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        max-height: 100px;
+        /* Limit height for tags overflow */
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: #5865f2 #36393f;
+      }
 
-    .tags {
-      margin-top: 25px;
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      max-height: 100px;
-      /* Limit height for tags overflow */
-      overflow-y: auto;
-      scrollbar-width: thin;
-      scrollbar-color: #5865f2 #36393f;
-    }
+      .tags::-webkit-scrollbar-thumb {
+        background-color: #5865f2;
+        border-radius: 4px;
+      }
 
-    .tags::-webkit-scrollbar-thumb {
-      background-color: #5865f2;
-      border-radius: 4px;
-    }
+      .tags::-webkit-scrollbar-track {
+        background-color: #36393f;
+      }
 
-    .tags::-webkit-scrollbar-track {
-      background-color: #36393f;
-    }
+      .tag {
+        background-color: #5865f2;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 12px;
+        font-size: 0.8rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
 
-    .tag {
-      background-color: #5865f2;
-      color: white;
-      padding: 5px 10px;
-      border-radius: 12px;
-      font-size: 0.8rem;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+      /* Modal Styling */
+      .modal {
+        display: none;
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+      }
 
-    /* Modal Styling */
-    .modal {
-      display: none;
-      position: absolute;
-      z-index: 1;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-    }
+      .modal-content {
+        background-color: #2c2f33;
+        padding: 20px;
+        border-radius: 8px;
+        max-width: 500px;
+        margin: 10% auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border: 1px solid #5865f2;
+      }
 
-    .modal-content {
-      background-color: #2c2f33;
-      padding: 20px;
-      border-radius: 8px;
-      max-width: 500px;
-      margin: 10% auto;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      border: 1px solid #5865f2;
-    }
+      .modal-content input,
+      .modal-content textarea {
+        width: 100%;
+        padding: 8px;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #40444b;
+        color: #fff;
+      }
 
-    .modal-content input,
-    .modal-content textarea {
-      width: 100%;
-      padding: 8px;
-      margin: 8px 0;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      background-color: #40444b;
-      color: #fff;
-    }
+      .modal-content button {
+        width: 100%;
+        padding: 10px;
+        background-color: #5865f2;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
 
-    .modal-content button {
-      width: 100%;
-      padding: 10px;
-      background-color: #5865f2;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
+      .modal-content button:hover {
+        background-color: #4751c7;
+      }
 
-    .modal-content button:hover {
-      background-color: #4751c7;
-    }
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
 
-    .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+      .close:hover,
+      .close:focus {
+        color: #fff;
+        text-decoration: none;
+        cursor: pointer;
+      }
 
-    .close:hover,
-    .close:focus {
-      color: #fff;
-      text-decoration: none;
-      cursor: pointer;
-    }
+      #tags-container {
+        display: flex;
+        flex-wrap: wrap;
+        /* Allow buttons to wrap to the next line */
+        gap: 10px;
+        /* Space between buttons */
+      }
 
-    #tags-container {
-      display: flex;
-      flex-wrap: wrap;
-      /* Allow buttons to wrap to the next line */
-      gap: 10px;
-      /* Space between buttons */
-    }
+      .tag-button {
+        background-color: #5865f2;
+        /* Background color */
+        color: white;
+        /* Text color */
+        border: none;
+        /* Remove border */
+        border-radius: 5px;
+        /* Rounded corners */
+        padding: 8px 12px;
+        /* Padding for comfort */
+        font-size: 0.9rem;
+        /* Font size */
+        cursor: pointer;
+        /* Change cursor on hover */
+        transition: background-color 0.3s;
+        /* Smooth transition */
+        max-width: 100px;
+        /* Set a maximum width for each button */
+        flex: 1 1 20%;
+        /* Allow buttons to grow and shrink */
+        text-align: center;
+        /* Center text inside button */
+      }
 
-    .tag-button {
-      background-color: #5865f2;
-      /* Background color */
-      color: white;
-      /* Text color */
-      border: none;
-      /* Remove border */
-      border-radius: 5px;
-      /* Rounded corners */
-      padding: 8px 12px;
-      /* Padding for comfort */
-      font-size: 0.9rem;
-      /* Font size */
-      cursor: pointer;
-      /* Change cursor on hover */
-      transition: background-color 0.3s;
-      /* Smooth transition */
-      max-width: 100px;
-      /* Set a maximum width for each button */
-      flex: 1 1 20%;
-      /* Allow buttons to grow and shrink */
-      text-align: center;
-      /* Center text inside button */
-    }
+      .tag-button:hover {
+        background-color: #4752c4;
+      }
 
-    .tag-button:hover {
-      background-color: #4752c4;
-    }
+      .tag-button.selected {
+        background-color: rgb(0, 55, 255);
+      }
 
-    .tag-button.selected {
-      background-color: rgb(0, 55, 255);
-    }
+      a {
+        color: gray;
+      }
 
-    a {
-      color: gray;
-    }
+      a:hover,
+      a:focus {
+        color: white;
+      }
 
-    a:hover,
-    a:focus {
-      color: white;
-    }
+      .profile-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
-    .profile-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+      /* Badge Icons */
+      .badge-icons {
+        display: flex;
+        gap: 5px;
+        /*margin-top: 10px;*/
+      }
 
-    /* Badge Icons */
-    .badge-icons {
-      display: flex;
-      gap: 5px;
-      /*margin-top: 10px;*/
-    }
-
-    .badge-icon {
-      font-size: 1.5rem;
-      /* Adjust size */
-      color: #5865f2;
-      /* Default color */
-      margin-right: 5px;
-      /* Spacing between icons */
-    }
+      .badge-icon {
+        font-size: 1.5rem;
+        /* Adjust size */
+        color: #5865f2;
+        /* Default color */
+        margin-right: 5px;
+        /* Spacing between icons */
+      }
 
 
-    /* Basic styles for the custom context menu */
-    .context-menu {
-      position: absolute;
-      background-color: #444;
-      border-radius: 5px;
-      padding: 8px;
-      display: none;
-      z-index: 1000;
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    }
+      /* Basic styles for the custom context menu */
+      .context-menu {
+        position: absolute;
+        background-color: #444;
+        border-radius: 5px;
+        padding: 8px;
+        display: none;
+        z-index: 1000;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      }
 
-    .context-menu button {
-      background: none;
-      color: #ff5555;
-      border: none;
-      padding: 5px 10px;
-      font-size: 14px;
-      cursor: pointer;
-      text-align: left;
-      width: 100%;
-    }
+      .context-menu button {
+        background: none;
+        color: #ff5555;
+        border: none;
+        padding: 5px 10px;
+        font-size: 14px;
+        cursor: pointer;
+        text-align: left;
+        width: 100%;
+      }
 
-    .context-menu button:hover {
-      background-color: #555;
-    }
+      .context-menu button:hover {
+        background-color: #555;
+      }
 
-    .dropdown {
-      position: relative;
-    }
+      .dropdown {
+        position: relative;
+      }
 
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #444;
-      color: white;
-      z-index: 1;
-      min-width: 150px;
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    }
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #444;
+        color: white;
+        z-index: 1;
+        min-width: 150px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      }
 
-    .dropdown-content button {
-      width: 100%;
-      padding: 10px;
-      color: white;
-      text-align: left;
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
+      .dropdown-content button {
+        width: 100%;
+        padding: 10px;
+        color: white;
+        text-align: left;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
 
-    .dropdown-content button:hover {
-      background-color: #555;
-    }
+      .dropdown-content button:hover {
+        background-color: #555;
+      }
 
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-  </style>
-</head>
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
 
-<body>
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="logo">Talentcord</div>
-    <div class="search-bar">
-      <input type="text" placeholder="Search..." />
+      .about-wrapper {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+
+      .about {
+          font-size: 25px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">Talentcord</div>
+      <div class="search-bar">
+        <input type="text" placeholder="Search..." />
+      </div>
+      <div class="plus-icon" onclick="openModal('signInModal')">
+        <i class="fas fa-plus"></i>
+      </div>
+    </nav>
+
+    <div class="about-wrapper">
+      <h1>We strive to making jobs easier to find!</h1>
     </div>
-    <div class="plus-icon" onclick="openModal('signInModal')">
-      <i class="fas fa-plus"></i>
-    </div>
-  </nav>
 
-  <!-- Listings -->
-  <section class="listings" id="listings"></section>
+    <!-- Listings -->
+    <section class="listings" id="listings"></section>
 
-  <div class="context-menu" id="customContextMenu">
-    <button onclick="banUser()">Ban</button>
-    <button onclick="timeoutUser()">Timeout</button>
-    <div class="dropdown">
-      <button class="dropdown-button">Give Badge</button>
-      <div class="dropdown-content">
-        <button onclick="givemod()">Give Mod Badge</button>
-        <button onclick="givedev()">Give Dev Badge</button>
+    <div class="context-menu" id="customContextMenu">
+      <button onclick="banUser()">Ban</button>
+      <button onclick="timeoutUser()">Timeout</button>
+      <div class="dropdown">
+        <button class="dropdown-button">Give Badge</button>
+        <div class="dropdown-content">
+          <button onclick="givemod()">Give Mod Badge</button>
+          <button onclick="givedev()">Give Dev Badge</button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", async () => {
-      let response = await fetch("/users");
-      let json = await response.json();
-      const listings = document.getElementById("listings");
+    <script>
+      document.addEventListener("DOMContentLoaded", async () => {
+        let response = await fetch("/users");
+        let json = await response.json();
+        const listings = document.getElementById("listings");
 
-      const currentUser = JSON.parse(localStorage.getItem("user"));
+        const currentUser = JSON.parse(localStorage.getItem("user"));
 
-      for (let user of json) {
-        let tags = user.tags.map(tag => `<span class="tag">${tag}</span>`).join(" ");
+        for (let user of json) {
+          let tags = user.tags
+            .map((tag) => `<span class="tag">${tag}</span>`)
+            .join(" ");
 
-        // Map badges to Font Awesome icons
-        let badges = user.badges.map(badge => {
-          return `<i class="${badge.faClass} badge-icon"></i>`;
-        }).join(" ");
+          // Map badges to Font Awesome icons
+          let badges = user.badges
+            .map((badge) => {
+              return `<i class="${badge.faClass} badge-icon"></i>`;
+            })
+            .join(" ");
 
-        listings.innerHTML += `
+          listings.innerHTML += `
         <div class="listing-card" data-user="${user.username}" data-perms="${user.permissions}">
           <img src="${user.icon}" alt="User Avatar" class="avatar">
           <div class="listing-info">
@@ -397,557 +419,581 @@
             <div class="tags">${tags}</div>
           </div>
         </div>`;
-      }
+        }
 
-      document.querySelectorAll(".listing-card").forEach(card => {
-        card.addEventListener("contextmenu", event => {
-          event.preventDefault();
-          if (currentUser) {
-            let currentUserMoreData = json.find(v => v.username === currentUser.username);
-            if (currentUserMoreData.permissions === 1) showContextMenu(event, card);
-          }
+        document.querySelectorAll(".listing-card").forEach((card) => {
+          card.addEventListener("contextmenu", (event) => {
+            event.preventDefault();
+            if (currentUser) {
+              let currentUserMoreData = json.find(
+                (v) => v.username === currentUser.username
+              );
+              if (currentUserMoreData.permissions === 1)
+                showContextMenu(event, card);
+            }
+          });
         });
       });
-    });
 
-    function showContextMenu(event, card) {
-      const menu = document.getElementById("customContextMenu");
-      menu.style.display = "block";
-      menu.style.left = `${event.pageX}px`;
-      menu.style.top = `${event.pageY}px`;
-      menu.dataset.username = card.dataset.user;
-      menu.dataset.perms = card.dataset.perms;
-
-    }
-
-    document.addEventListener("click", () => {
-      const menu = document.getElementById("customContextMenu");
-      menu.style.display = "none";
-    });
-
-    // Ban and Timeout functions
-    async function banUser() {
-      const username = document.getElementById("customContextMenu").dataset.username;
-      const targetPerms = document.getElementById("customContextMenu").dataset.perms;
-      const userData = JSON.parse(localStorage.getItem("user"));
-
-      try {
-        const response = await fetch("/ban", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            token: userData.token,
-            targetUsername: username,
-            targetPerms,
-          }),
-        });
-
-        const result = await response.json();
-
-        if (response.ok) {
-          alert("Successfully banned user!");
-        } else {
-          alert("Failed to banned user: " + result.message);
-        }
-      } catch (error) {
-        console.error("Error during ban:", error);
-        alert(
-          "An error occurred. Please try again later."
-        );
+      function showContextMenu(event, card) {
+        const menu = document.getElementById("customContextMenu");
+        menu.style.display = "block";
+        menu.style.left = `${event.pageX}px`;
+        menu.style.top = `${event.pageY}px`;
+        menu.dataset.username = card.dataset.user;
+        menu.dataset.perms = card.dataset.perms;
       }
-    }
 
-    async function timeoutUser() {
-      const username = document.getElementById("customContextMenu").dataset.username;
-      const targetPerms = document.getElementById("customContextMenu").dataset.perms;
-      const userData = JSON.parse(localStorage.getItem("user"));
+      document.addEventListener("click", () => {
+        const menu = document.getElementById("customContextMenu");
+        menu.style.display = "none";
+      });
 
-      try {
-        const response = await fetch("/timeout", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            token: userData.token,
-            targetUsername: username,
-            targetPerms,
-          }),
-        });
+      // Ban and Timeout functions
+      async function banUser() {
+        const username =
+          document.getElementById("customContextMenu").dataset.username;
+        const targetPerms =
+          document.getElementById("customContextMenu").dataset.perms;
+        const userData = JSON.parse(localStorage.getItem("user"));
 
-        const result = await response.json();
+        try {
+          const response = await fetch("/ban", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              token: userData.token,
+              targetUsername: username,
+              targetPerms,
+            }),
+          });
 
-        if (response.ok) {
-          alert("Successfully timeouted user!");
-        } else {
-          alert("Failed to timeout user: " + result.message);
+          const result = await response.json();
+
+          if (response.ok) {
+            alert("Successfully banned user!");
+          } else {
+            alert("Failed to banned user: " + result.message);
+          }
+        } catch (error) {
+          console.error("Error during ban:", error);
+          alert("An error occurred. Please try again later.");
         }
-      } catch (error) {
-        console.error("Error during timeout:", error);
-        alert(
-          "An error occurred. Please try again later."
-        );
       }
-    }
 
-    async function givedev() {
-      const username = document.getElementById("customContextMenu").dataset.username;
-      const targetPerms = document.getElementById("customContextMenu").dataset.perms;
-      const userData = JSON.parse(localStorage.getItem("user"));
+      async function timeoutUser() {
+        const username =
+          document.getElementById("customContextMenu").dataset.username;
+        const targetPerms =
+          document.getElementById("customContextMenu").dataset.perms;
+        const userData = JSON.parse(localStorage.getItem("user"));
 
-      try {
-        const response = await fetch("/givedev", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            token: userData.token,
-            targetUsername: username,
-            targetPerms,
-          }),
-        });
+        try {
+          const response = await fetch("/timeout", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              token: userData.token,
+              targetUsername: username,
+              targetPerms,
+            }),
+          });
 
-        const result = await response.json();
+          const result = await response.json();
 
-        if (response.ok) {
-          alert("Success");
-        } else {
-          alert("Failed to award user: " + result.message);
+          if (response.ok) {
+            alert("Successfully timeouted user!");
+          } else {
+            alert("Failed to timeout user: " + result.message);
+          }
+        } catch (error) {
+          console.error("Error during timeout:", error);
+          alert("An error occurred. Please try again later.");
         }
-      } catch (error) {
-        console.error("Error during awarding:", error);
-        alert(
-          "An error occurred. Please try again later."
-        );
       }
-    }
 
-    async function givemod() {
-      const username = document.getElementById("customContextMenu").dataset.username;
-      const targetPerms = document.getElementById("customContextMenu").dataset.perms;
-      const userData = JSON.parse(localStorage.getItem("user"));
+      async function givedev() {
+        const username =
+          document.getElementById("customContextMenu").dataset.username;
+        const targetPerms =
+          document.getElementById("customContextMenu").dataset.perms;
+        const userData = JSON.parse(localStorage.getItem("user"));
 
-      try {
-        const response = await fetch("/givemod", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            token: userData.token,
-            targetUsername: username,
-            targetPerms,
-          }),
-        });
+        try {
+          const response = await fetch("/givedev", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              token: userData.token,
+              targetUsername: username,
+              targetPerms,
+            }),
+          });
 
-        const result = await response.json();
+          const result = await response.json();
 
-        if (response.ok) {
-          alert("Success");
-        } else {
-          alert("Failed to award user: " + result.message);
+          if (response.ok) {
+            alert("Success");
+          } else {
+            alert("Failed to award user: " + result.message);
+          }
+        } catch (error) {
+          console.error("Error during awarding:", error);
+          alert("An error occurred. Please try again later.");
         }
-      } catch (error) {
-        console.error("Error during awarding:", error);
-        alert(
-          "An error occurred. Please try again later."
-        );
       }
-    }
-  </script>
 
-  <!-- Sign In Modal -->
-  <div id="signInModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('signInModal')">&times;</span>
-      <form id="signin-form" onsubmit="postSignIn(event)">
-        <h2>Sign In</h2>
-        <label for="signin-username">Username:</label>
-        <input type="text" id="signin-username" required />
+      async function givemod() {
+        const username =
+          document.getElementById("customContextMenu").dataset.username;
+        const targetPerms =
+          document.getElementById("customContextMenu").dataset.perms;
+        const userData = JSON.parse(localStorage.getItem("user"));
 
-        <label for="signin-password">Password:</label>
-        <input type="password" id="signin-password" required />
+        try {
+          const response = await fetch("/givemod", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              token: userData.token,
+              targetUsername: username,
+              targetPerms,
+            }),
+          });
 
-        <button type="submit">Sign In</button>
-      </form>
-      <p style="margin-top: 10px;">
-        Don't have an account?
-        <a href="#" onclick="toggleToCreateAccount()">Create one here.</a>
-      </p>
+          const result = await response.json();
+
+          if (response.ok) {
+            alert("Success");
+          } else {
+            alert("Failed to award user: " + result.message);
+          }
+        } catch (error) {
+          console.error("Error during awarding:", error);
+          alert("An error occurred. Please try again later.");
+        }
+      }
+    </script>
+
+    <!-- Sign In Modal -->
+    <div id="signInModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('signInModal')">&times;</span>
+        <form id="signin-form" onsubmit="postSignIn(event)">
+          <h2>Sign In</h2>
+          <label for="signin-username">Username:</label>
+          <input type="text" id="signin-username" required />
+
+          <label for="signin-password">Password:</label>
+          <input type="password" id="signin-password" required />
+
+          <button type="submit">Sign In</button>
+        </form>
+        <p style="margin-top: 10px;">
+          Don't have an account?
+          <a href="#" onclick="toggleToCreateAccount()">Create one here.</a>
+        </p>
+      </div>
     </div>
-  </div>
 
-  <!-- Create Account Modal -->
-  <div id="createAccountModal" class="modal" style="display:none">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('createAccountModal')">&times;</span>
-      <form id="create-account-form" onsubmit="postCreateAccount(event)">
-        <h2>Create Account</h2>
-        <label for="create-username">Username:</label>
-        <input type="text" id="create-username" required />
+    <!-- Create Account Modal -->
+    <div id="createAccountModal" class="modal" style="display:none">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('createAccountModal')"
+          >&times;</span
+        >
+        <form id="create-account-form" onsubmit="postCreateAccount(event)">
+          <h2>Create Account</h2>
+          <label for="create-username">Username:</label>
+          <input type="text" id="create-username" required />
 
-        <label for="create-email">Email:</label>
-        <input type="email" id="create-email" required />
+          <label for="create-email">Email:</label>
+          <input type="email" id="create-email" required />
 
-        <label for="create-password">Password:</label>
-        <input type="password" id="create-password" required />
+          <label for="create-password">Password:</label>
+          <input type="password" id="create-password" required />
 
-        <label for="create-portfolio">Portfolio URL</label>
-        <input type="text" id="create-portfolio" required />
+          <label for="create-portfolio">Portfolio URL</label>
+          <input type="text" id="create-portfolio" required />
 
-        <label for="create-bio">Bio:</label>
-        <textarea id="create-bio"></textarea>
+          <label for="create-bio">Bio:</label>
+          <textarea id="create-bio"></textarea>
 
-        <label for="tags">Select Tags:</label><br />
-        <div id="tags-container"
-          style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; margin-top: 20px;">
-          <button type="button" class="tag-button" data-value="#developer">
-            #developer
-          </button>
-          <button type="button" class="tag-button" data-value="#designer">
-            #designer
-          </button>
-          <button type="button" class="tag-button" data-value="#writer">
-            #writer
-          </button>
-          <button type="button" class="tag-button" data-value="#graphic">
-            #graphic
-          </button>
-          <button type="button" class="tag-button" data-value="#copywriter">
-            #copywriter
-          </button>
-          <button type="button" class="tag-button" data-value="#devops">
-            #devops
-          </button>
-          <button type="button" class="tag-button" data-value="#community-management">
-            #community-management
-          </button>
-          <button type="button" class="tag-button" data-value="#artist">
-            #artist
-          </button>
-          <button type="button" class="tag-button" data-value="#digital-artist">
-            #digital-artist
-          </button>
-          <button type="button" class="tag-button" data-value="#manga-artist">
-            #manga-artist
-          </button>
-          <button type="button" class="tag-button" data-value="#moderator">
-            #moderator
-          </button>
-        </div>
+          <label for="tags">Select Tags:</label><br />
+          <div
+            id="tags-container"
+            style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; margin-top: 20px;"
+          >
+            <button type="button" class="tag-button" data-value="#developer">
+              #developer
+            </button>
+            <button type="button" class="tag-button" data-value="#designer">
+              #designer
+            </button>
+            <button type="button" class="tag-button" data-value="#writer">
+              #writer
+            </button>
+            <button type="button" class="tag-button" data-value="#graphic">
+              #graphic
+            </button>
+            <button type="button" class="tag-button" data-value="#copywriter">
+              #copywriter
+            </button>
+            <button type="button" class="tag-button" data-value="#devops">
+              #devops
+            </button>
+            <button
+              type="button"
+              class="tag-button"
+              data-value="#community-management"
+            >
+              #community-management
+            </button>
+            <button type="button" class="tag-button" data-value="#artist">
+              #artist
+            </button>
+            <button
+              type="button"
+              class="tag-button"
+              data-value="#digital-artist"
+            >
+              #digital-artist
+            </button>
+            <button type="button" class="tag-button" data-value="#manga-artist">
+              #manga-artist
+            </button>
+            <button type="button" class="tag-button" data-value="#moderator">
+              #moderator
+            </button>
+          </div>
 
-        <button type="submit">Create Account</button>
-      </form>
-      <p style="margin-top: 10px;">
-        Already have an account?
-        <a href="#" onclick="toggleToSignIn()">Sign in here.</a>
-      </p>
+          <button type="submit">Create Account</button>
+        </form>
+        <p style="margin-top: 10px;">
+          Already have an account?
+          <a href="#" onclick="toggleToSignIn()">Sign in here.</a>
+        </p>
+      </div>
     </div>
-  </div>
 
-  <!-- Edit Profile Modal -->
-  <div id="editProfileModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('editProfileModal')">&times;</span>
-      <form id="edit-profile-form" onsubmit="postEditProfile(event)">
-        <h2>Edit Profile</h2>
-        <label for="edit-bio">Bio:</label>
-        <textarea id="edit-bio"></textarea>
+    <!-- Edit Profile Modal -->
+    <div id="editProfileModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('editProfileModal')"
+          >&times;</span
+        >
+        <form id="edit-profile-form" onsubmit="postEditProfile(event)">
+          <h2>Edit Profile</h2>
+          <label for="edit-bio">Bio:</label>
+          <textarea id="edit-bio"></textarea>
 
-        <label for="edit-portfolio">Portfolio URL:</label>
-        <input type="text" id="edit-portfolio" required />
+          <label for="edit-portfolio">Portfolio URL:</label>
+          <input type="text" id="edit-portfolio" required />
 
-        <label for="edit-avatar">Avatar URL:</label>
-        <input type="text" id="edit-avatar" />
+          <label for="edit-avatar">Avatar URL:</label>
+          <input type="text" id="edit-avatar" />
 
-        <label for="edit-tags">Select Tags:</label><br />
-        <div id="tags-container-ep"
-          style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; margin-top: 20px;">
-          <button type="button" class="tag-button" data-value="#developer">
-            #developer
-          </button>
-          <button type="button" class="tag-button" data-value="#designer">
-            #designer
-          </button>
-          <button type="button" class="tag-button" data-value="#writer">
-            #writer
-          </button>
-          <button type="button" class="tag-button" data-value="#graphic">
-            #graphic
-          </button>
-          <button type="button" class="tag-button" data-value="#copywriter">
-            #copywriter
-          </button>
-          <button type="button" class="tag-button" data-value="#devops">
-            #devops
-          </button>
-          <button type="button" class="tag-button" data-value="#community-management">
-            #community-management
-          </button>
-          <button type="button" class="tag-button" data-value="#artist">
-            #artist
-          </button>
-          <button type="button" class="tag-button" data-value="#digital-artist">
-            #digital-artist
-          </button>
-          <button type="button" class="tag-button" data-value="#manga-artist">
-            #manga-artist
-          </button>
-          <button type="button" class="tag-button" data-value="#moderator">
-            #moderator
-          </button>
-        </div>
+          <label for="edit-tags">Select Tags:</label><br />
+          <div
+            id="tags-container-ep"
+            style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; margin-top: 20px;"
+          >
+            <button type="button" class="tag-button" data-value="#developer">
+              #developer
+            </button>
+            <button type="button" class="tag-button" data-value="#designer">
+              #designer
+            </button>
+            <button type="button" class="tag-button" data-value="#writer">
+              #writer
+            </button>
+            <button type="button" class="tag-button" data-value="#graphic">
+              #graphic
+            </button>
+            <button type="button" class="tag-button" data-value="#copywriter">
+              #copywriter
+            </button>
+            <button type="button" class="tag-button" data-value="#devops">
+              #devops
+            </button>
+            <button
+              type="button"
+              class="tag-button"
+              data-value="#community-management"
+            >
+              #community-management
+            </button>
+            <button type="button" class="tag-button" data-value="#artist">
+              #artist
+            </button>
+            <button
+              type="button"
+              class="tag-button"
+              data-value="#digital-artist"
+            >
+              #digital-artist
+            </button>
+            <button type="button" class="tag-button" data-value="#manga-artist">
+              #manga-artist
+            </button>
+            <button type="button" class="tag-button" data-value="#moderator">
+              #moderator
+            </button>
+          </div>
 
-        <button type="submit">Update Profile</button>
-        <button onclick="signout()" style="margin-top: 10px;">
-          Sign Out
-        </button>
-      </form>
+          <button type="submit">Update Profile</button>
+          <button onclick="signout()" style="margin-top: 10px;">
+            Sign Out
+          </button>
+        </form>
+      </div>
     </div>
-  </div>
 
-  <script>
-    // Open modal
-    function openModal(modalId) {
-      document.getElementById(modalId).style.display = "block";
-    }
+    <script>
+      // Open modal
+      function openModal(modalId) {
+        document.getElementById(modalId).style.display = "block";
+      }
 
-    // Close modal
-    function closeModal(modalId) {
-      document.getElementById(modalId).style.display = "none";
-    }
+      // Close modal
+      function closeModal(modalId) {
+        document.getElementById(modalId).style.display = "none";
+      }
 
-    // Toggle to Create Account modal
-    function toggleToCreateAccount() {
-      closeModal("signInModal");
-      openModal("createAccountModal");
-    }
+      // Toggle to Create Account modal
+      function toggleToCreateAccount() {
+        closeModal("signInModal");
+        openModal("createAccountModal");
+      }
 
-    // Toggle to Sign In modal
-    function toggleToSignIn() {
-      closeModal("createAccountModal");
-      openModal("signInModal");
-    }
+      // Toggle to Sign In modal
+      function toggleToSignIn() {
+        closeModal("createAccountModal");
+        openModal("signInModal");
+      }
 
-    // Form submission functions
-    function postSignIn(event) {
-      event.preventDefault();
-      // Handle sign-in logic here
-      closeModal("signInModal");
-    }
+      // Form submission functions
+      function postSignIn(event) {
+        event.preventDefault();
+        // Handle sign-in logic here
+        closeModal("signInModal");
+      }
 
-    function postCreateAccount(event) {
-      event.preventDefault();
-      // Handle account creation logic here
-      closeModal("createAccountModal");
-    }
+      function postCreateAccount(event) {
+        event.preventDefault();
+        // Handle account creation logic here
+        closeModal("createAccountModal");
+      }
 
-    function replaceCrossWithAvatar(avatarUrl) {
-      const navbar = document.querySelector(".navbar");
-      const plusIcon = navbar.querySelector(".plus-icon");
-      // Replace the icon with the avatar
-      plusIcon.outerHTML = `<div class="plus-icon" onclick="openModal('editProfileModal')"><img src="${avatarUrl}" alt="Avatar" class="avatar" style="width: 40px; height: 40px; border-radius: 50%;"/></div>`;
-    }
+      function replaceCrossWithAvatar(avatarUrl) {
+        const navbar = document.querySelector(".navbar");
+        const plusIcon = navbar.querySelector(".plus-icon");
+        // Replace the icon with the avatar
+        plusIcon.outerHTML = `<div class="plus-icon" onclick="openModal('editProfileModal')"><img src="${avatarUrl}" alt="Avatar" class="avatar" style="width: 40px; height: 40px; border-radius: 50%;"/></div>`;
+      }
 
-    function signout() {
-      event.preventDefault();
-      localStorage.removeItem("user");
-      alert("Successfully signed out!");
-      setTimeout(() => {
-        window.location.reload();
-      }, 3000);
-    }
-  </script>
+      function signout() {
+        event.preventDefault();
+        localStorage.removeItem("user");
+        alert("Successfully signed out!");
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000);
+      }
+    </script>
 
-  <script>
-    const tagsContainerep = document.getElementById("tags-container-ep");
-    const selectedTagsEP = [];
+    <script>
+      const tagsContainerep = document.getElementById("tags-container-ep");
+      const selectedTagsEP = [];
 
-    tagsContainerep.addEventListener("click", (event) => {
-      if (event.target.classList.contains("tag-button")) {
-        const button = event.target;
-        const tagValue = button.getAttribute("data-value");
+      tagsContainerep.addEventListener("click", (event) => {
+        if (event.target.classList.contains("tag-button")) {
+          const button = event.target;
+          const tagValue = button.getAttribute("data-value");
 
-        // Toggle selection
-        if (selectedTagsEP.includes(tagValue)) {
-          selectedTagsEP.splice(selectedTagsEP.indexOf(tagValue), 1);
-          button.classList.remove("selected");
-        } else {
-          selectedTagsEP.push(tagValue);
-          button.classList.add("selected");
+          // Toggle selection
+          if (selectedTagsEP.includes(tagValue)) {
+            selectedTagsEP.splice(selectedTagsEP.indexOf(tagValue), 1);
+            button.classList.remove("selected");
+          } else {
+            selectedTagsEP.push(tagValue);
+            button.classList.add("selected");
+          }
+        }
+      });
+      // Handle the form submission for bio and tags update
+      async function postEditProfile(event) {
+        event.preventDefault();
+        const bio = document.getElementById("edit-bio").value;
+        const portfolio = document.getElementById("edit-portfolio").value;
+        const avatar = document.getElementById("edit-avatar").value;
+
+        const tags = selectedTagsEP; // Get the updated tags
+
+        const userData = JSON.parse(localStorage.getItem("user"));
+        try {
+          const response = await fetch("/update-profile", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              avatar: avatar,
+              bio: bio,
+              tags: tags,
+              portfolio: portfolio,
+              token: userData.token,
+            }),
+          });
+
+          if (response.ok) {
+            alert("Profile updated successfully");
+            closeModal("editProfileModal");
+            location.reload(); // Reload the page to reflect updated profile
+          } else {
+            alert("Failed to update profile");
+          }
+        } catch (error) {
+          console.error("Error updating profile:", error);
         }
       }
-    });
-    // Handle the form submission for bio and tags update
-    async function postEditProfile(event) {
-      event.preventDefault();
-      const bio = document.getElementById("edit-bio").value;
-      const portfolio = document.getElementById("edit-portfolio").value;
-      const avatar = document.getElementById("edit-avatar").value;
 
-      const tags = selectedTagsEP; // Get the updated tags
+      // Function to handle Sign In form submission
+      async function postSignIn(event) {
+        event.preventDefault(); // Prevent the form from submitting normally
 
-      const userData = JSON.parse(localStorage.getItem("user"));
-      try {
-        const response = await fetch("/update-profile", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            avatar: avatar, 
-            bio: bio,
-            tags: tags,
-            portfolio: portfolio,
-            token: userData.token,
-          }),
-        });
+        // Get values from the form
+        const username = document.getElementById("signin-username").value;
+        const password = document.getElementById("signin-password").value;
 
-        if (response.ok) {
-          alert("Profile updated successfully");
-          closeModal("editProfileModal");
-          location.reload(); // Reload the page to reflect updated profile
-        } else {
-          alert("Failed to update profile");
-        }
-      } catch (error) {
-        console.error("Error updating profile:", error);
-      }
-    }
+        try {
+          const response = await fetch("/signin", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              username: username,
+              password: password,
+            }),
+          });
 
-    // Function to handle Sign In form submission
-    async function postSignIn(event) {
-      event.preventDefault(); // Prevent the form from submitting normally
+          const result = await response.json();
 
-      // Get values from the form
-      const username = document.getElementById("signin-username").value;
-      const password = document.getElementById("signin-password").value;
-
-      try {
-        const response = await fetch("/signin", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            username: username,
-            password: password,
-          }),
-        });
-
-        const result = await response.json();
-
-        if (response.ok) {
-          window.location.href = result.redirectUrl; // Redirect to the URL returned from the server
-        } else {
-          alert("Sign in failed: " + result.message);
-        }
-      } catch (error) {
-        console.log(error);
-        console.error("Error during sign in:", error);
-        alert("An error occurred during sign in. Please try again later.");
-      }
-    }
-
-    // Function to handle Create Account form submission
-
-    const tagsContainer = document.getElementById("tags-container");
-    const selectedTags = [];
-
-    tagsContainer.addEventListener("click", (event) => {
-      if (event.target.classList.contains("tag-button")) {
-        const button = event.target;
-        const tagValue = button.getAttribute("data-value");
-
-        // Toggle selection
-        if (selectedTags.includes(tagValue)) {
-          selectedTags.splice(selectedTags.indexOf(tagValue), 1);
-          button.classList.remove("selected");
-        } else {
-          selectedTags.push(tagValue);
-          button.classList.add("selected");
+          if (response.ok) {
+            window.location.href = result.redirectUrl; // Redirect to the URL returned from the server
+          } else {
+            alert("Sign in failed: " + result.message);
+          }
+        } catch (error) {
+          console.log(error);
+          console.error("Error during sign in:", error);
+          alert("An error occurred during sign in. Please try again later.");
         }
       }
-    });
 
-    async function postCreateAccount(event) {
-      event.preventDefault(); // Prevent the form from submitting normally
+      // Function to handle Create Account form submission
 
-      // Get values from the form
-      const username = document.getElementById("create-username").value;
-      const email = document.getElementById("create-email").value;
-      const password = document.getElementById("create-password").value;
-      const bio = document.getElementById("create-bio").value;
-      const portfolio = document.getElementById("create-portfolio").value;
+      const tagsContainer = document.getElementById("tags-container");
+      const selectedTags = [];
 
-      // Collect checked tags
-      const tags = selectedTags;
+      tagsContainer.addEventListener("click", (event) => {
+        if (event.target.classList.contains("tag-button")) {
+          const button = event.target;
+          const tagValue = button.getAttribute("data-value");
 
-      try {
-        const response = await fetch("/create-account", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            username: username,
-            email: email,
-            password: password,
-            bio: bio,
-            portfolio: portfolio,
-            tags: tags,
-          }),
-        });
-
-        const result = await response.json();
-
-        if (response.ok) {
-          // Handle success, for example, show a welcome message or redirect
-          alert("Account created successfully!");
-          closeModal("createAccountModal"); // Close the modal after account creation
-        } else {
-          // Handle error, for example, display an error message
-          alert("Account creation failed: " + result.message);
+          // Toggle selection
+          if (selectedTags.includes(tagValue)) {
+            selectedTags.splice(selectedTags.indexOf(tagValue), 1);
+            button.classList.remove("selected");
+          } else {
+            selectedTags.push(tagValue);
+            button.classList.add("selected");
+          }
         }
-      } catch (error) {
-        console.error("Error during account creation:", error);
-        alert(
-          "An error occurred during account creation. Please try again later."
-        );
+      });
+
+      async function postCreateAccount(event) {
+        event.preventDefault(); // Prevent the form from submitting normally
+
+        // Get values from the form
+        const username = document.getElementById("create-username").value;
+        const email = document.getElementById("create-email").value;
+        const password = document.getElementById("create-password").value;
+        const bio = document.getElementById("create-bio").value;
+        const portfolio = document.getElementById("create-portfolio").value;
+
+        // Collect checked tags
+        const tags = selectedTags;
+
+        try {
+          const response = await fetch("/create-account", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              username: username,
+              email: email,
+              password: password,
+              bio: bio,
+              portfolio: portfolio,
+              tags: tags,
+            }),
+          });
+
+          const result = await response.json();
+
+          if (response.ok) {
+            // Handle success, for example, show a welcome message or redirect
+            alert("Account created successfully!");
+            closeModal("createAccountModal"); // Close the modal after account creation
+          } else {
+            // Handle error, for example, display an error message
+            alert("Account creation failed: " + result.message);
+          }
+        } catch (error) {
+          console.error("Error during account creation:", error);
+          alert(
+            "An error occurred during account creation. Please try again later."
+          );
+        }
       }
-    }
-  </script>
+    </script>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      // Check if user data exists in localStorage
-      const userData = JSON.parse(localStorage.getItem("user"));
-      if (userData) {
-        replaceCrossWithAvatar(userData.avatar); // Replace the cross icon with an avatar
-      }
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Check if user data exists in localStorage
+        const userData = JSON.parse(localStorage.getItem("user"));
+        if (userData) {
+          replaceCrossWithAvatar(userData.avatar); // Replace the cross icon with an avatar
+        }
 
-      // Refresh page if user is signed in
-      if (window.location.search.includes("token")) {
-        const username = new URLSearchParams(window.location.search).get(
-          "username"
-        );
-        const token = new URLSearchParams(window.location.search).get(
-          "token"
-        );
-        const avatar = new URLSearchParams(window.location.search).get(
-          "avatar"
-        );
+        // Refresh page if user is signed in
+        if (window.location.search.includes("token")) {
+          const username = new URLSearchParams(window.location.search).get(
+            "username"
+          );
+          const token = new URLSearchParams(window.location.search).get(
+            "token"
+          );
+          const avatar = new URLSearchParams(window.location.search).get(
+            "avatar"
+          );
 
-        const user = { username, avatar, token };
-        localStorage.setItem("user", JSON.stringify(user)); // Save user data to localStorage
-        window.location.href =
-          "https://talentcord.org/";
-      }
-    });
-  </script>
-</body>
-
+          const user = { username, avatar, token };
+          localStorage.setItem("user", JSON.stringify(user)); // Save user data to localStorage
+          window.location.href = "https://talentcord.org/";
+        }
+      });
+    </script>
+  </body>
 </html>
