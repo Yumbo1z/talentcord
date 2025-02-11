@@ -24,6 +24,8 @@ app.get("/home", async (_, res) => res.sendFile(dir("home")));
 
 app.get("/homeCSS", (_, res) => res.sendFile(`${__dirname}/css/home.css`));
 
+app.get("/homeJS", (_, res) => res.sendFile(`${__dirname}/js/home.js`));
+
 app.listen(process.env.PORT || 8080, () => {
   console.log("Server Started");
 });
