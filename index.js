@@ -20,8 +20,9 @@ app.use(express.json({ limit: "50mb" }));
 require("./handler")(app);
 
 app.get("/", (_, res) => res.redirect(link("home")));
-
 app.get("/home", async (_, res) => res.sendFile(dir("home")));
+
+app.get("/homeCSS", (_, res) => res.sendFile(`${__dirname}/css/home.css`));
 
 app.listen(process.env.PORT || 8080, () => {
   console.log("Server Started");
