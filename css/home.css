@@ -118,13 +118,8 @@ body {
     scrollbar-color: #5865f2 #36393f;
 }
 
-.tags::-webkit-scrollbar-thumb {
-    background-color: #5865f2;
-    border-radius: 4px;
-}
-
-.tags::-webkit-scrollbar-track {
-    background-color: #36393f;
+.tags::-webkit-scrollbar {
+    display: none;
 }
 
 .tag {
