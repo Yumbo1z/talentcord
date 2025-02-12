@@ -114,8 +114,6 @@ body {
     max-height: 100px;
     /* Limit height for tags overflow */
     overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: #5865f2 #36393f;
 }
 
 .tags::-webkit-scrollbar {
