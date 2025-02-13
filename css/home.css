@@ -420,7 +420,8 @@ a:focus {
 
 textarea {
     margin: 25px;
-    max-width: auto;
+    max-width: 100%;
+    min-height: 150;
     max-height: 300px;
     resize: none;
     field-sizing: content;
