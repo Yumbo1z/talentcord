@@ -24,7 +24,7 @@
       <div class="search-bar">
         <input type="text" placeholder="Search..." />
       </div>
-      <div class="plus-icon" onclick="openModal('signInModal')">
+      <div class="plus-icon" onclick="openModal('signInModal', 'block')">
         <i class="fas fa-plus"></i>
       </div>
     </nav>
@@ -83,7 +83,7 @@
           potential recruiters.
         </p>
         <div class="about-buttons">
-          <button class="about-button" onclick="openModal('postdiv')">
+          <button class="about-button" onclick="openModal('postdiv', 'fixed')">
             Post Something!
           </button>
         </div>
@@ -95,7 +95,9 @@
         <p style="font-size: 18px; color: #fff;">
           ⚠️ keep tos in mind when you post.
         </p>
-        <textarea>Hello I am an experienced backend dev looking for work...</textarea>
+        <textarea>
+Hello I am an experienced backend dev looking for work...</textarea
+        >
         <button
           id="confirmLeave"
           style="padding: 10px 20px; margin: 25px 10px; background: #ff4757; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px;"

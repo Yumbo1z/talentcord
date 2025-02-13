@@ -277,8 +277,8 @@ async function giveverified() {
 }
 
 // Open modal
-function openModal(modalId) {
-  document.getElementById(modalId).style.display = "block";
+function openModal(modalId, method) {
+  document.getElementById(modalId).style.display = method;
 }
 
 // Close modal
@@ -289,13 +289,13 @@ function closeModal(modalId) {
 // Toggle to Create Account modal
 function toggleToCreateAccount() {
   closeModal("signInModal");
-  openModal("createAccountModal");
+  openModal("createAccountModal", "block");
 }
 
 // Toggle to Sign In modal
 function toggleToSignIn() {
   closeModal("createAccountModal");
-  openModal("signInModal");
+  openModal("signInModal", "block");
 }
 
 // Form submission functions
@@ -315,7 +315,7 @@ function replaceCrossWithAvatar(avatarUrl) {
   const navbar = document.querySelector(".navbar");
   const plusIcon = navbar.querySelector(".plus-icon");
   // Replace the icon with the avatar
-  plusIcon.outerHTML = `<div class="plus-icon" onclick="openModal('editProfileModal')"><img src="${avatarUrl}" alt="Avatar" class="avatar" style="width: 40px; height: 40px; border-radius: 50%;"/></div>`;
+  plusIcon.outerHTML = `<div class="plus-icon" onclick="openModal('editProfileModal', 'block')"><img src="${avatarUrl}" alt="Avatar" class="avatar" style="width: 40px; height: 40px; border-radius: 50%;"/></div>`;
 }
 
 function signout() {
