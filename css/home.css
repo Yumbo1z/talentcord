@@ -415,14 +415,18 @@ a:focus {
     padding: 20px;
     border-radius: 10px;
     text-align: center;
-    width: 400px;
+    width: 90%;
+    max-width: 400px;
+    box-sizing: border-box;
 }
 
 textarea {
-    margin: 25px;
-    width: 350px;
+    margin-top: 10px;
+    width: 100%;
     min-height: 3rem;
     max-height: 10rem;
     resize: none;
-    field-sizing: content;
+    box-sizing: border-box;
+    padding: 8px;
+    font-size: 1rem;
 }
