@@ -277,8 +277,8 @@ async function giveverified() {
 }
 
 // Open modal
-function openModal(modalId, method) {
-  document.getElementById(modalId).style.display = method;
+function openModal(modalId) {
+  document.getElementById(modalId).style.display = "block";
 }
 
 // Close modal
@@ -295,7 +295,7 @@ function toggleToCreateAccount() {
 // Toggle to Sign In modal
 function toggleToSignIn() {
   closeModal("createAccountModal");
-  openModal("signInModal", "block");
+  openModal("signInModal");
 }
 
 // Form submission functions
