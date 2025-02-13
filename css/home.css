@@ -412,4 +412,8 @@ a:focus {
 
 .post-content {
     background-color: #23272a;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 400px;
 }
