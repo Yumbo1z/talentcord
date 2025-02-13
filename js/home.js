@@ -13,7 +13,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Map badges to Font Awesome icons
     let badges = user.badges
       .map((badge) => {
-        return `<i class="${badge.faClass} badge-icon" title="${badge.name}"></i>`;
+        return `<div class="badge-container">
+                <i class="${badge.faClass} badge-icon"></i>
+                <span class="badge-tooltip">${badge.name}</span>
+              </div>`;
       })
       .join("");
 
@@ -171,6 +174,39 @@ async function givemod() {
 
   try {
     const response = await fetch("/givemod", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        token: userData.token,
+        targetUsername: username,
+        targetPerms,
+      }),
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+      alert("Success");
+    } else {
+      alert("Failed to award user: " + result.message);
+    }
+  } catch (error) {
+    console.error("Error during awarding:", error);
+    alert("An error occurred. Please try again later.");
+  }
+}
+
+async function giveverified() {
+  const username =
+    document.getElementById("customContextMenu").dataset.username;
+  const targetPerms =
+    document.getElementById("customContextMenu").dataset.perms;
+  const userData = JSON.parse(localStorage.getItem("user"));
+
+  try {
+    const response = await fetch("/giveverified", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

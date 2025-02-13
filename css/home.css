@@ -264,6 +264,34 @@ a:focus {
     /* Spacing between icons */
 }
 
+.badge-container {
+    position: relative;
+    display: inline-block;
+}
+
+.badge-tooltip {
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 8px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.badge-container:hover .badge-tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+
 
 /* Basic styles for the custom context menu */
 .context-menu {
