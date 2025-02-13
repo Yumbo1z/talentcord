@@ -12,6 +12,7 @@ const userSchema = mongoose.Schema({
   permissions: Number,
   banned: Boolean,
   badges: Array,
+  premium: Boolean,
 });
 
 module.exports = mongoose.model("user", userSchema);
