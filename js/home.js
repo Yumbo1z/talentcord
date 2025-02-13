@@ -25,9 +25,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       <img src="${user.icon}" alt="User Avatar" class="avatar">
       <div class="listing-info">
         <div class="profile-header">
-          <h3>
-            <a style="color: white;" href="${user.portfolio}" target="_blank">${user.username}</a>
-          </h3>
+          <h3><a style="color: white;" href="${user.portfolio}" onclick="confirmExit(event, '${user.portfolio}')" target="_blank">${user.username}</a></h3>
           <div class="badge-icons">
             ${badges}
           </div>
@@ -64,6 +62,52 @@ document.addEventListener("click", () => {
   const menu = document.getElementById("customContextMenu");
   menu.style.display = "none";
 });
+
+function confirmExit(event, url) {
+  event.preventDefault(); // Prevents the link from opening immediately
+
+  // Create the confirmation modal
+  let modal = document.createElement("div");
+  modal.style.position = "fixed";
+  modal.style.top = "0";
+  modal.style.left = "0";
+  modal.style.width = "100%";
+  modal.style.height = "100%";
+  modal.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+  modal.style.display = "flex";
+  modal.style.alignItems = "center";
+  modal.style.justifyContent = "center";
+  modal.style.zIndex = "1000";
+
+  let modalContent = document.createElement("div");
+  modalContent.style.background = "#fff";
+  modalContent.style.padding = "20px";
+  modalContent.style.borderRadius = "10px";
+  modalContent.style.textAlign = "center";
+  modalContent.style.boxShadow = "0px 4px 6px rgba(0, 0, 0, 0.1)";
+
+  modalContent.innerHTML = `
+        <p style="font-size: 18px; color: black;">Watch out! You're about to leave TalentCord.</p>
+        <p style="font-size: 16px; color: gray;">You're going to: <strong>${url}</strong></p>
+        <button id="confirmLeave" style="padding: 10px 20px; margin: 10px; background: red; color: white; border: none; border-radius: 5px; cursor: pointer;">Accept</button>
+        <button id="cancelLeave" style="padding: 10px 20px; margin: 10px; background: gray; color: white; border: none; border-radius: 5px; cursor: pointer;">Decline</button>
+    `;
+
+  modal.appendChild(modalContent);
+  document.body.appendChild(modal);
+
+  // Handle button actions
+  document
+    .getElementById("confirmLeave")
+    .addEventListener("click", function () {
+      window.open(url, "_blank"); // Open in new tab
+      document.body.removeChild(modal); // Close modal
+    });
+
+  document.getElementById("cancelLeave").addEventListener("click", function () {
+    document.body.removeChild(modal); // Just close the modal
+  });
+}
 
 // Ban and Timeout functions
 async function banUser() {
