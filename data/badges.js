@@ -1,11 +1,11 @@
 module.exports = [
   {
     name: "Premium",
-    faClass: "fa-star",
+    faClass: "fa-solid fa-star",
   },
   {
-    name: "Verified ",
-    faClass: "fa-badge-check",
+    name: "Verified Community Owner",
+    faClass: "fa-solid fa-badge-check",
   },
   {
     name: "Translator",
