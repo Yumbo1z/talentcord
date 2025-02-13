@@ -90,8 +90,8 @@ function confirmExit(event, url) {
   modalContent.innerHTML = `
         <p style="font-size: 18px; color: #fff;">⚠️ Watch out! You're about to leave TalentCord.</p>
         <p style="font-size: 16px; color: #b9bbbe;">You're going to: <br><strong style="color: #7289da;">${url}</strong></p>
-        <button id="confirmLeave" style="padding: 10px 20px; margin: 25px 10px; background: #ff4757; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px;">Accept</button>
-        <button id="cancelLeave" style="padding: 10px 20px; margin: 25px 10px; background: #40444b; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px;">Decline</button>
+        <button id="confirmLeave" class="about-button">Accept</button>
+        <button id="cancelLeave" class="about-button">Decline</button>
     `;
 
   modal.appendChild(modalContent);
