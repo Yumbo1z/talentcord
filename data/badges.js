@@ -1,5 +1,13 @@
 module.exports = [
   {
+    name: "Premium",
+    faClass: "fa-star",
+  },
+  {
+    name: "Verified ",
+    faClass: "fa-badge-check",
+  },
+  {
     name: "Translator",
     faClass: "fas fa-language",
   },
