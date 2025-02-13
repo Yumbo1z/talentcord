@@ -429,6 +429,6 @@ textarea {
     padding: 8px;
     font-size: 1rem;
     border-radius: 10px;
-    border-color: none;
+    border: 2px solid #383a40;
     background-color: #383a40;
 }
