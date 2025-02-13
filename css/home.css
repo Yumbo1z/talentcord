@@ -398,6 +398,7 @@ a:focus {
 }
 
 .post-form {
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -417,3 +418,4 @@ a:focus {
     text-align: center;
     width: 400px;
 }
+

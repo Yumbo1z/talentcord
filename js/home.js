@@ -63,6 +63,9 @@ document.addEventListener("click", () => {
   menu.style.display = "none";
 });
 
+function post() {
+}
+
 function confirmExit(event, url) {
   event.preventDefault(); // Prevents the link from opening immediately
 
@@ -90,8 +93,8 @@ function confirmExit(event, url) {
   modalContent.innerHTML = `
         <p style="font-size: 18px; color: #fff;">⚠️ Watch out! You're about to leave TalentCord.</p>
         <p style="font-size: 16px; color: #b9bbbe;">You're going to: <br><strong style="color: #7289da;">${url}</strong></p>
-        <button id="confirmLeave" style="padding: 10px 20px; margin: 10px; background: #ff4757; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px;">Accept</button>
-        <button id="cancelLeave" style="padding: 10px 20px; margin: 10px; background: #40444b; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px;">Decline</button>
+        <button id="confirmLeave" style="padding: 10px 20px; margin: 25px 10px; background: #ff4757; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px;">Accept</button>
+        <button id="cancelLeave" style="padding: 10px 20px; margin: 25px 10px; background: #40444b; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px;">Decline</button>
     `;
 
   modal.appendChild(modalContent);
