@@ -55,7 +55,7 @@ module.exports = {
 
         res
           .status(200)
-          .json({ success: "Successfully awarded the Developer badge!" });
+          .json({ success: "Successfully awarded the Verified Community Owner badge!" });
       });
     } catch (err) {
       console.log(err);
