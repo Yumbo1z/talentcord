@@ -63,9 +63,6 @@ document.addEventListener("click", () => {
   menu.style.display = "none";
 });
 
-function post() {
-}
-
 function confirmExit(event, url) {
   event.preventDefault(); // Prevents the link from opening immediately
 

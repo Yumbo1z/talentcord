@@ -83,17 +83,32 @@
           potential recruiters.
         </p>
         <div class="about-buttons">
-          <button class="about-button">Post Something!</button>
+          <button class="about-button" onclick="openModal('postdiv')">
+            Post Something!
+          </button>
         </div>
       </div>
     </section>
 
-    <div class="post-form">
+    <div id="postdiv" class="post-form">
       <div class="post-content">
-        <p style="font-size: 18px; color: #fff;">⚠️ Watch out! You're about to leave TalentCord.</p>
-        <p style="font-size: 16px; color: #b9bbbe;">You're going to: <br><strong style="color: #7289da;">${url}</strong></p>
-        <button id="confirmLeave" style="padding: 10px 20px; margin: 10px; background: #ff4757; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px;">Accept</button>
-        <button id="cancelLeave" style="padding: 10px 20px; margin: 10px; background: #40444b; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px;">Decline</button>
+        <p style="font-size: 18px; color: #fff;">
+          ⚠️ keep tos in mind when you post.
+        </p>
+        <textarea>Hello I am an experienced backend dev looking for work...</textarea>
+        <button
+          id="confirmLeave"
+          style="padding: 10px 20px; margin: 10px; background: #ff4757; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px;"
+        >
+          Post Now
+        </button>
+        <button
+          id="cancelLeave"
+          onclick="closeModal('postdiv')"
+          style="padding: 10px 20px; margin: 10px; background: #40444b; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px;"
+        >
+          Cancel
+        </button>
       </div>
     </div>
 

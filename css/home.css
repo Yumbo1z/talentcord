@@ -419,3 +419,8 @@ a:focus {
     width: 400px;
 }
 
+textarea {
+    min-width: auto;
+    max-height: 300px;
+    field-sizing: content;
+}
