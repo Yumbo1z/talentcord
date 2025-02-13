@@ -423,8 +423,7 @@ a:focus {
 textarea {
     margin-top: 10px;
     width: 100%;
-    min-height: 3rem;
-    max-height: 10rem;
+    min-height: 5rem;
     resize: none;
     box-sizing: border-box;
     padding: 8px;
