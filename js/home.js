@@ -13,9 +13,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Map badges to Font Awesome icons
     let badges = user.badges
       .map((badge) => {
-        return `<i class="${badge.faClass} badge-icon"></i>`;
+        return `<i class="${badge.faClass} badge-icon" title="${badge.name}"></i>`;
       })
-      .join(" ");
+      .join("");
 
     listings.innerHTML += `
     <div class="listing-card" data-user="${user.username}" data-perms="${user.permissions}">
