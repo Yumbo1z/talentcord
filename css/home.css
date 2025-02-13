@@ -411,7 +411,7 @@ a:focus {
 }
 
 .post-content {
-    background-color: #23272a;
+    background-color: #313338;
     padding: 20px;
     border-radius: 10px;
     text-align: center;
@@ -429,5 +429,5 @@ textarea {
     padding: 8px;
     font-size: 1rem;
     border-radius: 10px;
-    background-color: #555;
+    background-color: #383a40;
 }
