@@ -73,24 +73,25 @@ function confirmExit(event, url) {
   modal.style.left = "0";
   modal.style.width = "100%";
   modal.style.height = "100%";
-  modal.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+  modal.style.backgroundColor = "rgba(0, 0, 0, 0.7)"; // Darker overlay
   modal.style.display = "flex";
   modal.style.alignItems = "center";
   modal.style.justifyContent = "center";
   modal.style.zIndex = "1000";
 
   let modalContent = document.createElement("div");
-  modalContent.style.background = "#fff";
+  modalContent.style.background = "#23272a"; // Dark theme modal background
   modalContent.style.padding = "20px";
   modalContent.style.borderRadius = "10px";
   modalContent.style.textAlign = "center";
-  modalContent.style.boxShadow = "0px 4px 6px rgba(0, 0, 0, 0.1)";
+  modalContent.style.boxShadow = "0px 4px 10px rgba(0, 0, 0, 0.5)";
+  modalContent.style.width = "400px";
 
   modalContent.innerHTML = `
-        <p style="font-size: 18px; color: black;">Watch out! You're about to leave TalentCord.</p>
-        <p style="font-size: 16px; color: gray;">You're going to: <strong>${url}</strong></p>
-        <button id="confirmLeave" style="padding: 10px 20px; margin: 10px; background: red; color: white; border: none; border-radius: 5px; cursor: pointer;">Accept</button>
-        <button id="cancelLeave" style="padding: 10px 20px; margin: 10px; background: gray; color: white; border: none; border-radius: 5px; cursor: pointer;">Decline</button>
+        <p style="font-size: 18px; color: #fff;">⚠️ Watch out! You're about to leave TalentCord.</p>
+        <p style="font-size: 16px; color: #b9bbbe;">You're going to: <br><strong style="color: #7289da;">${url}</strong></p>
+        <button id="confirmLeave" style="padding: 10px 20px; margin: 10px; background: #ff4757; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px;">Accept</button>
+        <button id="cancelLeave" style="padding: 10px 20px; margin: 10px; background: #40444b; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px;">Decline</button>
     `;
 
   modal.appendChild(modalContent);
