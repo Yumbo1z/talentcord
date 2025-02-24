@@ -525,7 +525,9 @@ form.addEventListener("submit", async (e) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ data, token: userData.token }),
+    body: JSON.stringify({
+      data: { content: data.content, token: userData.token },
+    }),
   });
 
   if (response.ok) {
