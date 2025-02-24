@@ -513,12 +513,12 @@ document.getElementById("open-post").addEventListener("click", (e) => {
   }
 });
 
-const form = document.getElementById("askForm");
+const form = document.getElementById("postdiv");
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  document.getElementById("postQuestion").disabled = true;
+  document.getElementById("post-now").disabled = true;
   const data = Object.fromEntries(new FormData(form).entries());
-  const response = await fetch("/ask-question", {
+  const response = await fetch("/post", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -528,14 +528,11 @@ form.addEventListener("submit", async (e) => {
 
   if (response.ok) {
     const successData = await response.json();
-    showToast(successData.success, "green");
-    document.getElementById("postQuestion").disabled = false;
-    askBox.toggle();
-    updateComments();
+    alert(successData.success);
+    document.getElementById("post-now").disabled = false;
   } else {
     const errorData = await response.json();
-    showToast(errorData.error, "red");
-    askBox.toggle();
-    document.getElementById("postQuestion").disabled = false;
+    alert(errorData.error);
+    document.getElementById("post-now").disabled = false;
   }
 });

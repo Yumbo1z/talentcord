@@ -13,6 +13,7 @@ module.exports = {
     //return res.status(400).json({ error: `System currently down!` });
 
     let reqData = req.body.data;
+    return console.log(reqData)
 
     const token = reqData.token;
     if (!token) return res.status(400).json({ error: `Provide a token.` });
