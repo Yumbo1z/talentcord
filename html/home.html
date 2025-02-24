@@ -83,14 +83,12 @@
           potential recruiters.
         </p>
         <div class="about-buttons">
-          <button id="open-post" class="about-button">
-            Post Something!
-          </button>
+          <button id="open-post" class="about-button">Post Something!</button>
         </div>
       </div>
     </section>
 
-    <div id="postdiv" class="post-form">
+    <form id="postdiv" method="post" action="/post" class="post-form">
       <div class="post-content">
         <p style="font-size: 18px; color: #fff;">
           ⚠️ keep tos in mind when you post.
@@ -98,12 +96,13 @@
         <textarea>
 Hello I am an experienced backend dev looking for work...</textarea
         >
+        <input id="token" type="hidden" name="token" value="$$token$$" />
         <button id="post-now" class="about-button">Post Now</button>
         <button onclick="closeModal('postdiv')" class="about-button">
           Cancel
         </button>
       </div>
-    </div>
+    </form>
 
     <footer
       class="footer"
