@@ -519,7 +519,7 @@ form.addEventListener("submit", async (e) => {
   document.getElementById("post-now").disabled = true;
   const data = Object.fromEntries(new FormData(form).entries());
   const userData = JSON.parse(localStorage.getItem("user"));
-
+console.log(data)
   const response = await fetch("/post", {
     method: "POST",
     headers: {
