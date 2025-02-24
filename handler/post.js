@@ -1,5 +1,5 @@
-const bookShema = require("../models/book");
-const profileShema = require("../models/profiles");
+const postShema = require("../models/post");
+const userSchema = require("../models/user");
 const jwt = require("jsonwebtoken");
 
 // Regular expression to match URLs
@@ -13,7 +13,7 @@ module.exports = {
     //return res.status(400).json({ error: `System currently down!` });
 
     let reqData = req.body.data;
-    return console.log(reqData)
+    return console.log(reqData);
 
     const token = reqData.token;
     if (!token) return res.status(400).json({ error: `Provide a token.` });
@@ -23,24 +23,11 @@ module.exports = {
         if (err) return res.status(403).json({ error: `Token is invalid` });
         req.user = user;
 
-        let bookData = await bookShema
-          .findOne({ _id: reqData.book })
-          .catch((err) => {});
-        if (!bookData)
-          return res.status(400).json({ error: `Something went wrong.` });
-
-        let userProfile = await profileShema
-          .findOne({ _id: req.user._id })
-          .catch((err) => {});
-        if (!userProfile)
+        let requester = await userSchema.findOne({
+          username: req.user.username,
+        });
+        if (!requester)
           return res.status(400).json({ error: `Could not fetch user data.` });
-
-        let chapterIndex = bookData.chapters.findIndex(
-          (v) => v.name === reqData.chapter
-        );
-
-        if (chapterIndex === -1)
-          return res.status(400).json({ error: `Something went wrong.` });
 
         let date = new Date();
         let sanitizedComment = reqData.comment.replace(/</g, "&lt;");
@@ -61,16 +48,15 @@ module.exports = {
           }
         }
 
-        bookData.chapters[chapterIndex].comments.push({
-          userID: userProfile._id,
-          comment: sanitizedComment,
-          date: date,
+        await postShema.create({
+          username: requester.username,
+          portfolio: requester.portfolio,
+          onTop: false,
+          content: sanitizedComment,
+          date,
         });
 
-        bookData.markModified("chapters");
-        await bookData.save();
-
-        return res.status(200).json({ success: `Comment Posted!` });
+        return res.status(200).json({ success: `Posted!` });
       });
     } catch (err) {
       console.log(err);
