@@ -36,14 +36,14 @@ module.exports = {
         if (sanitizedComment.match(urlRegex)) {
           return res
             .status(400)
-            .json({ error: `Comments cannot contain URLs.` });
+            .json({ error: `Posts cannot contain URLs.` });
         }
 
         // Check for bad words/slurs
         for (let word of badWords) {
           if (sanitizedComment.toLowerCase().includes(word)) {
             return res.status(400).json({
-              error: `Comments cannot contain inappropriate language or words in our blocklist.`,
+              error: `Post cannot contain inappropriate language or words in our blocklist.`,
             });
           }
         }
