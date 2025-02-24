@@ -13,7 +13,6 @@ module.exports = {
     //return res.status(400).json({ error: `System currently down!` });
 
     let reqData = req.body.data;
-    return console.log(reqData);
 
     const token = reqData.token;
     if (!token) return res.status(400).json({ error: `Provide a token.` });
@@ -30,18 +29,16 @@ module.exports = {
           return res.status(400).json({ error: `Could not fetch user data.` });
 
         let date = new Date();
-        let sanitizedComment = reqData.comment.replace(/</g, "&lt;");
+        let sanitizedContent = reqData.content.replace(/</g, "&lt;");
 
         // Check for URLs in the comment
-        if (sanitizedComment.match(urlRegex)) {
-          return res
-            .status(400)
-            .json({ error: `Posts cannot contain URLs.` });
+        if (sanitizedContent.match(urlRegex)) {
+          return res.status(400).json({ error: `Posts cannot contain URLs.` });
         }
 
         // Check for bad words/slurs
         for (let word of badWords) {
-          if (sanitizedComment.toLowerCase().includes(word)) {
+          if (sanitizedContent.toLowerCase().includes(word)) {
             return res.status(400).json({
               error: `Post cannot contain inappropriate language or words in our blocklist.`,
             });
@@ -52,7 +49,7 @@ module.exports = {
           username: requester.username,
           portfolio: requester.portfolio,
           onTop: false,
-          content: sanitizedComment,
+          content: sanitizedContent,
           date,
         });
 
