@@ -502,3 +502,40 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "https://talentcord.org/";
   }
 });
+
+//post
+document.getElementById("open-post").addEventListener("click", (e) => {
+  if (!localStorage.user) {
+    e.preventDefault();
+    alert("Sign in to post!");
+  } else {
+    openModal("postdiv", "flex");
+  }
+});
+
+const form = document.getElementById("askForm");
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  document.getElementById("postQuestion").disabled = true;
+  const data = Object.fromEntries(new FormData(form).entries());
+  const response = await fetch("/ask-question", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ data }),
+  });
+
+  if (response.ok) {
+    const successData = await response.json();
+    showToast(successData.success, "green");
+    document.getElementById("postQuestion").disabled = false;
+    askBox.toggle();
+    updateComments();
+  } else {
+    const errorData = await response.json();
+    showToast(errorData.error, "red");
+    askBox.toggle();
+    document.getElementById("postQuestion").disabled = false;
+  }
+});
