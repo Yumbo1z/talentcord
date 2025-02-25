@@ -13,6 +13,7 @@ module.exports = {
           let user = await userSchema.findOne({ username: v.username });
 
           return {
+            _id: v._id,
             username: v.username,
             icon: user?.avatarURL || "https://i.imgur.com/fBh0Mdm.png",
             portfolio: user?.portfolio || "",

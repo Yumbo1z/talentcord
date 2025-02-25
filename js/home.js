@@ -67,6 +67,8 @@ function showPostContextMenu(event, card) {
   menu.style.top = `${event.pageY}px`;
   menu.dataset.username = card.dataset.user;
   menu.dataset.perms = card.dataset.perms;
+  menu.dataset.perms = card.dataset.perms;
+  menu.dataset.id = card.dataset.id;
 }
 
 document.addEventListener("click", () => {
@@ -285,6 +287,39 @@ async function giveverified() {
     }
   } catch (error) {
     console.error("Error during awarding:", error);
+    alert("An error occurred. Please try again later.");
+  }
+}
+
+async function deletePost() {
+  const username = document.getElementById("postContextMenu").dataset.username;
+  const targetPerms = document.getElementById("postContextMenu").dataset.perms;
+  const postId = document.getElementById("postContextMenu").dataset.id;
+  const userData = JSON.parse(localStorage.getItem("user"));
+
+  try {
+    const response = await fetch("/delete-post", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        token: userData.token,
+        targetUsername: username,
+        targetPerms,
+        id: postId,
+      }),
+    });
+
+    const result = await response.json();
+
+    if (response.ok) {
+      alert("Successfully deleted post!");
+    } else {
+      alert("Failed to delete post: " + result.message);
+    }
+  } catch (error) {
+    console.error("Error during ban:", error);
     alert("An error occurred. Please try again later.");
   }
 }
@@ -577,7 +612,7 @@ async function refreshPosts() {
       .join("");
 
     posts.innerHTML += `
-    <div class="post-card" data-user="${post.username}" data-perms="${post.permissions}">
+    <div class="post-card" data-user="${post.username}" data-perms="${post.permissions}" data-id="${post._id}">
       <img src="${post.icon}" alt="User Avatar" class="avatar">
       <div class="listing-info">
         <div class="profile-header">
