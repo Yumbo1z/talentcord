@@ -75,7 +75,24 @@ body {
     position: relative;
 }
 
+
 .listing-card:hover {
+    background-color: #40444b;
+}
+
+.post-card {
+    background-color: #36393f;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    position: relative;
+}
+
+
+.post-card:hover {
     background-color: #40444b;
 }
 

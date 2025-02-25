@@ -575,7 +575,7 @@ async function refreshPosts() {
       .join("");
 
     posts.innerHTML += `
-    <div class="listing-card" data-user="${post.username}" data-perms="${post.permissions}">
+    <div class="post-card" data-user="${post.username}" data-perms="${post.permissions}">
       <img src="${post.icon}" alt="User Avatar" class="avatar">
       <div class="listing-info">
         <div class="profile-header">
@@ -589,7 +589,7 @@ async function refreshPosts() {
     </div>`;
   }
 
-  document.querySelectorAll(".listing-card").forEach((card) => {
+  document.querySelectorAll(".post-card").forEach((card) => {
     card.addEventListener("contextmenu", (event) => {
       event.preventDefault();
       if (currentUser) {
