@@ -13,6 +13,7 @@ const userSchema = mongoose.Schema({
   banned: Boolean,
   badges: Array,
   premium: Boolean,
+  lastPosted: Date,
 });
 
 module.exports = mongoose.model("user", userSchema);
