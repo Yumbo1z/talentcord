@@ -535,8 +535,8 @@ form.addEventListener("submit", async (e) => {
     const successData = await response.json();
     alert(successData.success);
     document.getElementById("post-now").disabled = false;
-    closeModal("postdiv")
-    //refreshPosts();
+    closeModal("postdiv");
+    refreshPosts();
   } else {
     const errorData = await response.json();
     alert(errorData.error);
@@ -544,10 +544,13 @@ form.addEventListener("submit", async (e) => {
   }
 });
 
-async function refreshPosts(params) {
+async function refreshPosts() {
   let response = await fetch("/posts");
   let json = await response.json();
   const posts = document.getElementById("posts");
+
+  // Clear the existing posts before adding new ones
+  posts.innerHTML = "";
 
   const currentUser = JSON.parse(localStorage.getItem("user"));
 
