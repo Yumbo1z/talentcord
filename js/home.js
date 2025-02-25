@@ -536,7 +536,7 @@ form.addEventListener("submit", async (e) => {
     alert(successData.success);
     document.getElementById("post-now").disabled = false;
     closeModal("postdiv")
-    refreshPosts();
+    //refreshPosts();
   } else {
     const errorData = await response.json();
     alert(errorData.error);
