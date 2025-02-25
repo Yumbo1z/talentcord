@@ -579,4 +579,16 @@ async function refreshPosts() {
       </div>
     </div>`;
   }
+
+  document.querySelectorAll(".listing-card").forEach((card) => {
+    card.addEventListener("contextmenu", (event) => {
+      event.preventDefault();
+      if (currentUser) {
+        let currentUserMoreData = json.find(
+          (v) => v.username === currentUser.username
+        );
+        if (currentUserMoreData.permissions === 1) showContextMenu(event, card);
+      }
+    });
+  });
 }
