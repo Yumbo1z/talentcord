@@ -32,9 +32,9 @@ module.exports = {
         let sanitizedContent = reqData.content.replace(/</g, "&lt;");
 
         // Check for URLs in the comment
-        if (sanitizedContent.match(urlRegex)) {
+        /*if (sanitizedContent.match(urlRegex)) {
           return res.status(400).json({ error: `Posts cannot contain URLs.` });
-        }
+        }*/
 
         // Check for bad words/slurs
         for (let word of badWords) {
