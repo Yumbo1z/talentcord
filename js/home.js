@@ -535,6 +535,8 @@ form.addEventListener("submit", async (e) => {
     const successData = await response.json();
     alert(successData.success);
     document.getElementById("post-now").disabled = false;
+    closeModal("postdiv")
+    refreshPosts();
   } else {
     const errorData = await response.json();
     alert(errorData.error);
@@ -548,8 +550,6 @@ async function refreshPosts(params) {
   const posts = document.getElementById("posts");
 
   const currentUser = JSON.parse(localStorage.getItem("user"));
-
-  console.log(json);
 
   for (let post of json) {
     // Map badges to Font Awesome icons
