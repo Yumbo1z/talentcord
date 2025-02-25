@@ -6,7 +6,6 @@ module.exports = {
   get: true,
   run: async (req, res) => {
     let data = await postShema.find().sort({ date: -1 });
-    console.log(data)
     let newObj = data.map(async (v) => {
       let user = await userSchema.findOne({
         username: v.username,
