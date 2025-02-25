@@ -547,6 +547,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const currentUser = JSON.parse(localStorage.getItem("user"));
 
+  console.log(json)
+
   for (let post of json) {
     // Map badges to Font Awesome icons
     let badges = post.badges
