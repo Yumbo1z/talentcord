@@ -71,7 +71,9 @@ function showPostContextMenu(event, card) {
 
 document.addEventListener("click", () => {
   const menu = document.getElementById("customContextMenu");
+  const menu2 = document.getElementById("postContextMenu");
   menu.style.display = "none";
+  menu2.style.display = "none";
 });
 
 function confirmExit(event, url) {
