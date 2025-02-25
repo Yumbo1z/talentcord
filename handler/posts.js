@@ -24,6 +24,8 @@ module.exports = {
         date: v.date,
       };
     });
+
+    console.log(newObj);
     res.send(newObj);
   },
 };
