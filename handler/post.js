@@ -47,7 +47,6 @@ module.exports = {
 
         await postShema.create({
           username: requester.username,
-          portfolio: requester.portfolio,
           onTop: false,
           content: sanitizedContent,
           date,
