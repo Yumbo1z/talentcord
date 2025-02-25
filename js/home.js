@@ -47,6 +47,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     });
   });
+
+  refreshPosts();
 });
 
 function showContextMenu(event, card) {
@@ -345,6 +347,7 @@ tagsContainerep.addEventListener("click", (event) => {
     }
   }
 });
+
 // Handle the form submission for bio and tags update
 async function postEditProfile(event) {
   event.preventDefault();
@@ -417,7 +420,6 @@ async function postSignIn(event) {
 }
 
 // Function to handle Create Account form submission
-
 const tagsContainer = document.getElementById("tags-container");
 const selectedTags = [];
 
@@ -540,14 +542,14 @@ form.addEventListener("submit", async (e) => {
   }
 });
 
-document.addEventListener("DOMContentLoaded", async () => {
+async function refreshPosts(params) {
   let response = await fetch("/posts");
   let json = await response.json();
   const posts = document.getElementById("posts");
 
   const currentUser = JSON.parse(localStorage.getItem("user"));
 
-  console.log(json)
+  console.log(json);
 
   for (let post of json) {
     // Map badges to Font Awesome icons
@@ -574,16 +576,4 @@ document.addEventListener("DOMContentLoaded", async () => {
       </div>
     </div>`;
   }
-
-  document.querySelectorAll(".listing-card").forEach((card) => {
-    card.addEventListener("contextmenu", (event) => {
-      event.preventDefault();
-      if (currentUser) {
-        let currentUserMoreData = json.find(
-          (v) => v.username === currentUser.username
-        );
-        if (currentUserMoreData.permissions === 1) showContextMenu(event, card);
-      }
-    });
-  });
-});
+}
