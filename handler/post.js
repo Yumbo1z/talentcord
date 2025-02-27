@@ -2,8 +2,10 @@ const postSchema = require("../models/post");
 const userSchema = require("../models/user");
 const jwt = require("jsonwebtoken");
 
-const urlRegex = /(https?:\/\/[^\s]+)/gi;
-const badWords = ["fuck", "shit", "bitch", "dox", "nigger"];
+//const urlRegex = /(https?:\/\/[^\s]+)/gi;
+//const badWords = ["fuck", "shit", "bitch", "dox", "nigger", "cunt", "retard", "nigga"];
+
+const fs = require("fs");
 
 module.exports = {
   name: "post",
@@ -40,15 +42,21 @@ module.exports = {
 
         let sanitizedContent = reqData.content.replace(/</g, "&lt;");
 
-        // Check for bad words
-        for (let word of badWords) {
-          if (sanitizedContent.toLowerCase().includes(word)) {
-            return res.status(400).json({
-              error:
-                "Post cannot contain inappropriate language or words in our blocklist.",
-            });
+        fs.readFile("bad-words.txt", "utf8", (err, badWords) => {
+          if (err) return console.error("Error reading file:", err);
+
+          console.log(badWords); // Use the text content here
+
+          // Check for bad words
+          for (let word of badWords) {
+            if (sanitizedContent.toLowerCase().includes(word)) {
+              return res.status(400).json({
+                error:
+                  "Post cannot contain inappropriate language or words in our blocklist.",
+              });
+            }
           }
-        }
+        });
 
         // Create the post
         await postSchema.create({
