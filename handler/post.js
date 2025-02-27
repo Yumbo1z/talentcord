@@ -45,17 +45,25 @@ module.exports = {
         fs.readFile("bad-words.txt", "utf8", (err, badWords) => {
           if (err) return console.error("Error reading file:", err);
 
-          console.log(badWords); // Use the text content here
+          // Convert bad words into a regex pattern (case-insensitive, word boundaries)
+          const badWordsArray = badWords
+            .split("\n")
+            .map((word) => word.trim())
+            .filter((word) => word);
+          const badWordsPattern = new RegExp(
+            `\\b(${badWordsArray.join("|")})\\b`,
+            "gi"
+          );
 
-          // Check for bad words
-          for (let word of badWords) {
-            if (sanitizedContent.toLowerCase().includes(word)) {
-              return res.status(400).json({
-                error:
-                  "Post cannot contain inappropriate language or words in our blocklist.",
-              });
-            }
+          // Check for bad words using regex
+          if (badWordsPattern.test(sanitizedContent)) {
+            return console.log({
+              error:
+                "Post cannot contain inappropriate language or words in our blocklist.",
+            });
           }
+
+          console.log("No bad words detected.");
         });
 
         // Create the post
