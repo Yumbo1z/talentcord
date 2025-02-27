@@ -42,47 +42,40 @@ module.exports = {
 
         let sanitizedContent = reqData.content.replace(/</g, "&lt;");
 
-        let badWords;
-        try {
-          badWords = await fs.readFile("bad-words.txt", "utf8");
-        } catch (err) {
-          console.error("Error reading file:", err);
-          return res
-            .status(500)
-            .json({ error: "Server error reading blocklist." });
-        }
+        fs.readFile("bad-words.txt", "utf8", async (err, badWords) => {
+          if (err) return console.error("Error reading file:", err);
 
-        // Convert bad words into a regex pattern (case-insensitive, word boundaries)
-        const badWordsArray = badWords
-          .split("\n")
-          .map((word) => word.trim())
-          .filter((word) => word);
-        const badWordsPattern = new RegExp(
-          `\\b(${badWordsArray.join("|")})\\b`,
-          "gi"
-        );
+          // Convert bad words into a regex pattern (case-insensitive, word boundaries)
+          const badWordsArray = badWords
+            .split("\n")
+            .map((word) => word.trim())
+            .filter((word) => word);
+          const badWordsPattern = new RegExp(
+            `\\b(${badWordsArray.join("|")})\\b`,
+            "gi"
+          );
 
-        // Check for bad words using regex
-        if (badWordsPattern.test(sanitizedContent)) {
-          return res.status(403).json({
-            error:
-              "Post cannot contain inappropriate language or words in our blocklist.",
+          // Check for bad words using regex
+          if (badWordsPattern.test(sanitizedContent))
+            return res.status(403).json({
+              error:
+                "Post cannot contain inappropriate language or words in our blocklist.",
+            });
+
+          // Create the post
+          await postSchema.create({
+            username: requester.username,
+            onTop: false,
+            content: sanitizedContent,
+            date,
           });
-        }
 
-        // Create the post
-        await postSchema.create({
-          username: requester.username,
-          onTop: false,
-          content: sanitizedContent,
-          date,
+          // Update lastPosted time
+          requester.lastPosted = date;
+          await requester.save();
+
+          return res.status(200).json({ success: "Posted!" });
         });
-
-        // Update lastPosted time
-        requester.lastPosted = date;
-        await requester.save();
-
-        return res.status(200).json({ success: "Posted!" });
       });
     } catch (err) {
       console.log(err);
