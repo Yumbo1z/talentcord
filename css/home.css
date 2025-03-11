@@ -386,7 +386,7 @@ a:focus {
     display: flex;
     justify-content: center;
     gap: 10px;
-    /* Adds space between buttons if more are added */
+    flex-wrap: wrap;
 }
 
 .about-button {
