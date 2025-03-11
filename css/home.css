@@ -367,13 +367,11 @@ a:focus {
 }
 
 .about-wrapper {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    /* Ensures items stack vertically */
     align-items: center;
-    /* Centers content horizontally */
     text-align: center;
-    /* Ensures text is centered */
     margin-top: 25px;
     margin-bottom: 25px;
 }
