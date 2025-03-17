@@ -118,8 +118,31 @@
       </div>
     </form>
 
+    <form id="postjobdiv" class="post-form">
+      <div class="post-content">
+        <p style="font-size: 18px; color: #fff;">
+          ⚠️ keep tos in mind when you post a job listing.
+        </p>
+        <textarea
+          name="content"
+          form="postdiv"
+          placeholder="Hello I am looking for an experienced backend dev to help me with my website..."
+          required
+        ></textarea>
+        <button type="submit" id="post-now" class="about-button">
+          Post Now
+        </button>
+        <button onclick="closeModal('postdiv')" class="about-button">
+          Cancel
+        </button>
+      </div>
+    </form>
+
     <!-- posts -->
     <section class="listings" id="posts"></section>
+
+     <!-- job posts -->
+     <section class="listings" id="job-posts"></section>
 
     <div class="context-menu" id="postContextMenu">
       <button onclick="banUser()">Ban</button>
