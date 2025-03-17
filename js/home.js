@@ -639,3 +639,10 @@ async function refreshPosts() {
     });
   });
 }
+
+
+document.querySelectorAll(".listing-card").forEach((card) => {
+  card.addEventListener("click", (event) => {
+    openModal("fullProfile", "block")
+  });
+});
