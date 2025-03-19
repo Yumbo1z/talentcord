@@ -9,7 +9,7 @@ body {
     background: white;
     border-radius: 10px;
     overflow: hidden;
-    display: block;
+    display: flex;
     text-align: center;
     align-items: center;
 }
