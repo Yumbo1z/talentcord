@@ -14,7 +14,6 @@ body {
     position: relative;
     width: 50%;
     height: 25rem;
-    background-color: #fff;
     margin: 0 auto;
 }
 
@@ -28,13 +27,12 @@ body {
     position: absolute;
     width: 100%;
     bottom: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     background-color: black;
 }
 
 .avatar {
+    position: absolute;
+    left: 0;
     width: 80px;
     height: 80px;
     border-radius: 50%;
