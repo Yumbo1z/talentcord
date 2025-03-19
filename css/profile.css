@@ -1,16 +1,53 @@
 .profile-container {
-    width: 100%;
-    height: 50%;
-    color: blue
-}
-
-.profile {
-    display: block;
-    align-items: center;
+    width: 350px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
 
 .top {
-    width: 200px;
-    height: 250px;
-    color: blueviolet;
+    position: relative;
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(to right, #8a2be2, #4b0082);
+}
+
+.banner {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.header {
+    position: absolute;
+    width: 100%;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 4px solid white;
+    background-color: #ddd;
+}
+
+.username {
+    margin: 10px 0 5px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.bio {
+    font-size: 14px;
+    color: gray;
+    margin: 0 15px;
 }
