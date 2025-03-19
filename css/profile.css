@@ -6,7 +6,6 @@ body {
 
 .profile-container {
     width: 100%;
-    background: white;
     border-radius: 10px;
     overflow: hidden;
 }
@@ -15,7 +14,7 @@ body {
     position: relative;
     width: 50%;
     height: 25rem;
-    background: linear-gradient(to right, #8a2be2, #4b0082);
+    background-color: #fff;
     margin: 0 auto;
 }
 
