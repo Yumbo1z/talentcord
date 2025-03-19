@@ -9,9 +9,6 @@ body {
     background: white;
     border-radius: 10px;
     overflow: hidden;
-    display: flex;
-    text-align: center;
-    align-items: center;
 }
 
 .top {
@@ -19,6 +16,7 @@ body {
     width: 50%;
     height: 25rem;
     background: linear-gradient(to right, #8a2be2, #4b0082);
+    margin: 0 auto;
 }
 
 .banner {
