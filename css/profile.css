@@ -16,7 +16,7 @@ body {
 .top {
     position: relative;
     width: 100%;
-    height: 120px;
+    height:220px;
     background: linear-gradient(to right, #8a2be2, #4b0082);
 }
 
