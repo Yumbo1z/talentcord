@@ -1,27 +1,6 @@
 document.addEventListener("DOMContentLoaded", async () => {
     let response = await fetch("/users");
     let json = await response.json();
-  
-    const currentUser = JSON.parse(localStorage.getItem("user"));
-  
-    document.querySelectorAll(".listing-card").forEach((card) => {
-      card.addEventListener("contextmenu", (event) => {
-        event.preventDefault();
-        if (currentUser) {
-          let currentUserMoreData = json.find(
-            (v) => v.username === currentUser.username
-          );
-          if (currentUserMoreData.permissions === 1) showContextMenu(event, card);
-        }
-      });
-    });
-  
-    refreshPosts();
-  });
-
-async function refreshPosts() {
-    let response = await fetch("/posts");
-    let json = await response.json();
     const posts = document.getElementById("posts");
   
     // Clear the existing posts before adding new ones
@@ -67,4 +46,5 @@ async function refreshPosts() {
         }
       });
     });
-  }
+  
+  });
