@@ -6,7 +6,8 @@ module.exports = {
   get: true,
   run: async (req, res) => {
     try {
-      let requestToken = req.cookies.userToken;
+        consoel.log(req.cookies)
+      let requestToken = req.cookies.token;
       let username = req.params.username;
       let user = await userSchema.findOne({
         username: username,
