@@ -5,17 +5,20 @@ body {
 }
 
 .profile-container {
-    width: 50%;
+    width: 100%;
     border-radius: 10px;
     overflow: hidden;
 }
 
 .top {
     position: relative;
+    width: 50%;
+    height: 25rem;
+    margin: 0 auto;
 }
 
 .banner {
-    width: 100%;
+    width: 50%;
     height: 100%;
     object-fit: cover;
 }
