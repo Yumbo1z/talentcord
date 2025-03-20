@@ -1,5 +1,6 @@
 const userSchema = require("../models/user");
 const jwt = require("jsonwebtoken");
+const fs = require("fs");
 
 module.exports = {
   name: "profile/:username",
