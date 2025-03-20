@@ -22,7 +22,7 @@ module.exports = {
         encoding: "utf8",
       });
 
-      console.log(user)
+      console.log(user);
 
       file = file.replaceAll("$$permissions$$", user.permissions);
       file = file.replaceAll("$$username$$", user.username);
@@ -37,7 +37,7 @@ module.exports = {
         "$$avatar$$",
         !user.avatarURL
           ? `https://i.imgur.com/fBh0Mdm.png`
-          : `https://gildnovel.com/image/${user.avatarURL}`
+          : `${user.avatarURL}`
       );
       res.send(file);
     } catch (err) {
