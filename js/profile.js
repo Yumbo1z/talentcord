@@ -80,6 +80,17 @@ function showContextMenu(event, card) {
   menu.dataset.perms = card.dataset.perms;
 }
 
+function showPostContextMenu(event, card) {
+  const menu = document.getElementById("postContextMenu");
+  menu.style.display = "block";
+  menu.style.left = `${event.pageX}px`;
+  menu.style.top = `${event.pageY}px`;
+  menu.dataset.username = card.dataset.user;
+  menu.dataset.perms = card.dataset.perms;
+  menu.dataset.perms = card.dataset.perms;
+  menu.dataset.id = card.dataset.id;
+}
+
 async function banUser() {
   const username =
     document.getElementById("customContextMenu").dataset.username;
@@ -276,4 +287,11 @@ async function deletePost() {
     console.error("Error during ban:", error);
     alert("An error occurred. Please try again later.");
   }
+}
+
+function replaceCrossWithAvatar(avatarUrl) {
+  const navbar = document.querySelector(".navbar");
+  const plusIcon = navbar.querySelector(".plus-icon");
+  // Replace the icon with the avatar
+  plusIcon.outerHTML = `<div class="plus-icon" onclick="openModal('editProfileModal', 'block')"><img src="${avatarUrl}" alt="Avatar" class="avatar" style="width: 40px; height: 40px; border-radius: 50%;"/></div>`;
 }
