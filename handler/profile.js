@@ -22,6 +22,8 @@ module.exports = {
         encoding: "utf8",
       });
 
+      console.log(user)
+
       file = file.replaceAll("$$permissions$$", user.permissions);
       file = file.replaceAll("$$username$$", user.username);
       file = file.replaceAll("$$id$$", user._id);
