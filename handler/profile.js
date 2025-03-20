@@ -33,7 +33,7 @@ module.exports = {
       );
       file = file.replaceAll(
         "$$avatar$$",
-        !user.avatar
+        !user.icon
           ? `https://i.imgur.com/fBh0Mdm.png`
           : `https://gildnovel.com/image/${user.icon}`
       );
