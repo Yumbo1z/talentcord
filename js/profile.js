@@ -36,6 +36,18 @@ document.addEventListener("DOMContentLoaded", async () => {
       </div>`;
   }
 
+  document
+    .getElementById("profile")
+    .addEventListener("contextmenu", (event) => {
+      event.preventDefault();
+      if (currentUser) {
+        let currentUserMoreData = json.find(
+          (v) => v.username === currentUser.username
+        );
+        if (currentUserMoreData.permissions === 1) showContextMenu(event, card);
+      }
+    });
+
   document.querySelectorAll(".post-card").forEach((card) => {
     card.addEventListener("contextmenu", (event) => {
       event.preventDefault();
