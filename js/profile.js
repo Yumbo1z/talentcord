@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", async () => {
-    let response = await fetch("/users");
+    let response = await fetch("/posts");
     let json = await response.json();
     const posts = document.getElementById("posts");
   
