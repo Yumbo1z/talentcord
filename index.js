@@ -21,7 +21,6 @@ require("./handler")(app);
 
 app.get("/", (_, res) => res.redirect(link("home")));
 app.get("/home", async (_, res) => res.sendFile(dir("home")));
-app.get("/profile", async (_, res) => res.sendFile(dir("profile"))); // remove later
 
 app.get("/homeCSS", (_, res) => res.sendFile(`${__dirname}/css/home.css`));
 app.get("/profileCSS", (_, res) =>
