@@ -530,11 +530,15 @@ async function postCreateAccount(event) {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   // Check if user data exists in localStorage
   const userData = JSON.parse(localStorage.getItem("user"));
+  let response = await fetch("/users");
+  let json = await response.json();
+  let currentUser = json.find((p) => p.username === userData.username);
+
   if (userData) {
-    replaceCrossWithAvatar(userData.avatar); // Replace the cross icon with an avatar
+    replaceCrossWithAvatar(currentUser.avatar); // Replace the cross icon with an avatar
   }
 
   // Refresh page if user is signed in
