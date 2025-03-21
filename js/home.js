@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       <img src="${user.icon}" alt="User Avatar" class="avatar">
       <div class="listing-info">
         <div class="profile-header">
-          <h3><a style="color: white;" href="${user.portfolio}" onclick="confirmExit(event, '${user.portfolio}')" target="_blank">${user.username}</a></h3>
+          <h3><a style="color: white;" href="/profile/${user.username}" onclick="confirmExit(event, '${user.portfolio}')" target="_blank">${user.username}</a></h3>
           <div class="badge-icons">
             ${badges}
           </div>
