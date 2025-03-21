@@ -28,7 +28,7 @@ body {
     align-items: center;
     gap: 10px;
     padding: 10px;
-    background: black;
+    background: #36393f;
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -51,11 +51,16 @@ body {
 
 .username {
     font-weight: bold;
-    font-size: 18px;
+    font-size: 20px;
     margin: 0;
     color: #fff;
 }
 
+.bio {
+    font-size: 16px;
+    color: #fff;
+    margin: 2px 0 0;
+}
 .bio {
     font-size: 14px;
     color: gray;

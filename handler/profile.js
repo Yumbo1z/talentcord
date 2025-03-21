@@ -22,15 +22,15 @@ module.exports = {
         encoding: "utf8",
       });
 
-      console.log(user);
-
+      file = file.replaceAll("$$link$$", user.portfolio);
+      file = file.replaceAll("$$bio$$", user.bio);
       file = file.replaceAll("$$permissions$$", user.permissions);
       file = file.replaceAll("$$username$$", user.username);
       file = file.replaceAll("$$id$$", user._id);
       file = file.replace(
         "$$banner$$",
         !user.banner
-          ? "https://i.imgur.com/fBh0Mdm.png"
+          ? "https://i.imgur.com/8gO7SqS.png"
           : `https://gildnovel.com/image/${user.banner}`
       );
       file = file.replaceAll(
