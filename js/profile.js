@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   let currentUser = json.find((p) => p.username === userData.username);
   console.log(currentUser);
   if (userData) {
-    replaceCrossWithAvatar(currentUser.avatar); // Replace the cross icon with an avatar
+    replaceCrossWithAvatar(currentUser.icon); // Replace the cross icon with an avatar
   }
 
   // Refresh page if user is signed in
