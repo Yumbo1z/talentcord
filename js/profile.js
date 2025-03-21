@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   let response = await fetch("/users");
   let json = await response.json();
   let currentUser = json.find((p) => p.username === userData.username);
-
+  cnsole.log(currentUser);
   if (userData) {
     replaceCrossWithAvatar(currentUser.avatar); // Replace the cross icon with an avatar
   }
