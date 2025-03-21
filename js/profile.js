@@ -80,9 +80,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       "username"
     );
     const token = new URLSearchParams(window.location.search).get("token");
-    const avatar = new URLSearchParams(window.location.search).get("avatar");
+    const id = new URLSearchParams(window.location.search).get("id");
 
-    const user = { username, avatar, token };
+    const user = { username, id, token };
     localStorage.setItem("user", JSON.stringify(user)); // Save user data to localStorage
     window.location.href = "https://talentcord.org/";
   }
