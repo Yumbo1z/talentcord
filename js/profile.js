@@ -88,6 +88,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
+document.addEventListener("click", () => {
+  const menu = document.getElementById("customContextMenu");
+  const menu2 = document.getElementById("postContextMenu");
+  menu.style.display = "none";
+  menu2.style.display = "none";
+});
+
 function showContextMenu(event, card) {
   const menu = document.getElementById("customContextMenu");
   menu.style.display = "block";
