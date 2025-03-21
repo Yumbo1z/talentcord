@@ -108,6 +108,53 @@ function showPostContextMenu(event, card) {
   menu.dataset.id = card.dataset.id;
 }
 
+function confirmExit(event, url) {
+  event.preventDefault(); // Prevents the link from opening immediately
+
+  // Create the confirmation modal
+  let modal = document.createElement("div");
+  modal.style.position = "fixed";
+  modal.style.top = "0";
+  modal.style.left = "0";
+  modal.style.width = "100%";
+  modal.style.height = "100%";
+  modal.style.backgroundColor = "rgba(0, 0, 0, 0.7)"; // Darker overlay
+  modal.style.display = "flex";
+  modal.style.alignItems = "center";
+  modal.style.justifyContent = "center";
+  modal.style.zIndex = "1000";
+
+  let modalContent = document.createElement("div");
+  modalContent.style.background = "#23272a"; // Dark theme modal background
+  modalContent.style.padding = "20px";
+  modalContent.style.borderRadius = "10px";
+  modalContent.style.textAlign = "center";
+  modalContent.style.boxShadow = "0px 4px 10px rgba(0, 0, 0, 0.5)";
+  modalContent.style.width = "400px";
+
+  modalContent.innerHTML = `
+        <p style="font-size: 18px; color: #fff;">⚠️ Watch out! You're about to leave TalentCord.</p>
+        <p style="font-size: 16px; color: #b9bbbe;">You're going to: <br><strong style="color: #7289da;">${url}</strong></p>
+        <button id="confirmLeave" class="about-button">Accept</button>
+        <button id="cancelLeave" class="about-button">Decline</button>
+    `;
+
+  modal.appendChild(modalContent);
+  document.body.appendChild(modal);
+
+  // Handle button actions
+  document
+    .getElementById("confirmLeave")
+    .addEventListener("click", function () {
+      window.open(url, "_blank"); // Open in new tab
+      document.body.removeChild(modal); // Close modal
+    });
+
+  document.getElementById("cancelLeave").addEventListener("click", function () {
+    document.body.removeChild(modal); // Just close the modal
+  });
+}
+
 async function banUser() {
   const username =
     document.getElementById("customContextMenu").dataset.username;
