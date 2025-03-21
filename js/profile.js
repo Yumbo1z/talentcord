@@ -310,5 +310,15 @@ function replaceCrossWithAvatar(avatarUrl) {
   const navbar = document.querySelector(".navbar");
   const plusIcon = navbar.querySelector(".plus-icon");
   // Replace the icon with the avatar
-  plusIcon.outerHTML = `<div class="plus-icon" onclick="openModal('editProfileModal', 'block')"><img src="${avatarUrl}" alt="Avatar" class="avatar" style="width: 40px; height: 40px; border-radius: 50%;"/></div>`;
+  plusIcon.outerHTML = `<div class="plus-icon" onclick="openModal('editProfileModal', 'block')"><img src="${avatarUrl}" alt="Avatar" class="plus-avatar"/></div>`;
+}
+
+// Open modal
+function openModal(modalId, type) {
+  document.getElementById(modalId).style.display = type;
+}
+
+// Close modal
+function closeModal(modalId) {
+  document.getElementById(modalId).style.display = "none";
 }
