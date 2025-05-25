@@ -225,8 +225,8 @@
       posts.innerHTML = "";
 
       let responseUsers = await fetch("/users");
-      let jsonUsers = await response.json();
-      let currentUser = json.find((p) => p.username === "$$username$$");
+      let jsonUsers = await responseUsers.json();
+      let currentUser = jsonUsers.find((p) => p.username === "$$username$$");
 
       let filteredPosts = json.filter((p) => p.username === currentUser.username);
 
