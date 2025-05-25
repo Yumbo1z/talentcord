@@ -1,336 +1,296 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="icon" href="https://i.imgur.com/Bxj4aaT.png" />
-    <title>Talentcord</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Fira+Sans"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css"
-    />
 
-    <link type="text/css" rel="stylesheet" href="/homeCSS" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="icon" href="https://i.imgur.com/Bxj4aaT.png" />
+  <title>Talentcord</title>
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet" />
+  <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css" />
 
-  <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-      <div class="logo">Talentcord</div>
-      <div class="search-bar">
-        <input type="text" placeholder="Search for a user..." />
-      </div>
-      <div class="plus-icon" onclick="openModal('signInModal', 'block')">
-        <i class="fas fa-plus"></i>
-      </div>
-    </nav>
+  <link type="text/css" rel="stylesheet" href="/homeCSS" />
+</head>
 
-    <section class="welcome">
-      <div class="about-wrapper">
-        <h1 class="about">Find the Right Talent. Get Hired Faster.</h1>
-        <p>
-          Your one-stop hub for engaging discussions, powerful tools, and an
-          amazing community.
-        </p>
-        <div class="about-buttons">
-          <button
-            onclick="location.href = 'https://truthsocial.com/@talentcord';"
-            class="about-button"
-          >
-            Truth
-          </button>
-          <button
-            onclick="location.href = 'https://discord.gg/EQXNyxVYDb';"
-            class="about-button"
-          >
-            Join the Community!
-          </button>
-          <button
-            onclick="location.href = 'https://x.com/realtalentcord';"
-            class="about-button"
-          >
-            X
-          </button>
-          <button
-            onclick="location.href = 'https://www.youtube.com/@Talentcord';"
-            class="about-button"
-          >
-            Youtube
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Listings -->
-    <section class="listings" id="listings"></section>
-
-    <div class="context-menu" id="customContextMenu">
-      <button onclick="banUser()">Ban</button>
-      <button onclick="timeoutUser()">Timeout</button>
-      <div class="dropdown">
-        <button class="dropdown-button">Give Badge</button>
-        <div class="dropdown-content">
-          <button onclick="givemod()">Give Mod Badge</button>
-          <button onclick="givedev()">Give Dev Badge</button>
-          <button onclick="giveverified()">Give Verified Badge</button>
-        </div>
-      </div>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">Talentcord</div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search for a user..." />
     </div>
-
-    <section class="welcome">
-      <div class="about-wrapper">
-        <h1 class="about">Posts</h1>
-        <p>
-          Share a brief and compelling header to catch the attention of
-          potential recruiters.
-        </p>
-        <div class="about-buttons">
-          <button id="open-post" class="about-button">Post Something!</button>
-        </div>
-      </div>
-    </section>
-
-    <form id="postdiv" class="post-form">
-      <div class="post-content">
-        <p style="font-size: 18px; color: #fff;">
-          ⚠️ keep tos in mind when you post.
-        </p>
-        <textarea
-          name="content"
-          form="postdiv"
-          placeholder="Hello I am an experienced backend dev looking for work..."
-          required
-        ></textarea>
-        <button type="submit" id="post-now" class="about-button">
-          Post Now
-        </button>
-        <button onclick="closeModal('postdiv')" class="about-button">
-          Cancel
-        </button>
-      </div>
-    </form>
-
-    <form id="postjobdiv" class="post-form">
-      <div class="post-content">
-        <p style="font-size: 18px; color: #fff;">
-          ⚠️ keep tos in mind when you post a job listing.
-        </p>
-        <textarea
-          name="content"
-          form="postdiv"
-          placeholder="Hello I am looking for an experienced backend dev to help me with my website..."
-          required
-        ></textarea>
-        <button type="submit" id="post-now" class="about-button">
-          Post Now
-        </button>
-        <button onclick="closeModal('postdiv')" class="about-button">
-          Cancel
-        </button>
-      </div>
-    </form>
-
-    <!-- posts -->
-    <section class="listings" id="posts"></section>
-
-    <!-- job posts -->
-    <section class="listings" id="job-posts"></section>
-
-    <div class="context-menu" id="postContextMenu">
-      <button onclick="banUser()">Ban</button>
-      <button onclick="timeoutUser()">Timeout</button>
-      <button onclick="deletePost()">Delete Post</button>
+    <div class="plus-icon" onclick="openModal('signInModal', 'block')">
+      <i class="fas fa-plus"></i>
     </div>
+  </nav>
 
-    <footer
-      class="footer"
-      style="background-color: #23272a; padding: 20px; text-align: center; color: #ccc; margin-top: 20px;"
-    >
-      <p>Talentcord</p>
+  <section class="welcome">
+    <div class="about-wrapper">
+      <h1 class="about">Find the Right Talent. Get Hired Faster.</h1>
       <p>
-        <a href="#privacy">Privacy Policy</a> |
-        <a href="#terms">Terms of Service</a>
+        Your one-stop hub for engaging discussions, powerful tools, and an
+        amazing community.
       </p>
-    </footer>
+      <div class="about-buttons">
+        <button onclick="location.href = 'https://truthsocial.com/@talentcord';" class="about-button">
+          Truth
+        </button>
+        <button onclick="location.href = 'https://discord.gg/EQXNyxVYDb';" class="about-button">
+          Join the Community!
+        </button>
+        <button onclick="location.href = 'https://x.com/realtalentcord';" class="about-button">
+          X
+        </button>
+        <button onclick="location.href = 'https://www.youtube.com/@Talentcord';" class="about-button">
+          Youtube
+        </button>
+      </div>
 
-    <!-- Sign In Modal -->
-    <div id="signInModal" class="modal">
-      <div class="modal-content">
-        <span class="close" onclick="closeModal('signInModal')">&times;</span>
-        <form id="signin-form" onsubmit="postSignIn(event)">
-          <h2>Sign In</h2>
-          <label for="signin-username">Username:</label>
-          <input type="text" id="signin-username" required />
+      <div class="about-buttons">
+        <button onclick="location.href = '/plans';" class="about-button">
+          Plans
+        </button>
+        <button onclick="location.href = '/tos';" class="about-button">
+          TOS </button>
 
-          <label for="signin-password">Password:</label>
-          <input type="password" id="signin-password" required />
-
-          <button type="submit">Sign In</button>
-        </form>
-        <p style="margin-top: 10px;">
-          Don't have an account?
-          <a href="#" onclick="toggleToCreateAccount()">Create one here.</a>
-        </p>
       </div>
     </div>
+  </section>
 
-    <!-- Create Account Modal -->
-    <div id="createAccountModal" class="modal" style="display:none">
-      <div class="modal-content">
-        <span class="close" onclick="closeModal('createAccountModal')"
-          >&times;</span
-        >
-        <form id="create-account-form" onsubmit="postCreateAccount(event)">
-          <h2>Create Account</h2>
-          <label for="create-username">Username:</label>
-          <input type="text" id="create-username" required />
+  <!-- Listings -->
+  <section class="listings" id="listings"></section>
 
-          <label for="create-email">Email:</label>
-          <input type="email" id="create-email" required />
-
-          <label for="create-password">Password:</label>
-          <input type="password" id="create-password" required />
-
-          <label for="create-portfolio">Portfolio URL</label>
-          <input type="text" id="create-portfolio" required />
-
-          <label for="create-bio">Bio:</label>
-          <textarea id="create-bio"></textarea>
-
-          <label for="tags">Select Tags:</label><br />
-          <div
-            id="tags-container"
-            style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; margin-top: 20px;"
-          >
-            <button type="button" class="tag-button" data-value="#developer">
-              #developer
-            </button>
-            <button type="button" class="tag-button" data-value="#designer">
-              #designer
-            </button>
-            <button type="button" class="tag-button" data-value="#writer">
-              #writer
-            </button>
-            <button type="button" class="tag-button" data-value="#graphic">
-              #graphic
-            </button>
-            <button type="button" class="tag-button" data-value="#copywriter">
-              #copywriter
-            </button>
-            <button type="button" class="tag-button" data-value="#devops">
-              #devops
-            </button>
-            <button
-              type="button"
-              class="tag-button"
-              data-value="#community-management"
-            >
-              #community-management
-            </button>
-            <button type="button" class="tag-button" data-value="#artist">
-              #artist
-            </button>
-            <button
-              type="button"
-              class="tag-button"
-              data-value="#digital-artist"
-            >
-              #digital-artist
-            </button>
-            <button type="button" class="tag-button" data-value="#manga-artist">
-              #manga-artist
-            </button>
-            <button type="button" class="tag-button" data-value="#moderator">
-              #moderator
-            </button>
-          </div>
-
-          <button type="submit">Create Account</button>
-        </form>
-        <p style="margin-top: 10px;">
-          Already have an account?
-          <a href="#" onclick="toggleToSignIn()">Sign in here.</a>
-        </p>
+  <div class="context-menu" id="customContextMenu">
+    <button onclick="banUser()">Ban</button>
+    <button onclick="timeoutUser()">Timeout</button>
+    <div class="dropdown">
+      <button class="dropdown-button">Give Badge</button>
+      <div class="dropdown-content">
+        <button onclick="givemod()">Give Mod Badge</button>
+        <button onclick="givedev()">Give Dev Badge</button>
+        <button onclick="giveverified()">Give Verified Badge</button>
       </div>
     </div>
+  </div>
 
-    <!-- Edit Profile Modal -->
-    <div id="editProfileModal" class="modal">
-      <div class="modal-content">
-        <span class="close" onclick="closeModal('editProfileModal')"
-          >&times;</span
-        >
-        <form id="edit-profile-form" onsubmit="postEditProfile(event)">
-          <h2>Edit Profile</h2>
-          <label for="edit-bio">Bio:</label>
-          <textarea id="edit-bio"></textarea>
+  <section class="welcome">
+    <div class="about-wrapper">
+      <h1 class="about">Posts</h1>
+      <p>
+        Share a brief and compelling header to catch the attention of
+        potential recruiters.
+      </p>
+      <div class="about-buttons">
+        <button id="open-post" class="about-button">Post Something!</button>
+      </div>
+    </div>
+  </section>
 
-          <label for="edit-portfolio">Portfolio URL:</label>
-          <input type="text" id="edit-portfolio" required />
+  <form id="postdiv" class="post-form">
+    <div class="post-content">
+      <p style="font-size: 18px; color: #fff;">
+        ⚠️ keep tos in mind when you post.
+      </p>
+      <textarea name="content" form="postdiv" placeholder="Hello I am an experienced backend dev looking for work..."
+        required></textarea>
+      <button type="submit" id="post-now" class="about-button">
+        Post Now
+      </button>
+      <button onclick="closeModal('postdiv')" class="about-button">
+        Cancel
+      </button>
+    </div>
+  </form>
 
-          <label for="edit-avatar">Avatar URL:</label>
-          <input type="text" id="edit-avatar" />
+  <form id="postjobdiv" class="post-form">
+    <div class="post-content">
+      <p style="font-size: 18px; color: #fff;">
+        ⚠️ keep tos in mind when you post a job listing.
+      </p>
+      <textarea name="content" form="postdiv"
+        placeholder="Hello I am looking for an experienced backend dev to help me with my website..."
+        required></textarea>
+      <button type="submit" id="post-now" class="about-button">
+        Post Now
+      </button>
+      <button onclick="closeModal('postdiv')" class="about-button">
+        Cancel
+      </button>
+    </div>
+  </form>
 
-          <label for="edit-tags">Select Tags:</label><br />
-          <div
-            id="tags-container-ep"
-            style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; margin-top: 20px;"
-          >
-            <button type="button" class="tag-button" data-value="#developer">
-              #developer
-            </button>
-            <button type="button" class="tag-button" data-value="#designer">
-              #designer
-            </button>
-            <button type="button" class="tag-button" data-value="#writer">
-              #writer
-            </button>
-            <button type="button" class="tag-button" data-value="#graphic">
-              #graphic
-            </button>
-            <button type="button" class="tag-button" data-value="#copywriter">
-              #copywriter
-            </button>
-            <button type="button" class="tag-button" data-value="#devops">
-              #devops
-            </button>
-            <button
-              type="button"
-              class="tag-button"
-              data-value="#community-management"
-            >
-              #community-management
-            </button>
-            <button type="button" class="tag-button" data-value="#artist">
-              #artist
-            </button>
-            <button
-              type="button"
-              class="tag-button"
-              data-value="#digital-artist"
-            >
-              #digital-artist
-            </button>
-            <button type="button" class="tag-button" data-value="#manga-artist">
-              #manga-artist
-            </button>
-            <button type="button" class="tag-button" data-value="#moderator">
-              #moderator
-            </button>
-          </div>
+  <!-- posts -->
+  <section class="listings" id="posts"></section>
 
-          <button type="submit">Update Profile</button>
-          <button onclick="signout()" style="margin-top: 10px;">
-            Sign Out
+  <!-- job posts -->
+  <section class="listings" id="job-posts"></section>
+
+  <div class="context-menu" id="postContextMenu">
+    <button onclick="banUser()">Ban</button>
+    <button onclick="timeoutUser()">Timeout</button>
+    <button onclick="deletePost()">Delete Post</button>
+  </div>
+
+  <footer class="footer"
+    style="background-color: #23272a; padding: 20px; text-align: center; color: #ccc; margin-top: 20px;">
+    <p>Talentcord</p>
+    <p>
+      <a href="#privacy">Privacy Policy</a> |
+      <a href="#terms">Terms of Service</a>
+    </p>
+  </footer>
+
+  <!-- Sign In Modal -->
+  <div id="signInModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('signInModal')">&times;</span>
+      <form id="signin-form" onsubmit="postSignIn(event)">
+        <h2>Sign In</h2>
+        <label for="signin-username">Username:</label>
+        <input type="text" id="signin-username" required />
+
+        <label for="signin-password">Password:</label>
+        <input type="password" id="signin-password" required />
+
+        <button type="submit">Sign In</button>
+      </form>
+      <p style="margin-top: 10px;">
+        Don't have an account?
+        <a href="#" onclick="toggleToCreateAccount()">Create one here.</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Create Account Modal -->
+  <div id="createAccountModal" class="modal" style="display:none">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('createAccountModal')">&times;</span>
+      <form id="create-account-form" onsubmit="postCreateAccount(event)">
+        <h2>Create Account</h2>
+        <label for="create-username">Username:</label>
+        <input type="text" id="create-username" required />
+
+        <label for="create-email">Email:</label>
+        <input type="email" id="create-email" required />
+
+        <label for="create-password">Password:</label>
+        <input type="password" id="create-password" required />
+
+        <label for="create-portfolio">Portfolio URL</label>
+        <input type="text" id="create-portfolio" required />
+
+        <label for="create-bio">Bio:</label>
+        <textarea id="create-bio"></textarea>
+
+        <label for="tags">Select Tags:</label><br />
+        <div id="tags-container"
+          style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; margin-top: 20px;">
+          <button type="button" class="tag-button" data-value="#developer">
+            #developer
           </button>
-        </form>
-      </div>
-    </div>
+          <button type="button" class="tag-button" data-value="#designer">
+            #designer
+          </button>
+          <button type="button" class="tag-button" data-value="#writer">
+            #writer
+          </button>
+          <button type="button" class="tag-button" data-value="#graphic">
+            #graphic
+          </button>
+          <button type="button" class="tag-button" data-value="#copywriter">
+            #copywriter
+          </button>
+          <button type="button" class="tag-button" data-value="#devops">
+            #devops
+          </button>
+          <button type="button" class="tag-button" data-value="#community-management">
+            #community-management
+          </button>
+          <button type="button" class="tag-button" data-value="#artist">
+            #artist
+          </button>
+          <button type="button" class="tag-button" data-value="#digital-artist">
+            #digital-artist
+          </button>
+          <button type="button" class="tag-button" data-value="#manga-artist">
+            #manga-artist
+          </button>
+          <button type="button" class="tag-button" data-value="#moderator">
+            #moderator
+          </button>
+        </div>
 
-    <script src="/homeJS"></script>
-  </body>
+        <button type="submit">Create Account</button>
+      </form>
+      <p style="margin-top: 10px;">
+        Already have an account?
+        <a href="#" onclick="toggleToSignIn()">Sign in here.</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Edit Profile Modal -->
+  <div id="editProfileModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('editProfileModal')">&times;</span>
+      <form id="edit-profile-form" onsubmit="postEditProfile(event)">
+        <h2>Edit Profile</h2>
+        <label for="edit-bio">Bio:</label>
+        <textarea id="edit-bio"></textarea>
+
+        <label for="edit-portfolio">Portfolio URL:</label>
+        <input type="text" id="edit-portfolio" required />
+
+        <label for="edit-avatar">Avatar URL:</label>
+        <input type="text" id="edit-avatar" />
+
+        <label for="edit-tags">Select Tags:</label><br />
+        <div id="tags-container-ep"
+          style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; margin-top: 20px;">
+          <button type="button" class="tag-button" data-value="#developer">
+            #developer
+          </button>
+          <button type="button" class="tag-button" data-value="#designer">
+            #designer
+          </button>
+          <button type="button" class="tag-button" data-value="#writer">
+            #writer
+          </button>
+          <button type="button" class="tag-button" data-value="#graphic">
+            #graphic
+          </button>
+          <button type="button" class="tag-button" data-value="#copywriter">
+            #copywriter
+          </button>
+          <button type="button" class="tag-button" data-value="#devops">
+            #devops
+          </button>
+          <button type="button" class="tag-button" data-value="#community-management">
+            #community-management
+          </button>
+          <button type="button" class="tag-button" data-value="#artist">
+            #artist
+          </button>
+          <button type="button" class="tag-button" data-value="#digital-artist">
+            #digital-artist
+          </button>
+          <button type="button" class="tag-button" data-value="#manga-artist">
+            #manga-artist
+          </button>
+          <button type="button" class="tag-button" data-value="#moderator">
+            #moderator
+          </button>
+        </div>
+
+        <button type="submit">Update Profile</button>
+        <button onclick="signout()" style="margin-top: 10px;">
+          Sign Out
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="/homeJS"></script>
+</body>
+
 </html>
