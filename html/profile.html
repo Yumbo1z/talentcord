@@ -227,37 +227,45 @@
       let responseUsers = await fetch("/users");
       let jsonUsers = await responseUsers.json();
       let currentUser = jsonUsers.find((p) => p.username === "$$username$$");
-      console.log(currentUser)
-      console.log(json)
       let filteredPosts = json.filter((p) => p.username === currentUser.username);
-      consoel.log(filteredPosts)
 
-      for (let post of filteredPosts) {
-        // Map badges to Font Awesome icons
-        let badges = post.badges
-          .map((badge) => {
-            return `<div class="badge-container">
-                  <i class="${badge.faClass} badge-icon"></i>
-                  <span class="badge-tooltip">${badge.name}</span>
-                </div>`;
-          })
-          .join("");
+      if (filteredPosts.length === 0) {
+        // Display message when user has no posts
+        posts.innerHTML = `
+          <div class="no-posts-message">
+            <i class="fas fa-newspaper" style="font-size: 2rem; color: #99aab5; margin-bottom: 15px;"></i>
+            <h3 style="color: #99aab5;">User has no posts</h3>
+            <p style="color: #72767d;">This user hasn't created any posts yet.</p>
+          </div>`;
+      } else {
+        // Display posts if user has them
+        for (let post of filteredPosts) {
+          // Map badges to Font Awesome icons
+          let badges = post.badges
+            .map((badge) => {
+              return `<div class="badge-container">
+                    <i class="${badge.faClass} badge-icon"></i>
+                    <span class="badge-tooltip">${badge.name}</span>
+                  </div>`;
+            })
+            .join("");
 
-        posts.innerHTML += `
-      <div class="post-card" data-user="${post.username}" data-perms="${post.permissions}" data-id="${post._id}">
-        <img src="${post.icon}" alt="User Avatar" class="avatar">
-        <div class="listing-info">
-          <div class="profile-header">
-            <h3><a style="color: white;" href="${post.portfolio}" onclick="confirmExit(event, '${post.portfolio}')" target="_blank">${post.username}</a></h3>
-            <div class="badge-icons">
-              ${badges}
+          posts.innerHTML += `
+        <div class="post-card" data-user="${post.username}" data-perms="${post.permissions}" data-id="${post._id}">
+          <img src="${post.icon}" alt="User Avatar" class="avatar">
+          <div class="listing-info">
+            <div class="profile-header">
+              <h3><a style="color: white;" href="${post.portfolio}" onclick="confirmExit(event, '${post.portfolio}')" target="_blank">${post.username}</a></h3>
+              <div class="badge-icons">
+                ${badges}
+              </div>
             </div>
+            <p>${post.content}</p>
           </div>
-          <p>${post.content}</p>
-        </div>
-      </div>`;
+        </div>`;
+        }
       }
-    })
+    });
   </script>
 
   <script src="/profileJS"></script>
