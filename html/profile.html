@@ -226,6 +226,7 @@
 
       let responseUsers = await fetch("/users");
       let jsonUsers = await responseUsers.json();
+      console.log(jsonUsers)
       let currentUser = jsonUsers.find((p) => p.username === "$$username$$");
 
       let filteredPosts = json.filter((p) => p.username === currentUser.username);
