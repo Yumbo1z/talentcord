@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="icon" href="https://i.imgur.com/Bxj4aaT.png" />
+    <title>Talentcord</title>
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet" />
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css" />
+
+
+    <link type="text/css" rel="stylesheet" href="../css/home.css" />
+
+
+    <link type="text/css" rel="stylesheet" href="/homeCSS" />
+    <link type="text/css" rel="stylesheet" href="/profileCSS" />
+    <style>
+        .tos-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .tos-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .tos-header h1 {
+            color: #fff;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .tos-header p {
+            color: #99aab5;
+            font-size: 1.1rem;
+        }
+
+        .tos-content {
+            background-color: #36393f;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .tos-section {
+            margin-bottom: 30px;
+        }
+
+        .tos-section h2 {
+            color: #7289da;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #40444b;
+        }
+
+        .tos-section h3 {
+            color: #fff;
+            font-size: 1.2rem;
+            margin: 20px 0 10px;
+        }
+
+        .tos-section p,
+        .tos-section ul {
+            margin-bottom: 15px;
+        }
+
+        .tos-section ul {
+            padding-left: 20px;
+        }
+
+        .tos-section li {
+            margin-bottom: 8px;
+        }
+
+        .highlight {
+            background-color: #40444b;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+
+        .last-updated {
+            text-align: center;
+            margin-top: 40px;
+            color: #99aab5;
+            font-style: italic;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: #99aab5;
+            font-size: 0.9rem;
+        }
+
+        a {
+            color: #7289da;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a class="logo" href="/home">Talentcord</a>
+        <div class="search-bar">
+            <input type="text" placeholder="Search for a user..." />
+        </div>
+        <div class="plus-icon" onclick="openModal('signInModal', 'block')">
+            <i class="fas fa-plus"></i>
+        </div>
+    </nav>
+
+
+    <!-- Terms of Service Content -->
+    <div class="tos-container">
+        <div class="tos-header">
+            <h1>Terms of Service</h1>
+            <p>Last Updated: May 25, 2025</p>
+        </div>
+
+        <div class="tos-content">
+            <div class="tos-section">
+                <h2>1. Acceptance of Terms</h2>
+                <p>By accessing or using Talentcord ("the Service"), you agree to be bound by these Terms of Service
+                    ("Terms"). If you disagree with any part of the terms, you may not access the Service.</p>
+            </div>
+
+            <div class="tos-section">
+                <h2>2. Description of Service</h2>
+                <p>Talentcord is a professional networking platform that connects talented individuals with potential
+                    employers and collaborators. The Service includes but is not limited to profile creation, job
+                    postings, and professional messaging.</p>
+            </div>
+
+            <div class="tos-section">
+                <h2>3. User Responsibilities</h2>
+                <h3>3.1 Account Creation</h3>
+                <p>You must provide accurate and complete information when creating an account and keep this information
+                    up to date.</p>
+
+                <h3>3.2 Content Guidelines</h3>
+                <p>You agree not to post, upload, or otherwise transmit content that:</p>
+                <ul>
+                    <li>Violates any law or regulation</li>
+                    <li>Infringes on intellectual property rights</li>
+                    <li>Contains hate speech or discriminatory language</li>
+                    <li>Is fraudulent, false, or misleading</li>
+                    <li>Contains viruses or malicious code</li>
+                </ul>
+            </div>
+
+            <div class="tos-section">
+                <h2>4. Payments and Subscriptions</h2>
+                <h3>4.1 Premium Features</h3>
+                <p>Certain features of Talentcord require payment. By subscribing to these features, you agree to pay
+                    all applicable fees.</p>
+
+                <h3>4.2 Billing</h3>
+                <p>All payments are processed through third-party payment processors. You agree to their terms when
+                    making payments.</p>
+
+                <h3>4.3 Cancellation</h3>
+                <p>You may cancel your subscription at any time, but no refunds will be provided for the current billing
+                    period.</p>
+            </div>
+
+            <div class="tos-section">
+                <h2>5. Intellectual Property</h2>
+                <p>All content and materials available on Talentcord, including but not limited to text, graphics,
+                    logos, and software, are the property of Talentcord or its licensors and are protected by
+                    intellectual property laws.</p>
+            </div>
+
+            <div class="tos-section">
+                <h2>6. Privacy</h2>
+                <p>Your use of the Service is subject to our Privacy Policy, which explains how we collect, use, and
+                    protect your information.</p>
+            </div>
+
+            <div class="tos-section">
+                <h2>7. Termination</h2>
+                <p>We may terminate or suspend your account immediately, without prior notice or liability, for any
+                    reason whatsoever, including without limitation if you breach the Terms.</p>
+            </div>
+
+            <div class="tos-section">
+                <h2>8. Limitation of Liability</h2>
+                <p>In no event shall Talentcord, nor its directors, employees, partners, agents, suppliers, or
+                    affiliates, be liable for any indirect, incidental, special, consequential or punitive damages
+                    resulting from your use of the Service.</p>
+            </div>
+
+            <div class="tos-section">
+                <h2>9. Changes to Terms</h2>
+                <p>We reserve the right to modify these Terms at any time. We will provide notice of significant changes
+                    through the Service. Your continued use after such changes constitutes acceptance of the new Terms.
+                </p>
+            </div>
+
+            <div class="tos-section">
+                <h2>10. Governing Law</h2>
+                <p>These Terms shall be governed by and construed in accordance with the laws of the State of Delaware,
+                    without regard to its conflict of law provisions.</p>
+            </div>
+
+            <div class="last-updated">
+                <p>This document was last updated on May 25, 2025</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2023 Talentcord. All rights reserved. | <a href="/privacy">Privacy Policy</a> | <a
+                href="/contact">Contact Us</a></p>
+    </div>
+</body>
+
+</html>
