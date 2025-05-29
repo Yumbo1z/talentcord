@@ -1,239 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="icon" href="https://i.imgur.com/Bxj4aaT.png" />
-    <title>Talentcord</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Fira+Sans"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css"
-    />
 
-    <link type="text/css" rel="stylesheet" href="/homeCSS" />
-    <link type="text/css" rel="stylesheet" href="/profileCSS" />
-    <style>
-      /* Payment Plans Section */
-      .pricing-section {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 40px 20px;
-        background-color: #2c2f33;
-      }
-      
-      .pricing-container {
-        display: flex;
-        gap: 30px;
-        max-width: 1000px;
-        width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-      
-      .pricing-plan {
-        background-color: #36393f;
-        border-radius: 10px;
-        padding: 30px;
-        width: 100%;
-        max-width: 400px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        transition: transform 0.3s, box-shadow 0.3s;
-        border: 2px solid #5865f2;
-      }
-      
-      .pricing-plan:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-      }
-      
-      .plan-header {
-        text-align: center;
-        margin-bottom: 25px;
-        padding-bottom: 20px;
-        border-bottom: 1px solid #40444b;
-      }
-      
-      .plan-name {
-        font-size: 1.8rem;
-        color: white;
-        margin-bottom: 10px;
-      }
-      
-      .plan-price {
-        font-size: 2.5rem;
-        font-weight: bold;
-        color: #7289da;
-        margin-bottom: 5px;
-      }
-      
-      .plan-period {
-        color: #99aab5;
-        font-size: 1rem;
-      }
-      
-      .plan-features {
-        margin-bottom: 30px;
-      }
-      
-      .feature {
-        display: flex;
-        align-items: center;
-        margin-bottom: 15px;
-        color: #dcddde;
-      }
-      
-      .feature i {
-        color: #7289da;
-        margin-right: 10px;
-        font-size: 1.2rem;
-      }
-      
-      .plan-button {
-        display: block;
-        width: 100%;
-        padding: 12px;
-        background-color: #5865f2;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        font-size: 1.1rem;
-        font-weight: bold;
-        cursor: pointer;
-        transition: background-color 0.3s;
-      }
-      
-      .plan-button:hover {
-        background-color: #4752c4;
-      }
-      
-      .enterprise-plan {
-        border-color: #eb459e;
-      }
-      
-      .enterprise-plan .plan-price {
-        color: #eb459e;
-      }
-      
-      .enterprise-plan .feature i {
-        color: #eb459e;
-      }
-      
-      .enterprise-plan .plan-button {
-        background-color: #eb459e;
-      }
-      
-      .enterprise-plan .plan-button:hover {
-        background-color: #d1358e;
-      }
-    </style>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="icon" href="https://i.imgur.com/Bxj4aaT.png" />
+  <title>Talentcord</title>
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet" />
+  <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css" />
 
-  <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-      <a class="logo" href="/home">Talentcord</a>
-      <div class="search-bar">
-        <input type="text" placeholder="Search for a user..." />
+  <link type="text/css" rel="stylesheet" href="/homeCSS" />
+  <link type="text/css" rel="stylesheet" href="/profileCSS" />
+  <style>
+    /* Payment Plans Section */
+    .pricing-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      background-color: #2c2f33;
+    }
+
+    .pricing-container {
+      display: flex;
+      gap: 30px;
+      max-width: 1000px;
+      width: 100%;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .pricing-plan {
+      background-color: #36393f;
+      border-radius: 10px;
+      padding: 30px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 2px solid #5865f2;
+    }
+
+    .pricing-plan:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .plan-header {
+      text-align: center;
+      margin-bottom: 25px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #40444b;
+    }
+
+    .plan-name {
+      font-size: 1.8rem;
+      color: white;
+      margin-bottom: 10px;
+    }
+
+    .plan-price {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #7289da;
+      margin-bottom: 5px;
+    }
+
+    .plan-period {
+      color: #99aab5;
+      font-size: 1rem;
+    }
+
+    .plan-features {
+      margin-bottom: 30px;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      color: #dcddde;
+    }
+
+    .feature i {
+      color: #7289da;
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+
+    .plan-button {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background-color: #5865f2;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .plan-button:hover {
+      background-color: #4752c4;
+    }
+
+    .enterprise-plan {
+      border-color: #eb459e;
+    }
+
+    .enterprise-plan .plan-price {
+      color: #eb459e;
+    }
+
+    .enterprise-plan .feature i {
+      color: #eb459e;
+    }
+
+    .enterprise-plan .plan-button {
+      background-color: #eb459e;
+    }
+
+    .enterprise-plan .plan-button:hover {
+      background-color: #d1358e;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a class="logo" href="/home">Talentcord</a>
+    <div class="search-bar">
+      <input type="text" placeholder="Search for a user..." />
+    </div>
+    <div class="plus-icon" onclick="openModal('signInModal', 'block')">
+      <i class="fas fa-plus"></i>
+    </div>
+  </nav>
+
+  <!-- Payment Plans Section -->
+  <section class="pricing-section">
+    <!-- Free Plan -->
+    <div class="pricing-plan">
+      <div class="plan-header">
+        <h2 class="plan-name">Free</h2>
       </div>
-      <div class="plus-icon" onclick="openModal('signInModal', 'block')">
-        <i class="fas fa-plus"></i>
-      </div>
-    </nav>
-
-    <!-- Payment Plans Section -->
-    <section class="pricing-section">
-      <div class="pricing-container">
-        <!-- Premium Plan -->
-        <div class="pricing-plan">
-          <div class="plan-header">
-            <h2 class="plan-name">Premium</h2>
-            <div class="plan-price">$3.00</div>
-            <div class="plan-period">per month (7 days free)</div>
-          </div>
-          <div class="plan-features">
-            <div class="feature">
-              <i class="fas fa-check-circle"></i>
-              <span>Custom profile badge</span>
-            </div>
-            <div class="feature">
-              <i class="fas fa-check-circle"></i>
-              <span>Enhanced visibility in search</span>
-            </div>
-            <div class="feature">
-              <i class="fas fa-check-circle"></i>
-              <span>Increased posting (50 posts/month)</span>
-            </div>
-            <div class="feature">
-              <i class="fas fa-check-circle"></i>
-              <span>Advanced profile tools</span>
-            </div>
-            <div class="feature">
-              <i class="fas fa-check-circle"></i>
-              <span>Priority support</span>
-            </div>
-          </div>
-          <button class="plan-button">Get Premium</button>
+      <div class="plan-features">
+        <div class="feature">
+          <i class="fas fa-check-circle"></i>
+          <span>Limited Posting</span>
         </div>
 
-        <!-- Enterprise Plan -->
-        <div class="pricing-plan enterprise-plan">
-          <div class="plan-header">
-            <h2 class="plan-name">Enterprise</h2>
-            <div class="plan-price">$9.00</div>
-            <div class="plan-period">per month (7 days free)</div>
-          </div>
-          <div class="plan-features">
-            <div class="feature">
-              <i class="fas fa-check-circle"></i>
-              <span>Everything in Premium</span>
-            </div>
-            <div class="feature">
-              <i class="fas fa-check-circle"></i>
-              <span>Team profiles (up to 5 members)</span>
-            </div>
-            <div class="feature">
-              <i class="fas fa-check-circle"></i>
-              <span>Unlimited posting</span>
-            </div>
-            <div class="feature">
-              <i class="fas fa-check-circle"></i>
-              <span>Advanced customization</span>
-            </div>
-            <div class="feature">
-              <i class="fas fa-check-circle"></i>
-              <span>Dedicated account manager</span>
-            </div>
-            <div class="feature">
-              <i class="fas fa-check-circle"></i>
-              <span>Early access to new features</span>
-            </div>
-          </div>
-          <button class="plan-button">Get Enterprise</button>
-        </div>
       </div>
-    </section>
-
-    <!-- Rest of your HTML remains the same -->
-    <!-- Sign In Modal -->
-    <div id="signInModal" class="modal">
-      <!-- ... existing modal content ... -->
     </div>
 
-    <!-- Create Account Modal -->
-    <div id="createAccountModal" class="modal" style="display:none">
-      <!-- ... existing modal content ... -->
-    </div>
+    <div class="pricing-container">
+      <!-- Premium Plan -->
+      <div class="pricing-plan">
+        <div class="plan-header">
+          <h2 class="plan-name">Premium</h2>
+          <div class="plan-price">$3.00</div>
+          <div class="plan-period">per month (7 days free)</div>
+        </div>
+        <div class="plan-features">
+          <div class="feature">
+            <i class="fas fa-check-circle"></i>
+            <span>Custom profile badge</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-check-circle"></i>
+            <span>Enhanced visibility in search</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-check-circle"></i>
+            <span>Increased posting (50 posts/month)</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-check-circle"></i>
+            <span>Advanced profile tools</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-check-circle"></i>
+            <span>Priority support</span>
+          </div>
+        </div>
+        <button class="plan-button">Get Premium</button>
+      </div>
 
-    <!-- Edit Profile Modal -->
-    <div id="editProfileModal" class="modal">
-      <!-- ... existing modal content ... -->
+      <!-- Enterprise Plan -->
+      <div class="pricing-plan enterprise-plan">
+        <div class="plan-header">
+          <h2 class="plan-name">Enterprise</h2>
+          <div class="plan-price">$9.00</div>
+          <div class="plan-period">per month (7 days free)</div>
+        </div>
+        <div class="plan-features">
+          <div class="feature">
+            <i class="fas fa-check-circle"></i>
+            <span>Everything in Premium</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-check-circle"></i>
+            <span>Team profiles (up to 5 members)</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-check-circle"></i>
+            <span>Unlimited posting</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-check-circle"></i>
+            <span>Advanced customization</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-check-circle"></i>
+            <span>Dedicated account manager</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-check-circle"></i>
+            <span>Early access to new features</span>
+          </div>
+        </div>
+        <button class="plan-button">Get Enterprise</button>
+      </div>
     </div>
+  </section>
 
-    <script src="/profileJS"></script>
-  </body>
+  <!-- Rest of your HTML remains the same -->
+  <!-- Sign In Modal -->
+  <div id="signInModal" class="modal">
+    <!-- ... existing modal content ... -->
+  </div>
+
+  <!-- Create Account Modal -->
+  <div id="createAccountModal" class="modal" style="display:none">
+    <!-- ... existing modal content ... -->
+  </div>
+
+  <!-- Edit Profile Modal -->
+  <div id="editProfileModal" class="modal">
+    <!-- ... existing modal content ... -->
+  </div>
+
+  <script src="/profileJS"></script>
+</body>
+
 </html>
