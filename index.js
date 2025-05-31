@@ -30,6 +30,9 @@ app.get("/profileCSS", (_, res) =>
   res.sendFile(`${__dirname}/css/profile.css`)
 );
 
+app.get("/client", (_, res) =>
+  res.sendFile(`${__dirname}/public/js/client.js`)
+);
 app.get("/homeJS", (_, res) => res.sendFile(`${__dirname}/js/home.js`));
 app.get("/profileJS", (_, res) => res.sendFile(`${__dirname}/js/profile.js`));
 
