@@ -61,6 +61,53 @@
         </form>
     </div>
 
+    <script>
+        async function postCreateAccount(event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+
+            // Get values from the form
+            const username = document.getElementById("create-username").value;
+            const email = document.getElementById("create-email").value;
+            const password = document.getElementById("create-password").value;
+            const bio = document.getElementById("create-bio").value;
+            const portfolio = document.getElementById("create-portfolio").value;
+
+            // Collect checked tags
+            const tags = selectedTags;
+
+            try {
+                const response = await fetch("/create-account", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        username: username,
+                        email: email,
+                        password: password,
+                        bio: bio,
+                        portfolio: portfolio,
+                        tags: tags,
+                    }),
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    // Handle success, for example, show a welcome message or redirect
+                    alert("Account created successfully!");
+                    closeModal("createAccountModal"); // Close the modal after account creation
+                } else {
+                    // Handle error, for example, display an error message
+                    alert("Account creation failed: " + result.message);
+                }
+            } catch (error) {
+                console.error("Error during account creation:", error);
+                alert("An error occurred during account creation. Please try again later.");
+            }
+        }
+    </script>
+
     <div class="footer">
         <p>&copy; <span id="current-year">2025</span> Talentcord. All rights reserved. | <a href="/privacy">Privacy
                 Policy</a> | <a href="/terms">Terms of Service</a>
