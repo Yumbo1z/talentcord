@@ -25,3 +25,182 @@ body {
 body::-webkit-scrollbar {
   display: none;
 }
+
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #23272a;
+  padding: 10px 20px;
+  color: white;
+}
+
+.navbar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+}
+
+.navbar .search-bar {
+  flex: 1;
+  margin: 0 20px;
+}
+
+.navbar .search-bar input {
+  width: 100%;
+  padding: 8px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: none;
+  background-color: #40444b;
+  color: white;
+}
+
+.navbar .plus-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.navbar .plus-icon:hover {
+  color: #7289da;
+}
+
+.navbar .plus-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* Sign Up Form Styles */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  max-width: 100%;
+  width: 100%;
+}
+
+.signup-form {
+  width: 100%;
+  max-width: 400px;
+  background-color: #36393f;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+  width: 100%;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  color: #b9bbbe;
+  font-weight: 600;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 3px;
+  border: 1px solid #202225;
+  background-color: #303339;
+  color: white;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+  border-color: #7289da;
+  outline: none;
+}
+
+.terms-checkbox {
+  display: flex;
+  align-items: center;
+  margin: 1.5rem 0;
+}
+
+.terms-checkbox input {
+  margin-right: 0.75rem;
+  width: auto;
+}
+
+.terms-checkbox label {
+  font-size: 0.875rem;
+  color: #b9bbbe;
+}
+
+.terms-checkbox a {
+  color: #7289da;
+  text-decoration: none;
+}
+
+.terms-checkbox a:hover {
+  text-decoration: underline;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #7289da;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+  background-color: #677bc4;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: #b9bbbe;
+}
+
+.login-link a {
+  color: #7289da;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .signup-form {
+    padding: 1.5rem;
+  }
+
+  .form-title {
+    font-size: 1.25rem;
+  }
+}
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  color: #99aab5;
+  font-size: 0.9rem;
+}

@@ -10,9 +10,62 @@
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css" />
 
     <link type="text/css" rel="stylesheet" href="/css" />
+    <link type="text/css" rel="stylesheet" href="../css/mobile.css" />
+
 </head>
 
 <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Talentcord</div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search for a user..." />
+        </div>
+        <div class="plus-icon" onclick="openModal('signInModal', 'block')">
+            <i class="fas fa-plus"></i>
+        </div>
+    </nav>
+
+    <div class="form-container">
+        <form class="signup-form">
+            <h2 class="form-title">Create an Account</h2>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Choose a username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Create a password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password"
+                    required>
+            </div>
+
+            <div class="terms-checkbox">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy
+                        Policy</a></label>
+            </div>
+
+            <button type="submit" class="submit-btn">Sign Up</button>
+        </form>
+    </div>
+
+    <div class="footer">
+        <p>&copy; <span id="current-year">2025</span> Talentcord. All rights reserved. | <a href="/privacy">Privacy
+                Policy</a> | <a href="/terms">Terms of Service</a>
+        </p>
+    </div>
 
 </body>
 
