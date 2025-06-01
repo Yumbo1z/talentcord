@@ -2,8 +2,8 @@
   --bg-color: #2c2f33;
   --text-color: #ccc;
   --sub-text-color: #333333;
-  --button-color: #e8e8e8;
-  --button-hover: #d8d8d8;
+  --button-color: #5865f2;
+  --button-hover: #4751c7;
   --text-size: 14px;
 }
 
@@ -157,7 +157,7 @@ body::-webkit-scrollbar {
 .submit-btn {
   width: 100%;
   padding: 12px;
-  background-color: #7289da;
+  background-color: var(--button-color);
   color: white;
   border: none;
   border-radius: 3px;
@@ -168,7 +168,7 @@ body::-webkit-scrollbar {
 }
 
 .submit-btn:hover {
-  background-color: #677bc4;
+  background-color: var(--button-hover);
 }
 
 .login-link {
