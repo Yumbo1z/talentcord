@@ -28,8 +28,6 @@ module.exports = {
     url.searchParams.append("username", reqData.username);
     url.searchParams.append("avatar", "https://i.imgur.com/fBh0Mdm.png");
 
-    res
-      .status(200)
-      .json({ message: "Account successfully created and signed in!" });
+    res.status(200).json({ redirectUrl: url, message: "Account successfully created and signed in!" });
   },
 };

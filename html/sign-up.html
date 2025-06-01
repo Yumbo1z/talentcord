@@ -99,12 +99,10 @@
                 });
 
                 const result = await response.json();
-
                 if (response.ok) {
                     // Handle success
-                    alert("Account created successfully!");
-                    // You might want to redirect or close a modal here
-                    // window.location.href = "/dashboard"; // Example redirect
+                    alert(result.message);
+                    window.location.href = result.redirectUrl;
                 } else {
                     // Handle error
                     alert("Account creation failed: " + (result.message || "Unknown error"));
