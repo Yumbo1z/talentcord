@@ -25,10 +25,6 @@ app.get("/terms", async (_, res) => res.sendFile(dir("tos")));
 app.get("/plans", async (_, res) => res.sendFile(dir("plans")));
 app.get("/sign-up", async (_, res) => res.sendFile(dir("sign-up")));
 
-app.get("/profileCSS", (_, res) =>
-  res.sendFile(`${__dirname}/css/profile.css`)
-);
-
 app.get("/css", (_, res) => res.sendFile(`${__dirname}/public/css/mobile.css`));
 app.get("/client", (_, res) =>
   res.sendFile(`${__dirname}/public/js/client.js`)
