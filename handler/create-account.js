@@ -25,7 +25,7 @@ module.exports = {
     const token = jwt.sign(userObject, process.env.ACCESS_TOKEN_SECRET);
     let url = new URL("https://talentcord.org/sign-up");
     url.searchParams.append("token", token);
-    url.searchParams.append("username", findUser.username);
+    url.searchParams.append("username", reqData.username);
     url.searchParams.append("avatar", "https://i.imgur.com/fBh0Mdm.png");
 
     res
