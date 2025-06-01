@@ -485,16 +485,13 @@ tagsContainer.addEventListener("click", (event) => {
   }
 });
 
-
-
 document.addEventListener("DOMContentLoaded", async () => {
   // Check if user data exists in localStorage
   const userData = JSON.parse(localStorage.getItem("user"));
-  let response = await fetch("/users");
-  let json = await response.json();
-  let currentUser = json.find((p) => p.username === userData.username);
-
   if (userData) {
+    let response = await fetch("/users");
+    let json = await response.json();
+    let currentUser = json.find((p) => p.username === userData.username);
     replaceCrossWithAvatar(currentUser.icon); // Replace the cross icon with an avatar
   }
 
