@@ -27,6 +27,12 @@ module.exports = {
         if (reqData.portfolio) findUser.portfolio = reqData.portfolio;
         if (reqData.avatar) findUser.avatarURL = reqData.avatar;
 
+        if (findUser.banned)
+          return res.status(403).json({
+            error:
+              "Thank you for using our sevices but unfortunately you have been banned and no longer can interact with the site. If you have any subscriptions I would cancel them.",
+          });
+
         await findUser.save();
         res.status(200).json({ success: "Successfully updated!" });
       });

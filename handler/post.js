@@ -62,6 +62,12 @@ module.exports = {
                 "Post cannot contain inappropriate language or words in our blocklist.",
             });
 
+          if (requester.banned)
+            return res.status(403).json({
+              error:
+                "Thank you for using our sevices but unfortunately you have been banned and no longer can interact with the site. If you have any subscriptions I would cancel them.",
+            });
+
           // Create the post
           await postSchema.create({
             username: requester.username,
