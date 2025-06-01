@@ -10,83 +10,95 @@
   <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css" />
 
   <link type="text/css" rel="stylesheet" href="/css" />
-      <link type="text/css" rel="stylesheet" href="../public/css/mobile.css" />
+  <link type="text/css" rel="stylesheet" href="../public/css/mobile.css" />
 
   <style>
-    /* Payment Plans Section */
+    /* Payment Plans Section - Mobile First */
     .pricing-section {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 40px 20px;
+      padding: 20px;
       background-color: #2c2f33;
     }
 
     .pricing-container {
       display: flex;
-      gap: 30px;
-      max-width: 1000px;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 100%;
       width: 100%;
-      justify-content: center;
-      flex-wrap: wrap;
     }
 
     .pricing-plan {
       background-color: #36393f;
       border-radius: 10px;
-      padding: 30px;
+      padding: 20px;
       width: 100%;
-      max-width: 400px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
       transition: transform 0.3s, box-shadow 0.3s;
       border: 2px solid #5865f2;
+      margin-bottom: 20px;
     }
 
-    .pricing-plan:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    .enterprise-plan {
+      border-color: #eb459e;
     }
 
     .plan-header {
       text-align: center;
-      margin-bottom: 25px;
-      padding-bottom: 20px;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
       border-bottom: 1px solid #40444b;
     }
 
     .plan-name {
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       color: white;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .plan-price {
-      font-size: 2.5rem;
+      font-size: 2rem;
       font-weight: bold;
       color: #7289da;
       margin-bottom: 5px;
     }
 
+    .enterprise-plan .plan-price {
+      color: #eb459e;
+    }
+
     .plan-period {
       color: #99aab5;
-      font-size: 1rem;
+      font-size: 0.9rem;
     }
 
     .plan-features {
-      margin-bottom: 30px;
+      margin-bottom: 25px;
+      min-height: 200px;
     }
 
     .feature {
       display: flex;
       align-items: center;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
       color: #dcddde;
+      font-size: 0.9rem;
     }
 
     .feature i {
       color: #7289da;
-      margin-right: 10px;
-      font-size: 1.2rem;
+      margin-right: 8px;
+      font-size: 1rem;
+      min-width: 16px;
+    }
+
+    .enterprise-plan .feature i {
+      color: #eb459e;
+    }
+
+    .plan-button-container {
+      margin-top: auto;
+      padding-top: 15px;
+      border-top: 1px solid #40444b;
     }
 
     .plan-button {
@@ -97,26 +109,15 @@
       color: white;
       border: none;
       border-radius: 5px;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: bold;
       cursor: pointer;
       transition: background-color 0.3s;
+      text-align: center;
     }
 
     .plan-button:hover {
       background-color: #4752c4;
-    }
-
-    .enterprise-plan {
-      border-color: #eb459e;
-    }
-
-    .enterprise-plan .plan-price {
-      color: #eb459e;
-    }
-
-    .enterprise-plan .feature i {
-      color: #eb459e;
     }
 
     .enterprise-plan .plan-button {
@@ -125,6 +126,45 @@
 
     .enterprise-plan .plan-button:hover {
       background-color: #d1358e;
+    }
+
+    /* Tablet and Desktop Styles */
+    @media (min-width: 768px) {
+      .pricing-section {
+        padding: 40px 20px;
+      }
+
+      .pricing-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+      }
+
+      .pricing-plan {
+        max-width: 350px;
+        padding: 25px;
+        margin-bottom: 0;
+      }
+
+      .plan-features {
+        min-height: 250px;
+      }
+
+      .plan-name {
+        font-size: 1.8rem;
+      }
+
+      .plan-price {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .pricing-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
     }
   </style>
 </head>
@@ -143,21 +183,45 @@
 
   <!-- Payment Plans Section -->
   <section class="pricing-section">
-    <!-- Free Plan -->
-    <div class="pricing-plan">
-      <div class="plan-header">
-        <h2 class="plan-name">Free</h2>
-      </div>
-      <div class="plan-features">
-        <div class="feature">
-          <i class="fas fa-check-circle"></i>
-          <span>Limited Posting</span>
-        </div>
-
-      </div>
-    </div>
-
     <div class="pricing-container">
+      <!-- Free Plan - Enhanced Features -->
+      <div class="pricing-plan">
+        <div class="plan-header">
+          <h2 class="plan-name">Free</h2>
+          <div class="plan-price">$0</div>
+          <div class="plan-period">forever</div>
+        </div>
+        <div class="plan-features">
+          <div class="feature">
+            <i class="fas fa-check-circle"></i>
+            <span>10 posts per month</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-check-circle"></i>
+            <span>Basic profile customization</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-check-circle"></i>
+            <span>Access to community</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-check-circle"></i>
+            <span>3 portfolio items</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-check-circle"></i>
+            <span>Standard search visibility</span>
+          </div>
+          <div class="feature">
+            <i class="fas fa-check-circle"></i>
+            <span>Email support</span>
+          </div>
+        </div>
+        <div class="plan-button-container">
+          <button class="plan-button">Get Started</button>
+        </div>
+      </div>
+
       <!-- Premium Plan -->
       <div class="pricing-plan">
         <div class="plan-header">
@@ -176,7 +240,7 @@
           </div>
           <div class="feature">
             <i class="fas fa-check-circle"></i>
-            <span>Increased posting (50 posts/month)</span>
+            <span>50 posts/month</span>
           </div>
           <div class="feature">
             <i class="fas fa-check-circle"></i>
@@ -186,8 +250,14 @@
             <i class="fas fa-check-circle"></i>
             <span>Priority support</span>
           </div>
+          <div class="feature">
+            <i class="fas fa-check-circle"></i>
+            <span>Unlimited portfolio items</span>
+          </div>
         </div>
-        <button class="plan-button">Get Premium</button>
+        <div class="plan-button-container">
+          <button class="plan-button">Get Premium</button>
+        </div>
       </div>
 
       <!-- Enterprise Plan -->
@@ -223,7 +293,9 @@
             <span>Early access to new features</span>
           </div>
         </div>
-        <button class="plan-button">Get Enterprise</button>
+        <div class="plan-button-container">
+          <button class="plan-button">Get Enterprise</button>
+        </div>
       </div>
     </div>
   </section>
