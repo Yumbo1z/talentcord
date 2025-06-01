@@ -25,17 +25,16 @@ app.get("/terms", async (_, res) => res.sendFile(dir("tos")));
 app.get("/plans", async (_, res) => res.sendFile(dir("plans")));
 app.get("/sign-up", async (_, res) => res.sendFile(dir("sign-up")));
 
-app.get("/css", (_, res) => res.sendFile(`${__dirname}/css/mobile.css`));
 app.get("/homeCSS", (_, res) => res.sendFile(`${__dirname}/css/home.css`));
 app.get("/profileCSS", (_, res) =>
   res.sendFile(`${__dirname}/css/profile.css`)
 );
 
+app.get("/css", (_, res) => res.sendFile(`${__dirname}/public/css/mobile.js`));
 app.get("/client", (_, res) =>
   res.sendFile(`${__dirname}/public/js/client.js`)
 );
-app.get("/homeJS", (_, res) => res.sendFile(`${__dirname}/js/home.js`));
-app.get("/profileJS", (_, res) => res.sendFile(`${__dirname}/js/profile.js`));
+app.get("/mod", (_, res) => res.sendFile(`${__dirname}/public/js/modtools.js`));
 
 app.listen(process.env.PORT || 8080, () => {
   console.log("Server Started");
