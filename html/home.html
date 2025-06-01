@@ -155,74 +155,6 @@
     </div>
   </div>
 
-  <!-- Create Account Modal -->
-  <div id="createAccountModal" class="modal" style="display:none">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('createAccountModal')">&times;</span>
-      <form id="create-account-form" onsubmit="postCreateAccount(event)">
-        <h2>Create Account</h2>
-        <label for="create-username">Username:</label>
-        <input type="text" id="create-username" required />
-
-        <label for="create-email">Email:</label>
-        <input type="email" id="create-email" required />
-
-        <label for="create-password">Password:</label>
-        <input type="password" id="create-password" required />
-
-        <label for="create-portfolio">Portfolio URL</label>
-        <input type="text" id="create-portfolio" required />
-
-        <label for="create-bio">Bio:</label>
-        <textarea id="create-bio"></textarea>
-
-        <label for="tags">Select Tags:</label><br />
-        <div id="tags-container"
-          style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; margin-top: 20px;">
-          <button type="button" class="tag-button" data-value="#developer">
-            #developer
-          </button>
-          <button type="button" class="tag-button" data-value="#designer">
-            #designer
-          </button>
-          <button type="button" class="tag-button" data-value="#writer">
-            #writer
-          </button>
-          <button type="button" class="tag-button" data-value="#graphic">
-            #graphic
-          </button>
-          <button type="button" class="tag-button" data-value="#copywriter">
-            #copywriter
-          </button>
-          <button type="button" class="tag-button" data-value="#devops">
-            #devops
-          </button>
-          <button type="button" class="tag-button" data-value="#community-management">
-            #community-management
-          </button>
-          <button type="button" class="tag-button" data-value="#artist">
-            #artist
-          </button>
-          <button type="button" class="tag-button" data-value="#digital-artist">
-            #digital-artist
-          </button>
-          <button type="button" class="tag-button" data-value="#manga-artist">
-            #manga-artist
-          </button>
-          <button type="button" class="tag-button" data-value="#moderator">
-            #moderator
-          </button>
-        </div>
-
-        <button type="submit">Create Account</button>
-      </form>
-      <p style="margin-top: 10px;">
-        Already have an account?
-        <a href="#" onclick="toggleToSignIn()">Sign in here.</a>
-      </p>
-    </div>
-  </div>
-
   <!-- Edit Profile Modal -->
   <div id="editProfileModal" class="modal">
     <div class="modal-content">
@@ -283,6 +215,151 @@
       </form>
     </div>
   </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      let response = await fetch("/users");
+      let json = await response.json();
+      const listings = document.getElementById("listings");
+
+      const currentUser = JSON.parse(localStorage.getItem("user"));
+
+      for (let user of json) {
+        let tags = user.tags
+          .map((tag) => `<span class="tag">${tag}</span>`)
+          .join(" ");
+
+        // Map badges to Font Awesome icons
+        let badges = user.badges
+          .map((badge) => {
+            return `<div class="badge-container">
+                <i class="${badge.faClass} badge-icon"></i>
+                <span class="badge-tooltip">${badge.name}</span>
+              </div>`;
+          })
+          .join("");
+
+        listings.innerHTML += `
+    <div class="listing-card" data-user="${user.username}" data-perms="${user.permissions}" onclick="window.location='/profile/${user.username}'">
+      <img src="${user.icon}" alt="User Avatar" class="avatar">
+      <div class="listing-info">
+        <div class="profile-header">
+          <h3>${user.username}</h3>
+          <div class="badge-icons">
+            ${badges}
+          </div>
+        </div>
+        <p>${user.bio}</p>
+        <div class="tags">${tags}</div>
+      </div>
+    </div>`;
+      }
+
+      document.querySelectorAll(".listing-card").forEach((card) => {
+        card.addEventListener("contextmenu", (event) => {
+          event.preventDefault();
+          if (currentUser) {
+            let currentUserMoreData = json.find(
+              (v) => v.username === currentUser.username
+            );
+            if (currentUserMoreData.permissions === 1) showContextMenu(event, card);
+          }
+        });
+      });
+
+      refreshPosts();
+    });
+
+    //post
+    document.getElementById("open-post").addEventListener("click", (e) => {
+      if (!localStorage.user) {
+        e.preventDefault();
+        alert("Sign in to post!");
+      } else {
+        openModal("postdiv", "flex");
+      }
+    });
+
+    const form = document.getElementById("postdiv");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      document.getElementById("post-now").disabled = true;
+      const data = Object.fromEntries(new FormData(form).entries());
+      const userData = JSON.parse(localStorage.getItem("user"));
+      const response = await fetch("/post", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          data: { content: data.content, token: userData.token },
+        }),
+      });
+
+      if (response.ok) {
+        const successData = await response.json();
+        alert(successData.success);
+        document.getElementById("post-now").disabled = false;
+        closeModal("postdiv");
+        refreshPosts();
+      } else {
+        const errorData = await response.json();
+        alert(errorData.error);
+        document.getElementById("post-now").disabled = false;
+      }
+    });
+
+    async function refreshPosts() {
+      let response = await fetch("/posts");
+      let json = await response.json();
+      const posts = document.getElementById("posts");
+
+      // Clear the existing posts before adding new ones
+      posts.innerHTML = "";
+
+      const currentUser = JSON.parse(localStorage.getItem("user"));
+
+      for (let post of json) {
+        // Map badges to Font Awesome icons
+        let badges = post.badges
+          .map((badge) => {
+            return `<div class="badge-container">
+                <i class="${badge.faClass} badge-icon"></i>
+                <span class="badge-tooltip">${badge.name}</span>
+              </div>`;
+          })
+          .join("");
+
+        posts.innerHTML += `
+    <div class="post-card" data-user="${post.username}" data-perms="${post.permissions}" data-id="${post._id}">
+      <img src="${post.icon}" alt="User Avatar" class="avatar">
+      <div class="listing-info">
+        <div class="profile-header">
+          <h3><a style="color: white;" href="${post.portfolio}" onclick="confirmExit(event, '${post.portfolio}')" target="_blank">${post.username}</a></h3>
+          <div class="badge-icons">
+            ${badges}
+          </div>
+        </div>
+        <p>${post.content}</p>
+      </div>
+    </div>`;
+      }
+
+      document.querySelectorAll(".post-card").forEach((card) => {
+        card.addEventListener("contextmenu", (event) => {
+          event.preventDefault();
+          if (currentUser) {
+            let currentUserMoreData = json.find(
+              (v) => v.username === currentUser.username
+            );
+            if (currentUserMoreData.permissions === 1)
+              showPostContextMenu(event, card);
+          }
+        });
+      });
+    }
+
+  </script>
 
   <script src="/homeJS"></script>
 </body>

@@ -114,6 +114,88 @@
         }
     </script>
 
+    <!-- Sign In Modal -->
+    <div id="signInModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('signInModal')">&times;</span>
+            <form id="signin-form" onsubmit="postSignIn(event)">
+                <h2>Sign In</h2>
+                <label for="signin-username">Username:</label>
+                <input type="text" id="signin-username" required />
+
+                <label for="signin-password">Password:</label>
+                <input type="password" id="signin-password" required />
+
+                <button type="submit">Sign In</button>
+            </form>
+            <p style="margin-top: 10px;">
+                Don't have an account?
+                <a href="/sign-up">Create one here.</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div id="editProfileModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('editProfileModal')">&times;</span>
+            <form id="edit-profile-form" onsubmit="postEditProfile(event)">
+                <h2>Edit Profile</h2>
+                <label for="edit-bio">Bio:</label>
+                <textarea id="edit-bio"></textarea>
+
+                <label for="edit-portfolio">Portfolio URL:</label>
+                <input type="text" id="edit-portfolio" required />
+
+                <label for="edit-avatar">Avatar URL:</label>
+                <input type="text" id="edit-avatar" />
+
+                <label for="edit-tags">Select Tags:</label><br />
+                <div id="tags-container-ep"
+                    style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; margin-top: 20px;">
+                    <button type="button" class="tag-button" data-value="#developer">
+                        #developer
+                    </button>
+                    <button type="button" class="tag-button" data-value="#designer">
+                        #designer
+                    </button>
+                    <button type="button" class="tag-button" data-value="#writer">
+                        #writer
+                    </button>
+                    <button type="button" class="tag-button" data-value="#graphic">
+                        #graphic
+                    </button>
+                    <button type="button" class="tag-button" data-value="#copywriter">
+                        #copywriter
+                    </button>
+                    <button type="button" class="tag-button" data-value="#devops">
+                        #devops
+                    </button>
+                    <button type="button" class="tag-button" data-value="#community-management">
+                        #community-management
+                    </button>
+                    <button type="button" class="tag-button" data-value="#artist">
+                        #artist
+                    </button>
+                    <button type="button" class="tag-button" data-value="#digital-artist">
+                        #digital-artist
+                    </button>
+                    <button type="button" class="tag-button" data-value="#manga-artist">
+                        #manga-artist
+                    </button>
+                    <button type="button" class="tag-button" data-value="#moderator">
+                        #moderator
+                    </button>
+                </div>
+
+                <button type="submit">Update Profile</button>
+                <button onclick="signout()" style="margin-top: 10px;">
+                    Sign Out
+                </button>
+            </form>
+        </div>
+    </div>
+
     <div class="footer">
         <p>&copy; <span id="current-year">2025</span> Talentcord. All rights reserved. | <a href="/privacy">Privacy
                 Policy</a> | <a href="/terms">Terms of Service</a>
