@@ -470,7 +470,6 @@
       e.preventDefault();
       document.getElementById("post-now").disabled = true;
       const data = Object.fromEntries(new FormData(form).entries());
-      console.log(data)
       const userData = JSON.parse(localStorage.getItem("user"));
       const response = await fetch("/post", {
         method: "POST",
