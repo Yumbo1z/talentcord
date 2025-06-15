@@ -12,7 +12,7 @@ module.exports = {
   run: async (req, res) => {
     let reqData = req.body.data;
     const token = reqData.token;
-
+console.log(reqData)
     if (!token) return res.status(400).json({ error: "Provide a token." });
 
     try {
