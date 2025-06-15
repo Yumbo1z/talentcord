@@ -273,7 +273,7 @@
       <p style="font-size: 18px; color: #fff;">
         ⚠️ keep tos in mind when you post.
       </p>
-      <textarea name="post-content" form="postdiv" placeholder="Hello I am an experienced backend dev looking for work..."
+      <textarea name="postContent" form="postdiv" placeholder="Hello I am an experienced backend dev looking for work..."
         required></textarea>
       <button type="submit" id="post-now" class="about-button">
         Post Now
@@ -477,7 +477,7 @@
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          data: { content: data.post-content, token: userData.token },
+          data: { content: data.postContent, token: userData.token },
         }),
       });
 
