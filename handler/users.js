@@ -8,11 +8,10 @@ module.exports = {
     let newObj = data.map((v) => {
       return {
         username: v.username,
-        icon: v.avatarURL
-          ? v.avatarURL
-          : "https://i.imgur.com/fBh0Mdm.png"
-        ,
-        bio: v.bio,
+        icon: v.avatarURL ? v.avatarURL : "https://i.imgur.com/fBh0Mdm.png",
+        bio: !v.bio
+          ? "Looking for new opportunities and ready to grow my career."
+          : v.bio,
         tags: v.tags,
         portfolio: v.portfolio,
         permissions: v.permissions,
