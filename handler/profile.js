@@ -23,10 +23,15 @@ module.exports = {
       });
 
       file = file.replaceAll("$$link$$", user.portfolio);
-      file = file.replaceAll("$$bio$$", user.bio);
       file = file.replaceAll("$$permissions$$", user.permissions);
       file = file.replaceAll("$$username$$", user.username);
       file = file.replaceAll("$$id$$", user._id);
+      file = file.replace(
+        "$$bio$$",
+        !user.bio
+          ? "Looking for new opportunities and ready to grow my career."
+          : user.bio
+      );
       file = file.replace(
         "$$banner$$",
         !user.banner
