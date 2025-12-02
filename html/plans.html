@@ -25,6 +25,7 @@
       gap: 20px;
       max-width: 100%;
       width: 100%;
+      align-items: stretch;
     }
 
     .pricing-plan {
@@ -36,6 +37,8 @@
       transition: transform 0.3s, box-shadow 0.3s;
       border: 2px solid #5865f2;
       margin-bottom: 20px;
+      box-sizing: border-box;
+      max-width: 100%;
     }
 
     .enterprise-plan {
@@ -128,35 +131,47 @@
       background-color: #d1358e;
     }
 
-    /* Tablet and Desktop Styles */
-    @media (min-width: 768px) {
-      .pricing-section {
-        padding: 40px 20px;
+    /* Responsive improvements */
+    @media (max-width: 600px) {
+      .pricing-plan {
+        padding: 12px;
+        font-size: 0.95rem;
       }
+      .plan-header {
+        padding-bottom: 10px;
+      }
+      .plan-features {
+        min-height: 120px;
+      }
+      .plan-name {
+        font-size: 1.2rem;
+      }
+      .plan-price {
+        font-size: 1.5rem;
+      }
+    }
 
+    @media (min-width: 700px) {
       .pricing-container {
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
         gap: 30px;
+        align-items: stretch;
       }
-
       .pricing-plan {
         max-width: 350px;
-        padding: 25px;
+        flex: 1 1 300px;
         margin-bottom: 0;
       }
-
       .plan-features {
-        min-height: 250px;
+        min-height: 180px;
       }
-
       .plan-name {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
       }
-
       .plan-price {
-        font-size: 2.5rem;
+        font-size: 2rem;
       }
     }
 
@@ -164,6 +179,15 @@
       .pricing-container {
         max-width: 1200px;
         margin: 0 auto;
+      }
+      .plan-features {
+        min-height: 250px;
+      }
+      .plan-name {
+        font-size: 1.8rem;
+      }
+      .plan-price {
+        font-size: 2.5rem;
       }
     }
   </style>
