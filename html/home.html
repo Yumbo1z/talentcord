@@ -186,8 +186,8 @@
         <label for="edit-portfolio">Portfolio URL:</label>
         <input type="text" id="edit-portfolio" required />
 
-        <label for="edit-avatar">Avatar URL:</label>
-        <input type="text" id="edit-avatar" />
+        <label for="edit-avatar">Avatar</label>
+        <input type="file" id="imageInput" name="avatar" accept="image/png, image/jpeg" />
 
         <label for="edit-tags">Select Tags:</label><br />
         <div id="tags-container-ep"
@@ -235,6 +235,85 @@
     </div>
   </div>
 
+  <!-- Cropper -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+
+  <!-- Upload Avatar -->
+  <script>
+    const imageInput = document.getElementById("imageInput");
+    var cropperImage = document.getElementById("AvatarImage");
+
+    // Function to handle file selection
+    imageInput.addEventListener("change", (event) => {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        cropperImage.src = e.target.result;
+        modal.style.display = "block"; // Display the modal
+        initCropper(); // Initialize the cropper
+      };
+      reader.readAsDataURL(file);
+    });
+    // Function to initialize the cropper
+    function initCropper() {
+      var cropper = new Cropper(cropperImage, {
+        aspectRatio: 1, // Set aspect ratio for cropping (1:1 for a circle avatar)
+        viewMode: 1, // Display the cropped area within the container
+        crop: function (event) {
+          // Callback function when cropping is done
+          // You can retrieve the cropped data here
+        },
+      });
+
+      // Event listener for the crop button
+      cropButton.addEventListener("click", function () {
+        // Get the cropped canvas
+
+        var croppedCanvas = cropper.getCroppedCanvas({
+          width: 200, // Set width of the cropped image
+          height: 200, // Set height of the cropped image
+        });
+
+        // Convert the cropped canvas data to a blob
+        croppedCanvas.toBlob(async (blob) => {
+          // Create a FormData object
+          var formData = new FormData();
+          // Append the cropped image blob to the FormData object
+          formData.append("avatar", blob);
+          formData.append("token", "$$token$$");
+
+          // Use fetch to send the cropped image data to the upload-profile-img endpoint
+          const response = await fetch("/upload-profile-img", {
+            method: "POST",
+            body: formData,
+          });
+
+          const responseData = await response.json();
+          if (response.ok) {
+            showToast(responseData.success, "green");
+          } else {
+            showToast(responseData.error, "red");
+          }
+        });
+
+        // Close the modal after cropping
+        modal.style.display = "none";
+      });
+
+      // Event listener for the close button
+      var closeButton = document.getElementsByClassName("close")[0];
+      closeButton.addEventListener("click", function () {
+        modal.style.display = "none"; // Close the modal
+      });
+
+      // Event listener for clicks outside the modal
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none"; // Close the modal if clicked outside
+        }
+      };
+    }
+  </script>
   <script>
     document.addEventListener("DOMContentLoaded", async () => {
       let response = await fetch("/users");

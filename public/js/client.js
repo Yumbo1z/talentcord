@@ -15,7 +15,7 @@ function replaceCrossWithAvatar(avatarUrl) {
   const navbar = document.querySelector(".navbar");
   const plusIcon = navbar.querySelector(".plus-icon");
   // Replace the icon with the avatar
-  plusIcon.outerHTML = `<div class="plus-icon" onclick="openModal('editProfileModal', 'block')"><img src="${avatarUrl}" alt="Avatar" class="plus-avatar"/></div>`;
+  plusIcon.outerHTML = `<div class="plus-icon" onclick="openModal('editProfileModal', 'block')"><img src="${avatarUrl}" id="AvatarImage" class="plus-avatar"/></div>`;
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
